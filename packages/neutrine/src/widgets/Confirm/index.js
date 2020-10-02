@@ -2,13 +2,20 @@ import React from "react";
 import {Btn} from "../../components/elements/Btn.js";
 import {Modal, ModalContent} from "../../components/experiments/Modal.js";
 import {ModalHeader, ModalHeaderTitle, ModalHeaderClose, ModalBody, ModalFooter} from "../../components/experiments/Modal.js";
+import {classNames} from "../../utils/classnames.js";
 
 //Build confirmation header
 let ConfirmHeader = function (props) {
-    return React.createElement(ModalHeader, {}, 
-        React.createElement(ModalHeaderTitle, {}, props.title),
-        React.createElement(ModalHeaderClose, {"onClick": props.onClose})
+    return (
+        <ModalHeader>
+            <ModalHeaderTitle>{props.title}</ModalHeaderTitle>
+            <ModalHeaderClose onClick={props.onCancel} />
+        </ModalHeader>
     );
+    //return React.createElement(ModalHeader, {}, 
+    //    React.createElement(ModalHeaderTitle, {}, props.title),
+    //    React.createElement(ModalHeaderClose, {"onClick": props.onCancel})
+    //);
 };
 
 //Build confirmation body
@@ -28,14 +35,14 @@ let ConfirmFooter = function (props) {
     let confirmButton = React.createElement(Btn, {
         "content": props.confirmText,
         "color": props.confirmColor,
-        "className": helpers.classNames("siimple--ml-1", props.confirmClassName),
+        "className": classNames("siimple--ml-2", props.confirmClassName),
         "style": props.confirmStyle,
         "onClick": props.onConfirm
     });
     //Build the footer props
     let footerProps = {
         "align": "right",
-        "className": "siimple--pt-0 siimple--bg-white"
+        "className": "siimple--pt-0 siimple--bg-light1"
     };
     return React.createElement(ModalFooter, footerProps, cancelButton, confirmButton);
 };
