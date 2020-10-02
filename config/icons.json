@@ -1125,6 +1125,13 @@
         "unicode": 57504,
         "added": "v0.1.0",
         "keywords": ["pin"]
+    },
+    {
+        "id": "siimple",
+        "categories": "misc",
+        "unicode": 57505,
+        "added": "v0.1.0",
+        "keywords": ["siimple", "logo", "brand"]
     }
 ]
 
