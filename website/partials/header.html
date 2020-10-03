@@ -8,9 +8,7 @@
     <!-- Navbar content -->
     <div class="siimple-navbar-content">
         {{#each site.navbarLinks }}
-        <div class="siimple-navbar-item">
-            <a class="siimple-navbar-link siimple--text-primary {{#startsWith this.startsWith ../page.url}}siimple-navbar-link--active{{/startsWith}}" href="{{this.url}}">{{this.name}}</a>
-        </div>
+        <a class="siimple-navbar-item siimple--text-primary {{#startsWith this.startsWith ../page.url}}siimple-navbar-item--active{{/startsWith}}" href="{{this.url}}">{{this.name}}</a>
         {{/each}}
     </div>
 </div>
