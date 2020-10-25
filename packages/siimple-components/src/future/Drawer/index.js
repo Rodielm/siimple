@@ -1,7 +1,7 @@
 import React from "react";
-import {htmlElement} from "../../../utils/reactElements.js";
-import {classNames} from "../../../utils/classnames.js";
-import {filterProps} from "../../../utils/reactProps.js";
+import {createHtmlElement} from "../../utils/element.js";
+import {classNames} from "../../utils/classnames.js";
+import {filterProps} from "../../utils/props.js";
 import "./style.scss";
 
 //Available positions
@@ -28,7 +28,7 @@ Drawer.defaultProps = {
 };
 
 //Drawer background
-export const DrawerBackground = htmlElement("div", "siimple__drawer-background");
+export const DrawerBackground = createHtmlElement("div", "siimple__drawer-background");
 
 //Drawer content
 export const DrawerContent = function (props) {

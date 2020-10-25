@@ -1,7 +1,7 @@
 import React from "react";
-import {htmlElement} from "../../../utils/reactElements.js";
-import {classNames} from "../../../utils/classnames.js";
-import {filterProps} from "../../../utils/reactProps.js";
+import {createHtmlElement} from "../../utils/element.js";
+import {classNames} from "../../utils/classnames.js";
+import {filterProps} from "../../utils/props.js";
 import "./style.scss";
 
 export function Placeholder (props) {
@@ -30,5 +30,5 @@ Placeholder.defaultProps = {
 };
 
 //Placeholder group
-export const PlaceholderGroup = htmlElement("div", "siimple__placeholder-group");
+export const PlaceholderGroup = createHtmlElement("div", "siimple__placeholder-group");
 

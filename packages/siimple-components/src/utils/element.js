@@ -1,9 +1,9 @@
 import React from "react";
 import {classNames} from "./classnames.js";
-import {mergeProps, filterProps} from "./reactProps.js";
+import {mergeProps, filterProps} from "./props.js";
 
 //Create an htmlElement
-export function htmlElement (elementTag, elementClass) {
+export function createHtmlElement (elementTag, elementClass) {
     return function (props) {
         let newProps = Object.assign({}, filterProps(props, ["className"]), {
             "className": classNames(props.className, elementClass)

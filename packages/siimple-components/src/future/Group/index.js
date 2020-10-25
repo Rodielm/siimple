@@ -1,17 +1,17 @@
 import React from "react";
 import {Icon} from "../../icon/Icon.js";
-import {htmlElement, mergeElement} from "../../../utils/reactElements.js";
-import {classNames} from "../../../utils/classnames.js";
-import {filterProps} from "../../../utils/reactProps.js";
+import {createHtmlElement, createMergedElement} from "../../utils/element.js";
+import {classNames} from "../../utils/classnames.js";
+import {filterProps} from "../../utils/props.js";
 
 import "./style.scss";
 
 //Group basic elements
-export const Group = htmlElement("div", "siimple__group");
-export const GroupTitle = htmlElement("div", "siimple__group-title");
-export const GroupDescription = htmlElement("div", "siimple__group-description");
-export const GroupText = htmlElement("div", "siimple__group-text");
-//export const GroupAction = htmlElement("div", "siimple__group-action");
+export const Group = createHtmlElement("div", "siimple__group");
+export const GroupTitle = createHtmlElement("div", "siimple__group-title");
+export const GroupDescription = createHtmlElement("div", "siimple__group-description");
+export const GroupText = createHtmlElement("div", "siimple__group-text");
+//export const GroupAction = createHtmlElement("div", "siimple__group-action");
 
 //Main group container
 export const GroupRow = function (props) {
@@ -59,7 +59,7 @@ GroupColumn.defaultProps = {
 //Group icon
 export const GroupIcon = function (props) {
     let iconProps = filterProps(props, ["appearance", "color"]);
-    return mergeElement(Icon, iconProps, {
+    return createMergedElement(Icon, iconProps, {
         "style": {
             "lineHeight": "40px"
         },
@@ -98,7 +98,7 @@ GroupLabel.defaultProps = {
 
 //Group add icon
 export const GroupAdd = function (props) {
-    return mergeElement(Icon, props, {
+    return createMergedElement(Icon, props, {
         "className": "siimple__group-add",
         "icon": "plus"
     });
@@ -106,6 +106,6 @@ export const GroupAdd = function (props) {
 
 //Group action
 export const GroupAction = function (props) {
-    return mergeElement(Icon, props, {"className": "siimple__group-action"});
+    return createMergedElement(Icon, props, {"className": "siimple__group-action"});
 };
 

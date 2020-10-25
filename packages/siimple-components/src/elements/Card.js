@@ -1,7 +1,7 @@
 import React from "react";
-import {classNames} from "../../utils/classnames.js";
-import {htmlElement} from "../../utils/reactElements.js";
-import {filterProps} from "../../utils/reactProps.js";
+import {classNames} from "../utils/classnames.js";
+import {createHtmlElement} from "../utils/element.js";
+import {filterProps} from "../utils/props.js";
 
 //Card base component
 export const Card = function (props) {
@@ -19,7 +19,7 @@ Card.defaultProps = {
 };
 
 //Other card components
-export const CardContent = htmlElement("div", "siimple-card-content");
-export const CardImage = htmlElement("div", "siimple-card-image");
-export const CardLink = htmlElement("div", "siimple-card-link");
+export const CardContent = createHtmlElement("div", "siimple-card-content");
+export const CardImage = createHtmlElement("div", "siimple-card-image");
+export const CardLink = createHtmlElement("div", "siimple-card-link");
 

@@ -1,7 +1,6 @@
 import React from "react";
-import {htmlElement} from "../../utils/reactElements.js";
-import {classNames} from "../../utils/classnames.js";
-import {filterProps} from "../../utils/reactProps.js";
+import {classNames} from "../utils/classnames.js";
+import {filterProps} from "../utils/props.js";
 
 //Radio component 
 export const Radio = React.forwardRef(function (props, ref) {

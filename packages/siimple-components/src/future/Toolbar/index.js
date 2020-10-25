@@ -1,6 +1,6 @@
 import React from "react";
-import {htmlElement} from "../../../utils/reactElements.js";
-import {classNames} from "../../../utils/classnames.js";
+import {createHtmlElement} from "../../utils/element.js";
+import {classNames} from "../../utils/classnames.js";
 import {Icon} from "../../icon/Icon.js";
 import "./style.scss";
 
@@ -60,7 +60,7 @@ Toolbar.defaultProps = {
 export const ToolbarItem = function (props) {
     //Initialize the button props
     let itemProps = {
-        "className": className(props.className, {
+        "className": classNames(props.className, {
             "siimple__toolbar-item": true,
             "siimple__toolbar-item--active": props.active === true
         }),
@@ -92,7 +92,7 @@ ToolbarItem.defaultProps = {
 };
 
 //Toolbar separator
-export const ToolbarSeparator = htmlElement("div", "siimple__toolbar-separator");
+export const ToolbarSeparator = createHtmlElement("div", "siimple__toolbar-separator");
 
 //Toolbar group
 export const ToolbarGroup = function (props) {

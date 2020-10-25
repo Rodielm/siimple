@@ -1,7 +1,6 @@
 import React from "react";
-import {htmlElement} from "../../utils/reactElements.js";
-import {classNames} from "../../utils/classnames.js";
-import {filterProps} from "../../utils/reactProps.js";
+import {classNames} from "../utils/classnames.js";
+import {filterProps} from "../utils/props.js";
 
 //Switch component 
 export const Switch = React.forwardRef(function (props, ref) {

@@ -1,6 +1,6 @@
 import React from "react";
-import {classNames} from "../../utils/classnames.js";
-import {filterProps} from "../../utils/reactProps.js";
+import {classNames} from "../utils/classnames.js";
+import {filterProps} from "../utils/props.js";
 
 //Tip class
 export const Tip = function (props) {

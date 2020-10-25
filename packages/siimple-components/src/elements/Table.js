@@ -1,7 +1,7 @@
 import React from "react";
-import {classNames} from "../../utils/classnames.js";
-import {htmlElement} from "../../utils/reactElements.js";
-import {filterProps} from "../../utils/reactProps.js";
+import {classNames} from "../utils/classnames.js";
+import {createHtmlElement} from "../utils/element.js";
+import {filterProps} from "../utils/props.js";
 
 //Export main table component
 export const Table = function (props) {
@@ -26,9 +26,9 @@ Table.defaultProps = {
 };
 
 //Export table header component
-export const TableHeader = htmlElement("div", "siimple-table-header");
-export const TableBody = htmlElement("div", "siimple-table-body");
-export const TableRow = htmlElement("div", "siimple-table-row");
+export const TableHeader = createHtmlElement("div", "siimple-table-header");
+export const TableBody = createHtmlElement("div", "siimple-table-body");
+export const TableRow = createHtmlElement("div", "siimple-table-row");
 
 //Export table cell component
 export const TableCell = function (props) {

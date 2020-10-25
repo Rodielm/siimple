@@ -1,6 +1,6 @@
 import React from "react";
-import {filterProps} from "../../utils/reactProps.js";
-import {classNames} from "../../utils/classnames.js";
+import {filterProps} from "../utils/props.js";
+import {classNames} from "../utils/classnames.js";
 
 //Build the progress bar content
 let progressBar = function (props) {

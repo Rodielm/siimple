@@ -1,6 +1,6 @@
 import React from "react";
-import {htmlElement} from "../../utils/reactElements.js";
+import {createHtmlElement} from "../utils/element.js";
 
 //Rule component
-export const Rule = htmlElement("div", "siimple-rule");
+export const Rule = createHtmlElement("div", "siimple-rule");
 

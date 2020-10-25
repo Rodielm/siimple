@@ -1,6 +1,6 @@
 import React from "react";
-import {filterProps} from "../../utils/reactProps.js";
-import {classNames} from "../../utils/classnames.js";
+import {filterProps} from "../utils/props.js";
+import {classNames} from "../utils/classnames.js";
 
 //Export icon component
 export const Icon = function (props) {

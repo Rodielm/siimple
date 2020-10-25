@@ -1,7 +1,7 @@
 import React from "react";
-import {htmlElement} from "../../utils/reactElements.js";
-import {filterProps} from "../../utils/reactProps.js";
-import {classNames} from "../../utils/classnames.js";
+import {createHtmlElement} from "../utils/element.js";
+import {filterProps} from "../utils/props.js";
+import {classNames} from "../utils/classnames.js";
 
 //Export main modal component
 export const Modal = function (props) {
@@ -24,12 +24,12 @@ Modal.defaultProps = {
 };
 
 //Other Modal componens
-export const ModalContent = htmlElement("div", "siimple-modal-content");
-export const ModalHeader = htmlElement("div", "siimple-modal-header");
-export const ModalHeaderTitle = htmlElement("div", "siimple-modal-header-title");
-export const ModalHeaderClose = htmlElement("div", "siimple-modal-header-close");
-export const ModalBody = htmlElement("div", "siimple-modal-body");
-export const ModalFooter = htmlElement("div", "siimple-modal-footer");
+export const ModalContent = createHtmlElement("div", "siimple-modal-content");
+export const ModalHeader = createHtmlElement("div", "siimple-modal-header");
+export const ModalHeaderTitle = createHtmlElement("div", "siimple-modal-header-title");
+export const ModalHeaderClose = createHtmlElement("div", "siimple-modal-header-close");
+export const ModalBody = createHtmlElement("div", "siimple-modal-body");
+export const ModalFooter = createHtmlElement("div", "siimple-modal-footer");
 
 //Modal wrapper
 export const ModalWrapper = function (props) {

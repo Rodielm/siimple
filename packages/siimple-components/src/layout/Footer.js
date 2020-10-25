@@ -1,7 +1,7 @@
 import React from "react";
-import {htmlElement} from "../../utils/reactElements.js";
-import {filterProps} from "../../utils/reactProps.js";
-import {classNames} from "../../utils/classnames.js";
+import {createHtmlElement} from "../utils/element.js";
+import {filterProps} from "../utils/props.js";
+import {classNames} from "../utils/classnames.js";
 
 //Footer layout component
 export const Footer = function (props) {
@@ -24,7 +24,7 @@ Footer.defaultProps = {
 };
 
 //Other footer components
-export const FooterTitle = htmlElement("div", "siimple-footer-title");
-export const FooterSubtitle = htmlElement("div", "siimple-footer-subtitle");
-export const FooterLink = htmlElement("div", "siimple-footer-link");
+export const FooterTitle = createHtmlElement("div", "siimple-footer-title");
+export const FooterSubtitle = createHtmlElement("div", "siimple-footer-subtitle");
+export const FooterLink = createHtmlElement("div", "siimple-footer-link");
 

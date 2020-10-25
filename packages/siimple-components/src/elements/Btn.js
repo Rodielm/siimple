@@ -1,7 +1,7 @@
 import React from "react";
-import {classNames} from "../../utils/classnames.js";
-import {htmlElement} from "../../utils/reactElements.js";
-import {filterProps} from "../../utils/reactProps.js";
+import {classNames} from "../utils/classnames.js";
+import {createHtmlElement} from "../utils/element.js";
+import {filterProps} from "../utils/props.js";
 
 //Button component
 export const Btn = function (props) {
@@ -47,5 +47,5 @@ Btn.defaultProps = {
 };
 
 //Button groups
-export const BtnGroup = htmlElement("div", "siimple-btn-group");
+export const BtnGroup = createHtmlElement("div", "siimple-btn-group");
 

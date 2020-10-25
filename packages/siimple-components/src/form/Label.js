@@ -1,5 +1,5 @@
-import {htmlElement} from "../../utils/reactElements.js";
+import {createHtmlElement} from "../utils/element.js";
 
 //Label component
-export const Label = htmlElement("div", "siimple-label");
+export const Label = createHtmlElement("div", "siimple-label");
 

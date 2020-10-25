@@ -1,6 +1,6 @@
 import React from "react";
-import {classNames} from "../../utils/classnames.js";
-import {filterProps} from "../../utils/reactProps.js";
+import {classNames} from "../utils/classnames.js";
+import {filterProps} from "../utils/props.js";
 
 //Textarea component 
 export const Textarea = React.forwardRef(function (props, ref) {

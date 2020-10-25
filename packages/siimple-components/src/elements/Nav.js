@@ -1,7 +1,7 @@
 import React from "react";
-import {classNames} from "../../utils/classnames.js";
-import {htmlElement} from "../../utils/reactElements.js";
-import {filterProps} from "../../utils/reactProps.js";
+import {classNames} from "../utils/classnames.js";
+import {createHtmlElement} from "../utils/element.js";
+import {filterProps} from "../utils/props.js";
 
 //Nav wrapper
 export const Nav = function (props) {
@@ -43,7 +43,7 @@ NavItem.defaultProps = {
 };
 
 //Nav components
-export const NavGroup = htmlElement("div", "siimple-nav-group");
-export const NavDivider = htmlElement("div", "siimple-nav-divider");
+export const NavGroup = createHtmlElement("div", "siimple-nav-group");
+export const NavDivider = createHtmlElement("div", "siimple-nav-divider");
 
 

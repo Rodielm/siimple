@@ -1,14 +1,14 @@
 import React from "react";
-import {classNames} from "../../../utils/classnames.js";
-import {htmlElement} from "../../../utils/reactElements.js";
+import {classNames} from "../../utils/classnames.js";
+import {createHtmlElement} from "../../utils/element.js";
 import "./style.scss";
 
 //Export panel basic components
-export const Panel = htmlElement("div", "siimple__panel");
-export const PanelHeader = htmlElement("div", "siimple__panel-header");
-export const PanelTitle = htmlElement("div", "siimple__panel-title");
-export const PanelBody = htmlElement("div", "siimple__panel-body");
-export const PanelFooter = htmlElement("div", "siimple__panel-footer");
+export const Panel = createHtmlElement("div", "siimple__panel");
+export const PanelHeader = createHtmlElement("div", "siimple__panel-header");
+export const PanelTitle = createHtmlElement("div", "siimple__panel-title");
+export const PanelBody = createHtmlElement("div", "siimple__panel-body");
+export const PanelFooter = createHtmlElement("div", "siimple__panel-footer");
 
 //Export tab wrapper
 export function PanelTab (props) {

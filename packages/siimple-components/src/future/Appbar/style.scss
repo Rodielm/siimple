@@ -1,12 +1,19 @@
 @use "siimple-lib" as siimple;
 
+//Appbar variables
+$appbar-padding: 24px !default;
+$appbar-width: 48px !default;
+$appbar-item-width: 32px !default;
+$appbar-item-height: 32px !default;
+$appbar-item-padding: 8px !default;
+
 //Appbar style
 .siimple__appbar {
     display: block;
     position: fixed;
-    width: 40px; //calc(260px - 30px);
-    height: calc(100% - 30px);
-    padding: 15px;
+    width: $appbar-width; //calc(260px - 30px);
+    height: calc(100% - 2 * #{$appbar-padding});
+    padding: $appbar-padding;
     transition: all 0.3s;
     top: 0px !important;
     left: 0px;
@@ -16,7 +23,7 @@
     &-wrapper {
         display: block;
         //min-height: 100%;
-        padding-left: 70px;
+        padding-left: calc(#{$appbar-width} + 2 * #{$appbar-padding});
         transition: all 0.3s;
         position: relative;
     }
@@ -24,8 +31,8 @@
     &-brand,
     &-avatar {
         display: block;
-        width: 24px;
-        height: 24px;
+        width: $appbar-item-width;
+        height: $appbar-item-height;
         //padding: 8px;
         margin-bottom: 5px;
         cursor: pointer;
@@ -34,7 +41,7 @@
         background-repeat: no-repeat;
         background-size: 24px 24px;
         background-position: 8px 8px;
-        padding: 8px;
+        padding: $appbar-item-padding;
         transition: background-color 0.3s;
         &:hover {
             background-color: rgba(siimple.color("white"), 0.2);
@@ -42,9 +49,9 @@
     }
     //Appbar item
     &-item {
-        font-size: 24px;
+        font-size: $appbar-item-width;
         font-weight: normal !important;
-        line-height: 24px;
+        line-height: $appbar-item-height;
         color: rgba(siimple.color("white"), 0.6);
         border-radius: 3px;
         &--active {
@@ -77,6 +84,6 @@
 
 //Terrible hack: appbar + toolbar
 .siimple__appbar-wrapper .siimple__toolbar {
-    left: 70px !important;
+    left: calc(#{$appbar-width} + 2 * #{$appbar-padding}) !important;
 }
 

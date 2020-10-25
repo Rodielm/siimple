@@ -1,7 +1,7 @@
 import React from "react";
-import {htmlElement, mergeElement} from "../../utils/reactElements.js";
-import {filterProps} from "../../utils/reactProps.js";
-import {classNames} from "../../utils/classnames.js";
+import {createHtmlElement, createMergedElement} from "../utils/element.js";
+import {filterProps} from "../utils/props.js";
+import {classNames} from "../utils/classnames.js";
 
 //Navbar default class
 export const Navbar = function (props) {
@@ -39,13 +39,13 @@ Navbar.defaultProps = {
 };
 
 //Navbar brand element
-export const NavbarBrand = htmlElement("div", "siimple-navbar-brand");
-export const NavbarItem = htmlElement("div", "siimple-navbar-item");
-export const NavbarContent = htmlElement("div", "siimple-navbar-content");
+export const NavbarBrand = createHtmlElement("div", "siimple-navbar-brand");
+export const NavbarItem = createHtmlElement("div", "siimple-navbar-item");
+export const NavbarContent = createHtmlElement("div", "siimple-navbar-content");
 
 //Navbar toggle component
 export const NavbarToggle = function (props) {
-    return mergeElement("div", props, {
+    return createMergedElement("div", props, {
         "className": "siimple-navbar-toggle",
         "tabIndex": "0"
     });

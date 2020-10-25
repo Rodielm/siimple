@@ -1,15 +1,15 @@
 import React from "react";
-import {htmlElement} from "../../../utils/reactElements.js";
-import {classNames} from "../../../utils/classnames.js";
-import {filterProps} from "../../../utils/reactProps.js";
+import {createHtmlElement} from "../../utils/element.js";
+import {classNames} from "../../utils/classnames.js";
+import {filterProps} from "../../utils/props.js";
 import {Icon} from "../../icon/Icon.js";
 import "./style.scss";
 
 //Export item style
-export const Item = htmlElement("div", "siimple__item");
-export const ItemContent = htmlElement("div", "siimple__item-content");
-export const ItemBefore = htmlElement("div", "siimple__item-before");
-export const ItemAfter = htmlElement("div", "siimple__item-after");
+export const Item = createHtmlElement("div", "siimple__item");
+export const ItemContent = createHtmlElement("div", "siimple__item-content");
+export const ItemBefore = createHtmlElement("div", "siimple__item-before");
+export const ItemAfter = createHtmlElement("div", "siimple__item-after");
 
 //Export item icon wrapper
 export function ItemIcon (props) {

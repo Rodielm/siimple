@@ -1,7 +1,7 @@
 import React from "react";
-import {classNames} from "../../utils/classnames.js";
-import {htmlElement} from "../../utils/reactElements.js";
-import {filterProps} from "../../utils/reactProps.js";
+import {classNames} from "../utils/classnames.js";
+import {createHtmlElement} from "../utils/element.js";
+import {filterProps} from "../utils/props.js";
 
 //Export tag component 
 export const Tag = function (props) {
@@ -28,5 +28,5 @@ Tag.defaultProps = {
 };
 
 //Grouped tag
-export const TagGroup = htmlElement("span", "siimple-tag-group");
+export const TagGroup = createHtmlElement("span", "siimple-tag-group");
 

@@ -1,7 +1,7 @@
 import React from "react";
-import {classNames} from "../../utils/classnames.js";
-import {htmlElement} from "../../utils/reactElements.js";
-import {filterProps} from "../../utils/reactProps.js";
+import {classNames} from "../utils/classnames.js";
+import {createHtmlElement} from "../utils/element.js";
+import {filterProps} from "../utils/props.js";
 
 //Heading wrapper
 export const Heading = function (props) {
@@ -24,17 +24,17 @@ Heading.defaultProps = {
 };
 
 //Export typography components 
-export const Blockquote = htmlElement("div", "siimple-blockquote");
-export const Code = htmlElement("code", "siimple-code");
-export const Heading1 = htmlElement("div", "siimple-h1");
-export const Heading2 = htmlElement("div", "siimple-h2");
-export const Heading3 = htmlElement("div", "siimple-h3");
-export const Heading4 = htmlElement("div", "siimple-h4");
-export const Heading5 = htmlElement("div", "siimple-h5");
-export const Heading6 = htmlElement("div", "siimple-h6");
-export const Link = htmlElement("a", "siimple-link");
-export const Paragraph = htmlElement("div", "siimple-paragraph");
-export const Lead = htmlElement("div", "siimple-lead");
-export const Pre = htmlElement("pre", "siimple-pre");
-export const Small = htmlElement("span", "siimple-small");
+export const Blockquote = createHtmlElement("div", "siimple-blockquote");
+export const Code = createHtmlElement("code", "siimple-code");
+export const Heading1 = createHtmlElement("div", "siimple-h1");
+export const Heading2 = createHtmlElement("div", "siimple-h2");
+export const Heading3 = createHtmlElement("div", "siimple-h3");
+export const Heading4 = createHtmlElement("div", "siimple-h4");
+export const Heading5 = createHtmlElement("div", "siimple-h5");
+export const Heading6 = createHtmlElement("div", "siimple-h6");
+export const Link = createHtmlElement("a", "siimple-link");
+export const Paragraph = createHtmlElement("div", "siimple-paragraph");
+export const Lead = createHtmlElement("div", "siimple-lead");
+export const Pre = createHtmlElement("pre", "siimple-pre");
+export const Small = createHtmlElement("span", "siimple-small");
 

@@ -1,7 +1,7 @@
 import React from "react";
-import {htmlElement} from "../../utils/reactElements.js";
-import {filterProps} from "../../utils/reactProps.js";
-import {classNames} from "../../utils/classnames.js";
+import {createHtmlElement} from "../utils/element.js";
+import {filterProps} from "../utils/props.js";
+import {classNames} from "../utils/classnames.js";
 
 //Jumbotron base component
 export const Jumbotron = function (props) {
@@ -34,6 +34,6 @@ Jumbotron.defaultProps = {
 };
 
 //Other jumbotron components
-export const JumbotronTitle = htmlElement("div", "siimple-jumbotron-title");
-export const JumbotronSubtitle = htmlElement("div", "siimple-jumbotron-subtitle");
+export const JumbotronTitle = createHtmlElement("div", "siimple-jumbotron-title");
+export const JumbotronSubtitle = createHtmlElement("div", "siimple-jumbotron-subtitle");
 

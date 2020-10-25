@@ -1,6 +1,6 @@
 import React from "react";
 import {Icon} from "../../icon/Icon.js";
-import {classNames} from "../../../utils/classnames.js";
+import {classNames} from "../../utils/classnames.js";
 import "./style.scss";
 
 //Stepper variables

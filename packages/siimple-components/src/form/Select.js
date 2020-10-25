@@ -1,6 +1,6 @@
 import React from "react";
-import {classNames} from "../../utils/classnames.js";
-import {filterProps} from "../../utils/reactProps.js";
+import {classNames} from "../utils/classnames.js";
+import {filterProps} from "../utils/props.js";
 
 //Select component
 export const Select = React.forwardRef(function (props, ref) {
