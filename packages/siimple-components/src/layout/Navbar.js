@@ -6,7 +6,7 @@ import {classNames} from "../utils/classnames.js";
 //Navbar default class
 export const Navbar = function (props) {
     //Clone the navbar props 
-    let newProps = helpers.filterProps(props, ["className", "color", "size", "fixedTop", "fixedBottom"]);
+    let newProps = filterProps(props, ["className", "color", "size", "fixedTop", "fixedBottom"]);
     //Generate navbar class-list
     let classList = ["siimple-navbar"];
     //Add navbar color
