@@ -1,4 +1,4 @@
-## Neutrine.DataTable
+## Siimple DataTable
 
 
 ### Columns
@@ -27,7 +27,7 @@ let columns = [{
     "selectable": false,      // <boolean> Display a selectable checbox (will override the key|defaultValue|render options)
     "selected": null,         // <function> Function to determine if row is selected
     //"onHeaderSelect": null,   // <function> Function that will be executed on select/deselect on header cell
-    "onBodySelect": null      // <function> Function that will be executed on select/deselect on body cell
+    //"onBodySelect": null      // <function> Function that will be executed on select/deselect on body cell
 }];
 ```
 

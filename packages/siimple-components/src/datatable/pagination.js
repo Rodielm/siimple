@@ -1,6 +1,6 @@
 import React from "react";
-import {Btn} from "../components/elements/Btn.js";
-import {Select} from "../components/form/Select.js";
+import {Btn} from "../elements/Btn.js";
+import {Select} from "../form/Select.js";
 
 //Strong text wrapper
 let Strong = function (text) {

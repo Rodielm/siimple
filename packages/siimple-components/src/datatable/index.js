@@ -1,10 +1,8 @@
 import React from "react";
 import {classNames} from "../utils/classnames.js";
 import {callProp} from "../utils/reactProps.js";
-
 import {DataTablePagination} from "./pagination.js";
 import {DataTableRender} from "./render.js";
-import {DataTableConst} from "./const.js";
 import "./style.scss";
 
 //Calculate the number of pages
@@ -87,8 +85,8 @@ export class DataTable extends React.Component {
         //Check if this column is selectable
         if (column.selectable === true) {
             //Check if a body row select listener has been provided
-            if (typeof column.onBodySelect === "function") {
-                return column.onBodySelect(event, row, rowIndex, column, colIndex);
+            if (typeof this.props.onBodySelect === "function") {
+                return this.props.onBodySelect(event, row, rowIndex, column, colIndex);
             }
         }
         //Check for body cell click listener
@@ -329,6 +327,8 @@ export class DataTable extends React.Component {
         //Initialize the table render props
         let visibleColumns = this.getVisibleColumns();
         let renderProps = {
+            "className": this.props.tableClassName,
+            "style": this.props.tableStyle,
             "columns": [],
             "data": [],
             "border": this.props.border,
@@ -498,7 +498,7 @@ export class DataTable extends React.Component {
         let tableProps = {
             //"height": (this.props.pagination === true) ? null : this.props.height,
             "style": {},
-            "className": classNames(DataTableConst.containerClass, this.props.className)
+            "className": classNames("siimple__datatable-container", this.props.containerClassName)
         };
         //Check for fixed height
         //if (this.props.pagination === false && this.props.fixedHeader === false) {
@@ -507,8 +507,8 @@ export class DataTable extends React.Component {
         //    });
         //}
         //Check for custom style provided
-        if (typeof this.props.style === "object" && this.props.style !== null) {
-            Object.assign(tableProps.style, this.props.style);
+        if (typeof this.props.containerStyle === "object" && this.props.containerStyle !== null) {
+            Object.assign(tableProps.style, this.props.containerStyle);
         }
         //Return the table wrapper
         return React.createElement("div", tableProps, this.renderTable(rowStart, rowEnd));
@@ -531,7 +531,8 @@ export class DataTable extends React.Component {
         let table = this.renderTableContainer(rowStart, rowEnd);
         //Initialize the datatable props
         let datatableProps = {
-            "className": DataTableConst.mainClass
+            "style": this.props.style,
+            "className": classNames("siimple__datatable", this.props.className)
         };
         //Return the datatable element
         return React.createElement("div", datatableProps, paginationTop, table, paginationBottom);
@@ -551,6 +552,11 @@ DataTable.defaultProps = {
     "className": null, //Global table classname
     "style": null,     //Global table style
     //"fixedHeader": false,  //Header is fixed
+    //Custom table style
+    "containerClassName": null,
+    "containerStyle": null,
+    "tableClassName": null,
+    "tableStyle": null,
     //Header row style
     "headerRowClassName": null,
     "headerRowStyle": null,
@@ -558,6 +564,7 @@ DataTable.defaultProps = {
     "bodyRowClassName": null,
     "bodyRowStyle": null,
     //Cell click listener
+    "onBodySelect": null, //Select body
     "onBodyClick": null, //Body cell click event listener
     "onHeaderClick": null, //Header cell click event listener
     //Pagination

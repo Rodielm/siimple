@@ -1,9 +1,8 @@
 import React from "react";
-import {Table, TableHeader, TableBody, TableRow, TableCell} from "../components/elements/Table.js";
-import {FakeCheckbox as Check} from "../components/form/Checkbox.js";
+import {Table, TableHeader, TableBody, TableRow, TableCell} from "../elements/Table.js";
+import {FakeCheckbox as Check} from "../form/Checkbox.js";
 import {classNames} from "../utils/classnames.js";
 import {findClassInNodeList} from "../utils/dom.js";
-import {DataTableConst} from "./const.js";
 
 //Export datatable render component
 export function DataTableRender (props) {
@@ -14,7 +13,8 @@ export function DataTableRender (props) {
     //Handle body cell click
     let handleBodyCellClick = function (event) {
         //Find the cell class in the nodes list
-        return findClassInNodeList(event.nativeEvent.path, DataTableConst.cellClass, function (node, index) {
+        let cellClass = "siimple__datatable-cell";
+        return findClassInNodeList(event.nativeEvent.path, cellClass, function (node, index) {
             //Get the row and column index
             let rowIndex = parseInt(node.dataset.row);
             let colIndex = parseInt(node.dataset.column);
@@ -39,10 +39,10 @@ export function DataTableRender (props) {
             "key": index
         };
         //Initialize the cell class list
-        let cellClassList = [DataTableConst.headerCellClass];
+        let cellClassList = ["siimple__datatable-header-cell"];
         //Check if column is selectable 
         if (column.selectable === true) {
-            cellClassList.push(DataTableConst.selectableCellClass);
+            cellClassList.push("siimple__datatable-cell--selectable");
         }
         //Check if column is sortable
         else if (typeof column.sortable === "boolean" && column.sortable === true) {
@@ -95,7 +95,7 @@ export function DataTableRender (props) {
             };
             //Initialize the cell content and the cell class
             let cellContent = cell.content;
-            let cellClassList = [DataTableConst.cellClass];
+            //let cellClassList = ["siimple__datatable-cell"];
             //Check if this column is selectable
             if (cell.selectable === true) {
                 //Display a checkbox component
@@ -103,12 +103,15 @@ export function DataTableRender (props) {
                     "active": cell.selected
                 });
                 //Add a custom cell style
-                cellClassList.push(DataTableConst.selectableCellClass);
+                //cellClassList.push("siimple__datatable-cell--selectable");
                 //Align checkbox
                 cellProps.align = "center";
             }
             //Add classnames
-            cellProps.className = classNames(cellClassList, cell.className);
+            cellProps.className = classNames(cell.className, {
+                "siimple__datatable-cell": true,
+                "siimple__datatable-cell--selectable": cell.selectable === true
+            });
             //Return the cell element
             return React.createElement(TableCell, cellProps, cellContent);
         });
@@ -132,7 +135,7 @@ export function DataTableRender (props) {
         return React.createElement(TableRow, rowProps, rowCells);
     });
     //Get the table classNAme
-    let tableClassList = [DataTableConst.tableClass];
+    //let tableClassList = ["siimple__datatable-table"];
     //Get the table header and body props
     let tableHeaderProps = {};
     let tableBodyProps = {
@@ -140,8 +143,7 @@ export function DataTableRender (props) {
     };
     //Check for table fixed height
     if (props.height !== null) {
-        //Add fixed class
-        tableClassList.push(DataTableConst.fixedHeaderClass);
+        //tableClassList.push("siimple__datatable--fixed-header");
         //Set the height
         Object.assign(tableBodyProps.style, {
             "maxHeight": props.height
@@ -149,7 +151,11 @@ export function DataTableRender (props) {
     }
     //Generate the table props
     let tableProps = {
-        "className": classNames(tableClassList),
+        "className": classNames(props.className, {
+            "siimple__datatable-table": true,
+            "siimple__datatable--fixed-header": props.height !== null
+        }),
+        "style": props.style,
         "border": props.border,
         "striped": props.striped,
         "hover": props.hover
@@ -163,6 +169,8 @@ export function DataTableRender (props) {
 
 //Table renderer default props
 DataTableRender.defaultProps = {
+    "className": null,
+    "style": null,
     "columns": [],
     "data": [],
     "border": false,
