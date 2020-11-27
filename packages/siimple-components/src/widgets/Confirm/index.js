@@ -1,51 +1,8 @@
 import React from "react";
-import {Btn} from "../../components/elements/Btn.js";
-import {Modal, ModalContent} from "../../components/experiments/Modal.js";
-import {ModalHeader, ModalHeaderTitle, ModalHeaderClose, ModalBody, ModalFooter} from "../../components/experiments/Modal.js";
+import {Btn} from "../../elements/Btn.js";
+import {ModalWrapper, ModalBody, ModalFooter} from "../../experiments/Modal.js";
 import {classNames} from "../../utils/classnames.js";
-
-//Build confirmation header
-let ConfirmHeader = function (props) {
-    return (
-        <ModalHeader>
-            <ModalHeaderTitle>{props.title}</ModalHeaderTitle>
-            <ModalHeaderClose onClick={props.onCancel} />
-        </ModalHeader>
-    );
-    //return React.createElement(ModalHeader, {}, 
-    //    React.createElement(ModalHeaderTitle, {}, props.title),
-    //    React.createElement(ModalHeaderClose, {"onClick": props.onCancel})
-    //);
-};
-
-//Build confirmation body
-let ConfirmBody = function (props) {
-    return React.createElement(ModalBody, {}, (props.content !== null) ? props.content : props.children);
-};
-
-//Build the conform footer
-let ConfirmFooter = function (props) {
-    let cancelButton = React.createElement(Btn, {
-        "content": props.cancelText,
-        "className": props.cancelClassName,
-        "color": props.cancelColor,
-        "style": props.cancelStyle,
-        "onClick": props.onCancel
-    });
-    let confirmButton = React.createElement(Btn, {
-        "content": props.confirmText,
-        "color": props.confirmColor,
-        "className": classNames("siimple--ml-2", props.confirmClassName),
-        "style": props.confirmStyle,
-        "onClick": props.onConfirm
-    });
-    //Build the footer props
-    let footerProps = {
-        "align": "right",
-        "className": "siimple--pt-0 siimple--bg-light1"
-    };
-    return React.createElement(ModalFooter, footerProps, cancelButton, confirmButton);
-};
+import {Renderer} from "../../utils/Renderer.js";
 
 //Export confirm component
 export function Confirm (props) {
@@ -53,12 +10,34 @@ export function Confirm (props) {
         return null; //Nothing to render
     }
     //Return the confirm wrapper
-    return React.createElement(Modal, {"size": props.size}, 
-        React.createElement(ModalContent, {}, 
-            ConfirmHeader(props), 
-            ConfirmBody(props), 
-            ConfirmFooter(props)
-        )
+    return (
+        <ModalWrapper size={props.size} title={props.title} onClose={props.onCancel}>
+            {/* Modal body content */}
+            <ModalBody>
+                {(props.content !== null) ? props.content : props.children}
+            </ModalBody>
+            {/* Modal Footer content */}
+            <ModalFooter align="right" className="siimple--pt-0 siimple--bg-light1">
+                <Renderer render={function () {
+                    return React.createElement(Btn, {
+                        "content": props.cancelText,
+                        "className": props.cancelClassName,
+                        "color": props.cancelColor,
+                        "style": props.cancelStyle,
+                        "onClick": props.onCancel
+                    });
+                }} />
+                <Renderer render={function () {
+                    return React.createElement(Btn, {
+                        "content": props.confirmText,
+                        "color": props.confirmColor,
+                        "className": classNames("siimple--ml-2", props.confirmClassName),
+                        "style": props.confirmStyle,
+                        "onClick": props.onConfirm
+                    });
+                }} />
+            </ModalFooter>
+        </ModalWrapper>
     );
 }
 
@@ -116,10 +95,11 @@ export class Confirmer extends React.Component {
     }
     //Render the confirmation modal
     render() {
+        //Check if confirm widget is not active --> render nothing
         if (this.state.active === false) {
             return null; //Confirmation not visible
         }
-        //Render the confirm component
+        //Return the confim wrapper
         return React.createElement(Confirm, Object.assign({}, this.state, {
             "visible": true,
             "onCancel": this.handleCancel,

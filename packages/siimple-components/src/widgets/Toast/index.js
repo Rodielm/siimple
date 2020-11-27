@@ -1,5 +1,5 @@
 import React from "react";
-import {Alert, AlertTitle, AlertClose} from "../../components/elements/Alert.js";
+import {Alert, AlertTitle, AlertClose} from "../../elements/Alert.js";
 import {classNames} from "../../utils/classnames.js";
 import "./style.scss";
 
@@ -8,8 +8,37 @@ let delay = function (time, callback) {
     return setTimeout(callback, time);
 };
 
-//Export toas widget component
-export class Toast extends React.Component {
+//Export toast wrapper
+export function Toast (props) {
+    let toastClass = classNames({
+        "siimple__toast": true,
+        "siimple__toast--center": props.align === "center",
+        "siimple__toast--left": props.align === "left",
+        "siimple__toast--right": props.align === "right",
+        "siimple__toast--visible": props.visible
+    });
+    //Return the toast component
+    return (
+        <div className={toastClass} style={{"width": props.width}}>
+            <Alert color={props.color} className="siimple--mb-0">
+                <AlertClose onClick={props.onClose} />
+                {(props.content !== null) ? props.content : props.children}
+            </Alert>
+        </div>
+    );
+}
+
+//Toast default props
+Toast.defaultProps = {
+    "visible": true,
+    "width": "600px",
+    "color": "error",
+    "align": "center", // left|center|right
+    "content": null
+};
+
+//Export toaster widget component
+export class Toaster extends React.Component {
     constructor(props) {
         super(props);
         //Ininitialize the toast state
@@ -69,50 +98,24 @@ export class Toast extends React.Component {
     success(options) {
         return this.show(Object.assign(options, {"type": "success"}));
     }
-    //Build the alert element
-    renderAlert() {
-        let self = this;
-        //Build the alert close component
-        let alertClose = React.createElement(AlertClose, {
-            "onClick": function () {
-                return self.close();
-            }
-        });
-        //TODO: build alert title
-        //Alert props
-        let alertProps = {
-            "color": this.state.color,
-            "className": "siimple--mb-0"
-        };
-        //Return the alert component
-        return React.createElement(Alert, alertProps, alertClose, this.state.message);
-    }
     render() {
-        let self = this;
-        //Build toast props
-        let toastProps = {
-            "style": {
-                "width": this.props.width,
-            },
-            "className": classNames({
-                "siimple__toast": true,
-                //["siimple__toast--" + this.props.position]: true,
-                ["siimple__toast--" + this.props.align]: true,
-                "siimple__toast--visible": this.state.visible === true
-            })
-        };
         //Return the toast component
-        return React.createElement("div", toastProps, this.renderAlert());
+        return React.createElement(Toast, {
+            "content": this.state.message,
+            "color": this.state.color,
+            "visible": this.state.visible,
+            "width": this.props.width,
+            "align": this.props.align,
+            "onClose": this.close
+        });
     }
 }
 
 //Toast default props
-Toast.defaultProps = {
-    //"position": "bottom",
+Toaster.defaultProps = {
     "width": "600px",
-    "align": "center", // left|center|right
+    "align": "center",
     "cancellable": false,
     "timeout": 5000
 };
-
 
