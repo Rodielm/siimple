@@ -1,6 +1,6 @@
 import React from "react";
 import {classNames} from "../utils/classnames.js";
-import {callProp} from "../utils/reactProps.js";
+import {callProp} from "../utils/props.js";
 import {DataTablePagination} from "./pagination.js";
 import {DataTableRender} from "./render.js";
 import "./style.scss";

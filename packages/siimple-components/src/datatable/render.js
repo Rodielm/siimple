@@ -2,7 +2,18 @@ import React from "react";
 import {Table, TableHeader, TableBody, TableRow, TableCell} from "../elements/Table.js";
 import {FakeCheckbox as Check} from "../form/Checkbox.js";
 import {classNames} from "../utils/classnames.js";
-import {findClassInNodeList} from "../utils/dom.js";
+
+//Find a class-name in a node list
+let findClassInNodeList = function (list, className, callback) {
+    for(let i = 0; i < list.length; i++) {
+        //Check if this node contains the provided class name
+        if (list[i].classList.contains(className) === true) {
+            return callback.call(null, list[i], i);
+        }
+    }
+    //Item not found
+    return null;
+};
 
 //Export datatable render component
 export function DataTableRender (props) {
