@@ -33,14 +33,16 @@ export const ModalFooter = createHtmlElement("div", "siimple-modal-footer");
 
 //Modal wrapper
 export const ModalWrapper = function (props) {
-    return React.createElement(Modal, {"size": props.size}, 
-        React.createElement(ModalContent, {}, 
-            React.createElement(ModalHeader, {}, 
-                React.createElement(ModalHeaderTitle, {}, props.title),
-                React.createElement(ModalHeaderClose, {"onClick": props.onClose})
-            ),
-            props.children
-        )
+    return (
+        <Modal size={props.size}>
+            <ModalContent>
+                <ModalHeader>
+                    <ModalHeaderTitle>{props.title}</ModalHeaderTitle>
+                    <ModalHeaderClose onClick={props.onClose} />
+                </ModalHeader>
+                {props.children}
+            </ModalContent>
+        </Modal>
     );
 };
 
