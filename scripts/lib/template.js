@@ -1,6 +1,6 @@
 let path = require("path");
 let handlebars = require("handlebars");
-let util = require("./utils/util.js");
+let util = require("../utils.js");
 
 //Commpon handlebars helpers
 handlebars.registerHelper({

@@ -1,11 +1,10 @@
 let fs = require("fs");
 let path = require("path");
-let paths = require("../../config/paths.js");
-
-let markdown = require("./markdown.js");
-let template = require("./template.js");
-let virtualFile = require("./utils/virtual-file.js");
-let util = require("./utils/util.js");
+let paths = require("../../paths.js");
+let markdown = require("../lib/markdown.js");
+let template = require("../lib/template.js");
+let virtualFile = require("../lib/virtual-file.js");
+let util = require("../utils.js");
 
 let tips = {
     "info": "siimple-tip--primary siimple-tip--info",
@@ -107,7 +106,7 @@ let buildPageSidebar = function (groups, groupIndex, pageIndex, config) {
 };
 
 //Build documentation
-module.exports = function (config, data) {
+module.exports = function (config, data, layouts) {
     //let config = util.readJSON(paths.config); //Import site config
     //Initialize markdown configuration
     Object.keys(tips).forEach(function (name) {
@@ -142,12 +141,12 @@ module.exports = function (config, data) {
         return content.join("\n");
     });
     //registerPartials(); //Register handlebars partials
-    let pageTemplate = template.page({
-        "header": config.header,
-        "body": fs.readFileSync(path.join(paths.websiteLayouts, "documentation.html"), "utf8")
-    });
+    //let pageTemplate = template.page({
+    //    "header": config.header,
+    //    "body": fs.readFileSync(path.join(paths.websiteLayouts, "documentation.html"), "utf8")
+    //});
     let compilePageTemplate = function (content) {
-        return pageTemplate.replace(/\{\{(?:\s*)(content)(?:\s*)\}\}/g, content);
+        return layouts["documentation.html"].replace(/\{\{(?:\s*)(content)(?:\s*)\}\}/g, content);
     };
     //Add data content
     //data["packages"] = {};
@@ -192,7 +191,7 @@ module.exports = function (config, data) {
             });
             //Update the virtualfile with the new folder and paths
             let file = Object.assign({}, page.file, {
-                "dirname": path.join(paths.websiteBuild, path.dirname(page.link)),
+                "dirname": path.join(paths.public, path.dirname(page.link)),
                 "content": pageContent,
                 "extname": ".html"
             });

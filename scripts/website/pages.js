@@ -1,24 +1,17 @@
 let fs = require("fs");
 let path = require("path");
-let paths = require("../../config/paths.js");
-
-let template = require("./template.js");
-let virtualFile = require("./utils/virtual-file.js");
-let util = require("./utils/util.js");
-let walkdir = require("./utils/walkdir.js");
+let paths = require("../../paths.js");
+let template = require("../lib/template.js");
+let virtualFile = require("../lib/virtual-file.js");
+let util = require("../utils.js");
 
 //Build website pages
-module.exports = function (config, data) {
-    //Initialize page template
-    let pageTemplate = template.page({
-        "header": config.header,
-        "body": fs.readFileSync(path.join(paths.websiteLayouts, "default.html"), "utf8")
-    });
-    let compilePageTemplate = function (content) {
-        return pageTemplate.replace(/\{\{(?:\s*)(content)(?:\s*)\}\}/g, content);
+module.exports = function (config, data, layouts) {
+    let compilePageTemplate = function (name, content) {
+        return layouts[name].replace(/\{\{(?:\s*)(content)(?:\s*)\}\}/g, content);
     };
     //Build pages
-    walkdir(paths.websitePages, [".html"], function (file) {
+    util.walkdir(paths.websitePages, [".html"], function (file) {
         let page = virtualFile(path.join(paths.websitePages, file)); //Create the new virtual file
         virtualFile.read(page); //Read virtual file content
         //Build the output filename
@@ -28,8 +21,9 @@ module.exports = function (config, data) {
             "name": path.basename(file, path.extname(file)),
             "ext": ".html"
         }));
+        let layoutName = (typeof page.data.layout === "string") ? page.data.layout : "default.html";
         //Generate page content
-        let pageContent = template.compile(compilePageTemplate(page.content), {
+        let pageContent = template.compile(compilePageTemplate(layoutName, page.content), {
             "site": config,
             "page": {
                 "url": outputPagePath,
@@ -41,7 +35,7 @@ module.exports = function (config, data) {
         });
         //Update the virtualfile with the new folder and paths
         Object.assign(page, {
-            "dirname": path.join(paths.websiteBuild, path.dirname(outputPagePath)),
+            "dirname": path.join(paths.public, path.dirname(outputPagePath)),
             "content": pageContent,
             "extname": ".html"
         });

@@ -1,20 +1,33 @@
 let fs = require("fs");
 let path = require("path");
-let paths = require("../../config/paths.js");
-
-let template = require("./template.js");
-let virtualFile = require("./utils/virtual-file.js");
-let util = require("./utils/util.js");
-let walkdir = require("./utils/walkdir.js");
-let buildWebsite = require("./website.js");
-let buildDocumentation = require("./documentation.js");
+let paths = require("../paths.js");
+let template = require("./lib/template.js");
+let virtualFile = require("./lib/virtual-file.js");
+let util = require("./utils.js");
+let buildPages = require("./website/pages.js");
+let buildDocumentation = require("./website/documentation.js");
 
 //Register handlebars partials
 let registerPartials = function () {
-    return walkdir(paths.websitePartials, [".html"], function (file) {
+    return util.walkdir(paths.websitePartials, [".html"], function (file) {
         let content = fs.readFileSync(path.join(paths.websitePartials, file), "utf8");
         return template.registerPartial(file, content);
     });
+};
+
+//Build layouts
+let buildLayouts = function (config) {
+    return fs.readdirSync(paths.websiteLayouts, "utf8").reduce(function (layouts, file) {
+        if (path.extname(file) !== ".html") {
+            return layouts; //Skip this file
+        }
+        //Register the layout template
+        let layoutTemplate = template.page({
+            "header": config.header,
+            "body": fs.readFileSync(path.join(paths.websiteLayouts, file), "utf8")
+        });
+        return Object.assign(layouts, {[file]: layoutTemplate});
+    }, {});
 };
 
 //Load icons data
@@ -61,22 +74,23 @@ process.nextTick(function () {
     registerPartials(); //Register handlebars partials
     //Build data
     let data = {}; //Store global data object
-    walkdir(paths.websiteData, [".json"], function (file) {
+    util.walkdir(paths.websiteData, [".json"], function (file) {
         let name = path.basename(file, ".json"); //Get data name
         data[name] = util.readJSON(path.join(paths.websiteData, file));
     });
     loadIconsData(data); //Load icons data
     loadPackagesData(data); //Load packages data
+    let layouts = buildLayouts(config);
     //Build website content
-    buildDocumentation(config, data);
-    buildWebsite(config, data);
+    buildDocumentation(config, data, layouts);
+    buildPages(config, data, layouts);
     //Write data into assets folder
     let outputAssets = {
         "iconsList": "icons-list.json", 
         "iconsCategories": "icons-categories.json"
     };
     Object.keys(outputAssets).forEach(function (key) {
-        let outputPath = path.join(paths.websiteBuild, "assets", outputAssets[key]);
+        let outputPath = path.join(paths.public, "assets", outputAssets[key]);
         return fs.writeFileSync(outputPath, JSON.stringify(data[key]), "utf8");
     });
 });
