@@ -1,6 +1,6 @@
 let fs = require("fs");
 let path = require("path");
-let paths = require("../config/paths.js");
+let paths = require("../paths.js");
 let utils = require("./utils.js");
 
 //Unicode parser

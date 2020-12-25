@@ -2,7 +2,7 @@ let fs = require("fs");
 let getArgs = require("get-args");
 let readline = require("readline");
 let utils = require("./utils.js");
-let paths = require("../config/paths.js");
+let paths = require("../paths.js");
 
 //Publish the specified version
 process.nextTick(function () {

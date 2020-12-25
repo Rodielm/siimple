@@ -2,7 +2,7 @@ let fs = require("fs");
 let path = require("path");
 let SVGIcons2SVGFontStream = require("svgicons2svgfont");
 let getArgs = require("get-args");
-let paths = require("../config/paths.js");
+let paths = require("../paths.js");
 let utils = require("./utils.js");
 
 //Build the SVG font
