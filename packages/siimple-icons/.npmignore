@@ -1,0 +1,6 @@
+.npmignore
+*.swp
+*.DS_Store
+test
+categories.json
+
