@@ -1,6 +1,4 @@
-# siimple
-
-> A collection of toolkits and libs for building a better web
+![logo](./header.svg)
 
 [![dependency Status](https://david-dm.org/siimple/siimple/status.svg?style=flat-square)](https://david-dm.org/siimple/siimple)
 [![Follow @siimplecss](https://img.shields.io/badge/Twitter-%40siimplecss-blue.svg?style=flat-square)](https://twitter.com/siimplecss)
