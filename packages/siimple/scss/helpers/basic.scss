@@ -11,8 +11,11 @@
 //Basic helpers
 .#{siimple.$prefix-helpers} {
     //Border helpers
-    &border-rounded { border-radius: siimple.$border-radius !important; }
-    &border-circle { border-radius: 50% !important; }
+    &rounded { border-radius: siimple.$border-radius !important; }
+    &rounded-small { border-radius: siimple.$border-radius-small !important; }
+    &rounded-large { border-radius: siimple.$border-radius-large !important; }
+    //&border-rounded { border-radius: siimple.$border-radius !important; }
+    //&border-circle { border-radius: 50% !important; }
     //Clearing and floating
     &float-left { float: left !important; }
     &float-right { float: right !important; }
