@@ -1,4 +1,4 @@
-![logo](./header.svg)
+[![siimple](../../header.svg)](https://www.siimple.xyz)
 
 [![dependency Status](https://david-dm.org/siimple/siimple/status.svg?style=flat-square)](https://david-dm.org/siimple/siimple)
 [![Follow @siimplecss](https://img.shields.io/badge/Twitter-%40siimplecss-blue.svg?style=flat-square)](https://twitter.com/siimplecss)
@@ -6,10 +6,9 @@
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://github.com/siimple/siimple)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/siimple/siimple)
 
-## Introduction
+## Documentation
 
-The **siimple** project started as a small css framework with basic UI elements.
-
+For full documentation please visit [siimple.xyz](https://www.siimple.xyz).
 
 ## Contribute
 
@@ -19,15 +18,11 @@ Check our [CONTRIBUTING guide](/CONTRIBUTING.md) to get started.
 
 ### Looking for support?
 
-For questions and support please join our [Gitter chat](https://gitter.im/siimple/siimple) or tweet us at [@siimplecss](https://twitter.com/siimplecss).
+For questions and support please join our [Discussions forum](https://github.com/siimple/siimple/discussions) or tweet us at [@siimplecss](https://twitter.com/siimplecss).
 
 ### How is this repository structured?
 
 The **siimple** repository is managed as a monorepo with [many packages](/packages).
-
-### Where are the docs?
-
-The documentation of public packages of this monorepo is available at [docs.siimple.xyz](https://docs.siimple.xyz).
 
 ### How to report a bug or request a feature for a package?
 
