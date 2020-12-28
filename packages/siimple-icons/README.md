@@ -1,3 +1,5 @@
+[![siimple](../../header.svg)](https://www.siimple.xyz)
+
 # siimple-icons
 
 > **siimple icons** is a suite of scalable icons for web, desktop and mobile projects.
@@ -11,12 +13,21 @@
 
 ## Installation 
 
+### Using a package manager
+
 Use [npm](https://npmjs.com) to install the latest version of **siimple icons**:
 
 ```
 npm install siimple-icons --save
 ```
 
+### Using a CDN
+
+Use [unpkg](https://unpkg.com/siimple-icons) or [JSdelivr](https://www.jsdelivr.com/package/npm/siimple-icons) to include the compiled styles in your HTML page:
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/siimple-icons/dist/siimple-icons.min.css" />
+```
 
 ## Usage
 
@@ -52,15 +63,15 @@ Remember that you should change the path `./assets/siimple-icons.css` used in th
 
 To use the icons in the `<body>` tag of your HTML file, first create a `<span>` tag with the following classes: 
 
-- `si`: is the base class for **siimple icons**.
-- `si-[ICON]`, where `[ICON]` is the name of the icon that you are going to add.  
+- `siimple-icon`: is the base class for **siimple icons**.
+- `siimple-icon-[ICON]`, where `[ICON]` is the name of the icon that you are going to add.  
 
 ```html 
 <!-- Add a left arrow icon -->
-<span class="si si-arrow-left"></span>
+<span class="siimple-icon siimple-icon-arrow-left"></span>
 
 <!-- Add a star icon -->
-<span class="si si-star"></span>
+<span class="siimple-icon siimple-icon-star"></span>
 ```
 
 You can style your icons adding a `style` attribute or adding an additional class with your custom styles: 
@@ -111,8 +122,18 @@ You can also style your icon adding a class to the parent `<svg>` tag with your 
 </svg>
 ```
 
+## Bugs and new features
 
-## License 
+Found any bug? Have you a feature request? Please make sure to read our [contributing guidelines](https://github.com/siimple/siimple/blob/develop/CONTRIBUTING.md) and search for existing or similar issues. 
+If your problem or idea is not addressed yet, please feel free to open a new issue!
 
-All the icons in **siimple icons** are under the [MIT](../../LICENSE) license. &copy; The **siimple team**.
+
+## Questions 
+
+For questions and support, please use our [community chat](https://github.com/siimple/siimple/discussions) on **GitHub Discussions**. 
+You can also follow [@siimplecss on Twitter](https://twitter.com/siimplecss) to get updates on **siimple** development.
+
+## License
+
+Released under the [MIT LICENSE](../../LICENSE).
 
