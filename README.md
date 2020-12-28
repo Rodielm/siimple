@@ -1,4 +1,4 @@
-[![siimple](../../header.svg)](https://www.siimple.xyz)
+[![siimple](./header.svg)](https://www.siimple.xyz)
 
 [![dependency Status](https://david-dm.org/siimple/siimple/status.svg?style=flat-square)](https://david-dm.org/siimple/siimple)
 [![Follow @siimplecss](https://img.shields.io/badge/Twitter-%40siimplecss-blue.svg?style=flat-square)](https://twitter.com/siimplecss)
@@ -9,6 +9,15 @@
 ## Documentation
 
 For full documentation please visit [siimple.xyz](https://www.siimple.xyz).
+
+## Packages
+
+| Name | Description | Latest version |
+|------|-------------|----------------|
+| [`siimple`](./packages/siimple) | Minimal CSS toolkit for flat and clean designs. | [![npm version](https://img.shields.io/npm/v/siimple.svg)](https://www.npmjs.com/package/siimple) |
+| [`siimple-icons`](./packages/siimple-icons) | A suite of scalable icons for web, desktop and mobile projects. | [![npm version](https://img.shields.io/npm/v/siimple-icons.svg)](https://www.npmjs.com/package/siimple-icons) |
+| [`siimple-experiments`](./packages/siimple-experiments) | Experimental css components based on siimple. | [![npm version](https://img.shields.io/npm/v/siimple-experiments.svg)](https://www.npmjs.com/package/siimple-experiments) |
+
 
 ## Contribute
 
