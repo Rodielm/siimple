@@ -10,14 +10,16 @@ Here we present a collection of useful basic helpers to style your website conte
 Use the following helpers to add rounded corners to your element. 
 
 | Class | Description |
-| `siimple--border-rounded` | Adds a border radius of **8px**. |
-| `siimple--border-circle` | Adds a border radius of **50%**. |
+| `siimple--rounded` | Adds a border radius of **8px**. |
+| `siimple--rounded-small` | Adds a border radius of **4px**. |
+| `siimple--rounded-large` | Adds a border radius of **16px**. |
+| `siimple--circle` | Adds a border radius of **50%**. |
 
 ```html
-<div class="siimple--border-rounded siimple--p-3 siimple--bg-light">
+<div class="siimple--rounded siimple--p-3 siimple--bg-light">
     Rounded
 </div>
-<div class="siimple--border-circle siimple--p-3 siimple--bg-light">
+<div class="siimple--circle siimple--p-3 siimple--bg-light">
     Circle
 </div>
 ```
@@ -63,6 +65,14 @@ Use the following classes to modify the overflow behavior of any element:
 | `siimple--overflow-auto` | This class provides scrollbars if content exceeds the dimensions of its container. |
 | `siimple--overflow-hidden` | Add this class to the element to clip the content if necessary. |
 
+#### Shadow
 
+Use the `siimple--shadow` modifier to apply a shadow to the specified element.
+
+```html preview="true"
+<div class="siimple--m-5 siimple--bg-white siimple--shadow" align="center">
+    Box with a shadow
+</div>
+```
 
 
