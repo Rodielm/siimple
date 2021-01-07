@@ -17,26 +17,26 @@ background:
   - className: "siimple--bg-light"
     name: "siimple--bg-light"
 grayBackground:
-  - className: "siimple--bg-gray0"
-    name: "siimple--bg-gray0"
-  - className: "siimple--bg-gray1"
-    name: "siimple--bg-gray1"
-  - className: "siimple--bg-gray2"
-    name: "siimple--bg-gray2"
-  - className: "siimple--bg-gray3"
-    name: "siimple--bg-gray3"
-  - className: "siimple--bg-gray4"
-    name: "siimple--bg-gray4"
-  - className: "siimple--bg-gray5 siimple--text-white"
-    name: "siimple--bg-gray5"
-  - className: "siimple--bg-gray6 siimple--text-white"
-    name: "siimple--bg-gray6"
-  - className: "siimple--bg-gray7 siimple--text-white"
-    name: "siimple--bg-gray7"
-  - className: "siimple--bg-gray8 siimple--text-white"
-    name: "siimple--bg-gray8"
-  - className: "siimple--bg-gray9 siimple--text-white"
-    name: "siimple--bg-gray9"
+  - className: "siimple--bg-light1"
+    name: "siimple--bg-light1"
+  - className: "siimple--bg-light2"
+    name: "siimple--bg-light2"
+  - className: "siimple--bg-light3"
+    name: "siimple--bg-light3"
+  - className: "siimple--bg-light4"
+    name: "siimple--bg-light4"
+  - className: "siimple--bg-light5"
+    name: "siimple--bg-light5"
+  - className: "siimple--bg-dark1 siimple--text-white"
+    name: "siimple--bg-dark1"
+  - className: "siimple--bg-dark2 siimple--text-white"
+    name: "siimple--bg-dark2"
+  - className: "siimple--bg-dark3 siimple--text-white"
+    name: "siimple--bg-dark3"
+  - className: "siimple--bg-dark4 siimple--text-white"
+    name: "siimple--bg-dark4"
+  - className: "siimple--bg-dark5 siimple--text-white"
+    name: "siimple--bg-dark5"
 ---
 
 Use the following classes to set the background color of any element.  
@@ -65,9 +65,9 @@ Use the `siimple--bg-white` class to set the background color of the element to 
 ```
 
 
-#### Gray backgrounds
+#### Dark and light backgrounds
 
-Gray colors are also available to be added as a background color of any elements. Just add the following classes:
+Dark and light gradients are also available to be added as a background color of any elements. Just add the following classes:
 
 ```html preview="true"
 {{#each page.data.grayBackground}}
