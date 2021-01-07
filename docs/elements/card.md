@@ -18,18 +18,20 @@ The information that a card may display should be divided using the following co
 - A link bound to the card, with the class `siimple-card-link`.
 
 ```html preview="true"
-<div class="siimple-card siimple-card--light" style="max-width:300px">
-    <div class="siimple-card-image">
-        <div class="siimple--py-5 siimple--color-white" align="center">
-            <strong>Card image</strong>
+<div class="siimple--p-4 siimple--bg-light1">
+    <div class="siimple-card siimple--mx-auto" style="max-width:300px">
+        <div class="siimple-card-image">
+            <div class="siimple--py-5 siimple--text-white" align="center">
+                <strong>Card image</strong>
+            </div>
         </div>
+        <div class="siimple-card-content">
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        </div>
+        <a href="#" class="siimple-card-link">
+            <strong>Card link</strong>
+        </a>
     </div>
-    <div class="siimple-card-content">
-       Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-    </div>
-    <a href="#" class="siimple-card-link">
-        <strong>Card link</strong>
-    </a>
 </div>
 ```
 
