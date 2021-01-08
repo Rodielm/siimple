@@ -27,6 +27,20 @@ Add a `disabled` attribute to the `<input>` element to display the checkbox as d
 <label class="siimple-label" for="checkbox2">Disabled checkbox</label>
 ```
 
+#### Indeterminate state
+
+Checkboxes can also display the **indeterminate** state. Remember that there is no HTML attribute to set this state, the only way to set this state is via [JavaScript](https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate).
+
+```html preview="true"
+<input type="checkbox" id="checkbox4" class="siimple-checkbox" />
+<label class="siimple-label" for="checkbox4">Indeterminate checkbox</label>
+
+<!-- Set the indeterminate state via javascript -->
+<script type="text/javascript">
+    document.getElementById("checkbox4").indeterminate = true;
+</script>
+```
+
 
 #### Colored checkbox
 
