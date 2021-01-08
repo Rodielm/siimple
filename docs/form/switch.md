@@ -4,33 +4,37 @@ description: "A redesigned checkbox element that looks like a switch"
 keywords: "switch,checkbox,form,input"
 ---
 
-The `siimple-switch` class is a wrapper to display your checkbox element like a **switch element**. To create a switch, the following structure is required:
-
-- A `<div>` wrapper element with the class `siimple-switch`.
-- An `<input type="checkbox">` element, with an **id** attribute.
-- A `<label>` element bound to the previous `<input>` element.
-
+Using the `siimple-switch` class you can style your checkbox elements like a **switch element**. 
 By default, the switch will be displayed inactive, but you can add a **checked** attribute to the `<input>` element to display the switch as actived.
 
+
 ```html preview="true"
-<label class="siimple-label">Allow cookies </label>
-<div class="siimple-switch">
-    <input type="checkbox" id="mySwitch" checked>
-    <label for="mySwitch"></label>
+<div class="siimple--mb-1">
+    <input type="checkbox" id="checkbox0" class="siimple-switch" />
+    <label class="siimple-label" for="checkbox0">Default switch</label>
+</div>
+<div class="siimple--mb-0">
+    <input type="checkbox" id="checkbox1" class="siimple-switch" checked />
+    <label class="siimple-label" for="checkbox1">Active switch</label>
 </div>
 ```
 
+#### Disabled switch
+
+Add a `disabled` attribute to the `<input>` element to display the switch as disabled.
+
+```html preview="true"
+<input type="checkbox" id="checkbox2" class="siimple-switch" checked disabled />
+<label class="siimple-label" for="checkbox2">Disabled switch</label>
+```
 
 #### Colored switch
 
 Use `siimple-switch--error`, `siimple-switch--warning` and `siimple-switch--success` to change the color of the checked checkbox.
 
 ```html preview="true"
-<label class="siimple-label">Allow cookies </label>
-<div class="siimple-switch siimple-switch--error">
-    <input type="checkbox" id="mySwitch2" checked>
-    <label for="mySwitch2"></label>
-</div>
+<input type="checkbox" id="checkbox3" class="siimple-switch siimple-switch--success" checked />
+<label class="siimple-label" for="checkbox3">Colored switch</label>
 ```
 
 
