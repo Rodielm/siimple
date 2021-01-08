@@ -4,20 +4,27 @@ description: "The redesigned checkbox element"
 keywords: "checkbox,check,checked,form"
 ---
 
-The `siimple-checkbox` class is a wrapper to style the default checkbox element. To create a checkbox, the following structure is required:
-
-- A `<div>` wrapper element with the class `siimple-checkbox`.
-- An `<input type="checkbox">` element, with an **id** attribute.
-- A `<label>` element bound to the previous `<input>` element.
-
+Style your checkbox elements adding the `siimple-checkbox` style to the `<input>` element. 
 By default, the checkbox will be displayed unchecked, but you can add a **checked** attribute to the `<input>` element to display the checkbox as checked.
 
 ```html preview="true"
-<div class="siimple-checkbox">
-    <input type="checkbox" id="myCheckbox" checked>
-    <label for="myCheckbox"></label>
+<div class="siimple--mb-1">
+    <input type="checkbox" id="checkbox0" class="siimple-checkbox" />
+    <label class="siimple-label" for="checkbox0">Default checkbox</label>
 </div>
-<label class="siimple-label">I agree with the terms and conditions.</label>
+<div class="siimple--mb-0">
+    <input type="checkbox" id="checkbox1" class="siimple-checkbox" checked />
+    <label class="siimple-label" for="checkbox1">Active checkbox</label>
+</div>
+```
+
+#### Disabled checkbox
+
+Add a `disabled` attribute to the `<input>` element to display the checkbox as disabled.
+
+```html preview="true"
+<input type="checkbox" id="checkbox2" class="siimple-checkbox" checked disabled />
+<label class="siimple-label" for="checkbox2">Disabled checkbox</label>
 ```
 
 
@@ -26,11 +33,8 @@ By default, the checkbox will be displayed unchecked, but you can add a **checke
 Use `siimple-checkbox--error`, `siimple-checkbox--warning` and `siimple-checkbox--success` to change the color of the checked checkbox.
 
 ```html preview="true"
-<div class="siimple-checkbox siimple-checkbox--success">
-    <input type="checkbox" id="myCheckbox2" checked>
-    <label for="myCheckbox2"></label>
-</div>
-<label class="siimple-label">I agree with the terms and conditions.</label>
+<input type="checkbox" id="checkbox3" class="siimple-checkbox siimple-checkbox--success" checked />
+<label class="siimple-label" for="checkbox3">Colored checkbox</label>
 ```
 
 
