@@ -1,11 +1,3 @@
-//
-// siimple-lib - core scss library for siimple
-// Under the MIT LICENSE.
-// License:    https://github.com/siimple/siimple/blob/develop/LICENSE.md
-// Repository: https://github.com/siimple/siimple
-// Website:    https://www.siimple.xyz
-//
-
 @use "sass:color";
 @use "sass:list";
 @use "sass:map";
@@ -14,20 +6,20 @@
 
 //Alias for lighten($color, $amount)
 //https://sass-lang.com/documentation/modules/color#lighten
-@function utils-lighten ($color, $amount) {
+@function lighten ($color, $amount) {
    @return color.adjust($color, $lightness: $amount); 
 }
 
 //Alias for darken ($color, $amount)
 //https://sass-lang.com/documentation/modules/color#darken 
-@function utils-darken ($color, $amount) {
+@function darken ($color, $amount) {
     @return color.adjust($color, $lightness: -$amount);
 }
 
 //Return the luminance of a color
 //From: https://css-tricks.com/snippets/sass/luminance-color-function/ 
 //Reference: http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef 
-@function utils-luminance ($color) {
+@function luminance ($color) {
     $colors: ("red": red($color), "green": green($color), "blue": blue($color));
     @each $name, $value in $colors {
         $adjusted: 0;
@@ -41,37 +33,41 @@
         }
         $colors: map.merge($colors, ($name: $value));
     }
-    @return (map.get($colors, "red") * .2126) + (map.get($colors, "green") * .7152) + (map.get($colors, "blue") * .0722);
+    //Generate colors
+    $color-red: (map.get($colors, "red") * .2126);
+    $color-green: (map.get($colors, "green") * .7152);
+    $color-blue: (map.get($colors, "blue") * .0722);
+    @return $color-red + $color-green + $color-blue;
 }
 
 //Check if the provided value is a color
-@function utils-is-color ($value) {
+@function is-color ($value) {
     @return meta.type-of($value) == "color";
 }
 
 //Check if the provided value is a string
-@function utils-is-string ($value) {
+@function is-string ($value) {
     @return meta.type-of($value) == "string";
 }
 
 //Check if the provided value is a map
-@function utils-is-map ($value) {
+@function is-map ($value) {
     @return meta.type-of($value) == "map";
 }
 
 //Check if the provided value is a list
-@function utils-is-list ($value) {
+@function is-list ($value) {
     @return meta.type-of($value) == "list";
 }
 
 //Alias for map.get
-@function utils-get ($items, $key) {
+@function get ($items, $key) {
     //Check for map --> return the value using map.get
-    @if utils-is-map($items) == true {
+    @if is-map($items) == true {
         @return map.get($items, $key);
     }
     //Check for list --> return the value using nth
-    @if utils-is-list($items) == true {
+    @if is-list($items) == true {
         @return list.nth($items, $key);
     }
     //Other type --> error
@@ -79,38 +75,56 @@
 }
 
 //Alias for map.keys
-@function utils-keys ($items) {
+@function keys ($items) {
     //Check for map --> return the list of keys using map.keys
-    @if utils-is-map($items) == true {
+    @if is-map($items) == true {
         @return map.keys($items);
     }
     //Check for list --> return a list: 1, 2, ... length($list)
-    @if utils-is-list($items) == true {
+    @if is-list($items) == true {
         $list: (); //List with indexes
         @for $i from 1 through list.length($items) {
             $list: list.append($list, $i); //Append the value
         }
         @return $list; //Return the list keys
     }
+    //Otherwise: return the value provided
     @return $items;
 }
 
 //Alias for map.values
-@function utils-values ($items) {
+@function values ($items) {
     //Check for map --> return the list of values using map.values
-    @if utils-is-map($items) == true {
+    @if is-map($items) == true {
         @return map.values($items);
     }
     //Otherwise: return the value provided
     @return $list;
 }
 
+//Alias for list.length
+@function length ($items) {
+    //Check for list --> call list.length instead
+    @if is-list($items) == true {
+        @return list.length($items);
+    }
+    //Check for map --> return the number of items from keys
+    @if is-map($items) == true {
+        @return list.length(map.keys($items));
+    }
+    //Other type --> return 1
+    @return 1;
+} 
+
 //String replace
-@function utils-replace($str, $search, $replace: "") {
+@function replace($str, $search, $replace: "") {
     $index: string.index($str, $search);
     @if $index {
-        @return string.slice($str, 1, $index - 1) + $replace + utils-replace(string.slice($str, $index + string.length($search)), $search, $replace);
+        $str-start: string.slice($str, 1, $index - 1);
+        $str-replace: replace(string.slice($str, $index + string.length($search)), $search, $replace);
+        @return $str-start + $replace + $str-replace;
     }
+    //No match found --> return the original string
     @return $str;
 }
 

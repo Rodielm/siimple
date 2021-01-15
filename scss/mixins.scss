@@ -1,11 +1,3 @@
-//
-// siimple-lib - core scss library for siimple
-// Under the MIT LICENSE.
-// License:    https://github.com/siimple/siimple/blob/develop/LICENSE.md
-// Repository: https://github.com/siimple/siimple
-// Website:    https://www.siimple.xyz
-//
-
 @use "./variables.scss" as variables;
 @use "./functions.scss" as functions;
 @use "./utils.scss" as utils;
@@ -64,8 +56,8 @@
 //Sizing mixin
 @mixin content-size ($size: 0px) {
     //Check for string size
-    @if utils.utils-is-string($size) == true {
-        $size: functions.content($size); //Get the content size
+    @if utils.is-string($size) == true {
+        $size: functions.get-content-size($size);
     }
     //Apply the provided size only in screen widts > $size
     @media screen and (min-width: $size) {
@@ -73,5 +65,10 @@
         padding-left: calc(50% - #{$size - 2 * variables.$content-gap} / 2);
         padding-right: calc(50% - #{$size - 2 * variables.$content-gap} / 2);
     }
+}
+
+//Define a global css variable
+@mixin define-variable ($name, $value) {
+    --#{variables.$variable-prefix}#{$name}: #{$value};
 }
 
