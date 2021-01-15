@@ -1,19 +1,10 @@
-//
-// siimple-experiments - experimental css components based on siimple
-// Under the MIT LICENSE.
-// License:    https://github.com/siimple/siimple/blob/master/LICENSE.md
-// Repository: https://github.com/siimple
-// Website:    https://www.siimple.xyz
-//
+@use "../variables.scss" as variables;
+@use "../functions.scss" as functions;
 
-//Import libs
-@use "siimple-lib" as siimple;
-
-//Modal variables
 $modal-padding: 15px !default;
 
 //Modal class
-.#{siimple.$prefix-experiments}modal {
+.#{variables.$prefix}modal {
     display: flex;
     width: calc(100% - 2 * #{$modal-padding});
     height: calc(100% - 2 * #{$modal-padding});
@@ -26,14 +17,14 @@ $modal-padding: 15px !default;
     overflow-y: hidden;
     justify-content: center;
     align-items: center;
-    background-color: rgba(siimple.color-darker("dark"), 0.4);
+    background-color: rgba(functions.get-color-darker("dark"), 0.4);
     //Modal content
     &-content {
         display: block;
         width: 100%;
         //max-width: 960px;
-        background-color: siimple.color("white");
-        border-radius: siimple.$border-radius;
+        //background-color: functions.get-color("white");
+        border-radius: variables.$border-radius-base;
         padding: 0px;
     }
     //Common styles
@@ -47,20 +38,20 @@ $modal-padding: 15px !default;
     &-header:first-child,
     &-body:first-child,
     &-footer:first-child {
-        border-top-left-radius: siimple.$border-radius;
-        border-top-right-radius: siimple.$border-radius;
+        border-top-left-radius: variables.$border-radius-base;
+        border-top-right-radius: variables.$border-radius-base;
     }
     //Last item
     &-header:last-child,
     &-body:last-child,
     &-footer:last-child {
-        border-bottom-left-radius: siimple.$border-radius;
-        border-bottom-right-radius: siimple.$border-radius;
+        border-bottom-left-radius: variables.$border-radius-base;
+        border-bottom-right-radius: variables.$border-radius-base;
     }
     //Modal header
     &-header {
         height: 34px;
-        //border-bottom: 1px solid siimple.color("light");
+        //border-bottom: 1px solid functions.get-color("light");
         //Modal header title
         &-title {
             float: left;
@@ -87,7 +78,7 @@ $modal-padding: 15px !default;
                 content: "";
                 width: 20px;
                 height: 4px;
-                background-color: siimple.color("dark");
+                background-color: functions.get-color("dark");
                 position: absolute;
                 border-radius: 4px;
                 top: 15px;
@@ -108,22 +99,22 @@ $modal-padding: 15px !default;
     &-body {
         overflow-y: auto;
         max-height: 50vh;
-        background-color: siimple.gray("0");
+        background-color: functions.get-color("white");
     }
     //Modal footer
     &-footer {
-        //color: siimple.color-lighter("dark");
-        background-color: siimple.color("white");
+        //color: functions.get-color-lighter("dark");
+        background-color: functions.get-color("white");
     }
     //Modal sizes
     &--small &-content {
-        max-width: siimple.content("small");
+        max-width: functions.get-content-size("small");
     }
     &--medium &-content {
-        max-width: siimple.content("medium");
+        max-width: functions.get-content-size("medium");
     }
     &--large &-content {
-        max-width: siimple.content("large");
+        max-width: functions.get-content-size("large");
     }
 }
 

@@ -1,18 +1,10 @@
-//
-// siimple-experiments - experimental css components based on siimple
-// Under the MIT LICENSE.
-// License:    https://github.com/siimple/siimple/blob/master/LICENSE.md
-// Repository: https://github.com/siimple
-// Website:    https://www.siimple.xyz
-//
+@use "../variables.scss" as variables;
+@use "../functions.scss" as functions;
 
-@use "siimple-lib" as siimple;
-
-//Media variables
-$media-margin: 15px;
+$media-margin: 15px default;
 
 //Media class
-.#{siimple.$prefix-experiments}media {
+.#{variables.$prefix}media {
     display: flex;
     flex-direction: row;
     align-items: flex-start;

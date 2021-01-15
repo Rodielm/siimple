@@ -1,17 +1,8 @@
-//
-// siimple-experiments - experimental css components based on siimple
-// Under the MIT LICENSE.
-// License:    https://github.com/siimple/siimple/blob/master/LICENSE.md
-// Repository: https://github.com/siimple
-// Website:    https://www.siimple.xyz
-//
+@use "../variables.scss" as variables;
+@use "../functions.scss" as functions;
 
-//Import libs
-@use "siimple-lib" as siimple;
-
-//Progress variables 
-$progress-height: 20px;
-$progress-striped: siimple.color("white");
+$progress-height: 20px !default;
+$progress-striped: functions.get-color("white") !default;
 
 //Progress animation
 @keyframes siimple-progress-animation {
@@ -24,15 +15,15 @@ $progress-striped: siimple.color("white");
 }
 
 //Progress class
-.#{siimple.$prefix-experiments}progress {
+.#{variables.$prefix}progress {
     display: block;
     width: 100%;
     height: $progress-height;
     padding: 0px !important;
     margin-top: 0px;
-    margin-bottom: siimple.$margin-bottom;
-    border-radius: siimple.$border-radius;
-    background-color: siimple.color("light"); 
+    margin-bottom: variables.$margin-bottom;
+    border-radius: variables.$border-radius-base;
+    background-color: functions.get-color("light"); 
     overflow: hidden;
     //Disable default appearance in webkit and gecko
     -webkit-appearance: none;
@@ -79,10 +70,10 @@ $progress-striped: siimple.color("white");
         animation: siimple-progress-animation 4s linear infinite;
     }
     //Colored progress bar
-    @each $color in siimple.utils-keys(siimple.$colors) {
+    @each $color in variables.$colors-modifiers {
         &#{&}--#{$color} > span {
-            background-color: siimple.color($color);
-            color: siimple.color-invert($color);
+            background-color: functions.get-color($color);
+            color: functions.get-color-invert($color);
         }
     }
     //Small progress bar
