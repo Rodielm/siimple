@@ -1,0 +1,26 @@
+@use "../variables.scss" as variables;
+
+//Label variables
+$label-padding-top: 3px !default;
+$label-padding-bottom: 3px !default;
+$label-padding-right: 10px !default;
+$label-font-size: variables.$body-font-size !default;
+$label-font-weight: variables.$font-weight-bold !default;
+$label-line-height: variables.$body-line-height !default;
+$label-color: variables.$body-color !default;
+
+//Label class
+.#{variables.$prefix}label {
+    display: inline-block;
+    //min-height: 34px;
+    line-height: $label-line-height;
+    font-size: $label-font-size;
+    color: $label-color;
+    font-weight: $label-font-weight;
+    padding-right: $label-padding-right;
+    padding-left: 0px;
+    padding-top: $label-padding-top;
+    padding-bottom: $label-padding-bottom;
+    vertical-align: top;
+}
+

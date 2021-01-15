@@ -1,0 +1,39 @@
+@use "../variables.scss" as variables;
+@use "../functions.scss" as functions;
+
+$select-padding: 15px !default;
+$select-height: 40px !default;
+$select-font-size: 15px !default; //variables.$text-size;
+$select-font-weight: variables.$font-weight-normal !default;
+$select-background: functions.get-color("light") !default;
+$select-color: functions.get-color("dark") !default;
+
+//Select class
+.#{variables.$prefix}select {
+    display: inline-block;
+    height: $select-height;
+    line-height: $select-height;
+    font-size: $select-font-size;
+    font-weight: $select-font-weight;
+    color: $select-color;
+    padding-left: $select-padding;
+    padding-right: $select-padding;
+    //padding-top: 0px;
+    //padding-bottom: 0px;
+    border: 0px;
+    border-radius: variables.$border-radius-base;
+    outline: 0px;
+    background-color: $select-background;
+    vertical-align: top;
+    box-sizing: border-box;
+    //Fluid select
+    &--fluid {
+        width: 100%;
+    }
+    //Dark select style
+    &--dark {
+        background-color: functions.get-color("dark");
+        color: functions.get-color("white");
+    }
+}
+

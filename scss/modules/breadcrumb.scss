@@ -1,0 +1,74 @@
+@use "../variables.scss" as variables;
+@use "../functions.scss" as functions;
+
+//Breadcrumb variables
+$breadcrumb-padding: 5px !default;
+$breadcrumb-background: functions.get-color("light") !default;
+
+$breadcrumb-item-font-size: 15px;
+$breadcrumb-item-height: 24px;
+$breadcrumb-item-padding-top: 8px;
+$breadcrumb-item-padding-bottom: 8px;
+$breadcrumb-item-padding-left: 15px;
+$breadcrumb-item-padding-right: 25px;
+
+//Breadcrumb class
+.#{variables.$prefix}breadcrumb {
+    display: flex;
+    flex-wrap: nowrap;
+    //width: 100%;
+    //height: $breadcrumb-height;
+    margin-bottom: variables.$margin-bottom;
+    background-color: $breadcrumb-background;
+    border-radius: variables.$border-radius-base;
+    padding: $breadcrumb-padding;
+    //border: 0px;
+    overflow: hidden;
+    overflow-x: auto;
+    //Breadcrumb item
+    &-item {
+        //display: block;
+        //float: left;
+        position: relative;
+        height: $breadcrumb-item-height;
+        font-size: $breadcrumb-item-font-size;
+        line-height: $breadcrumb-item-height;
+        padding-left: $breadcrumb-item-padding-left;
+        padding-right: $breadcrumb-item-padding-right;
+        padding-top: $breadcrumb-item-padding-top;
+        padding-bottom: $breadcrumb-item-padding-bottom;
+        //text-align: center;
+        //font-family: $siimple-default-text-font;
+        font-weight: variables.$font-weight-bold;
+        text-decoration: none;
+        color: functions.get-color("primary");
+        //transition: color 0.3s;
+        cursor: pointer;
+        //Crumb hover
+        &:hover {
+            transition: color 0.3s;
+            color: functions.get-color-darker("primary");
+        }
+        //Crumb after
+        &:not(:last-child)::after {
+            display: block;
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-top: 2px solid functions.get-color-lighter("dark");
+            border-right: 2px solid functions.get-color-lighter("dark");
+            position: absolute;
+            top: 16px;
+            right: 3px;
+            transform: rotate(45deg);
+        }
+        //Active crumb
+        &.is-active {
+            color: functions.get-color("dark") !important;
+            cursor: default !important;
+            //font-weight: normal !important;
+            pointer-events: none; //Disable clicks
+        }
+    }
+}
+

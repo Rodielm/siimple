@@ -1,0 +1,22 @@
+@use "../variables.scss" as variables;
+@use "../mixins.scss" as mixins;
+@use "../utils.scss" as utils;
+
+$content-padding-top: 40px !default;
+$content-padding-bottom: 40px !default;
+
+//Content class
+.#{variables.$prefix}content {
+    display: block;
+    padding-top: $content-padding-top;
+    padding-bottom: $content-padding-bottom;
+    //Default content size
+    @include mixins.content-fluid();
+    //Content sizes
+    @each $size in utils.keys(variables.$content-sizes) {
+        &--#{$size} {
+            @include mixins.content-size($size);
+        }
+    }
+}
+

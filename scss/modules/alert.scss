@@ -1,0 +1,81 @@
+@use "../functions.scss" as functions;
+@use "../variables.scss" as variables;
+
+$alert-padding-top: 24px !default;
+$alert-padding-bottom: 24px !default;
+$alert-padding-left: 32px !default;
+$alert-padding-right: 48px !default;
+
+$alert-title-font-size: variables.$font-size-large !default;
+$alert-title-margin-bottom: 5px !default;
+
+//Alert class
+.#{variables.$prefix}alert {
+    display: block;
+    //width: calc(100% - #{$alert-padding-left} - #{$alert-padding-right});
+    //color: $siimple-navy;
+    //line-height: variables.$line-height;
+    //font-size: variables.$text-size;
+    position: relative;
+    border-radius: variables.$border-radius-base;
+    //Default background and text color
+    background-color: functions.get-color("white");
+    //color: siimple.color("dark");
+    padding-top: $alert-padding-top;
+    padding-right: $alert-padding-right;
+    padding-bottom: $alert-padding-bottom;
+    padding-left: $alert-padding-left;
+    //margin-top: $alert-margin-top;
+    margin-bottom: variables.$margin-bottom;
+    //Alert title
+    &-title {
+        font-size: $alert-title-font-size;
+        font-weight: bold;
+        margin-bottom: $alert-title-margin-bottom;
+        //line-height: 30px;
+    }
+    //Alert close button
+    &-close {
+        display: block;
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        opacity: 0.6;
+        transition: opacity 0.3s;
+        &:hover {
+            opacity: 1.0;
+        }
+        &::before,
+        &::after {
+            content: "";
+            width: 16px;
+            height: 3px;
+            background-color: functions.get-color("dark");
+            position: absolute;
+            border-radius: 1px;
+            top: 6px;
+        }
+        &::before {
+            transform: rotate(45deg);
+        }
+        &::after {
+            transform: rotate(-45deg);
+        }
+    }
+    //Alert colors 
+    @each $color in variables.$colors-modifiers {
+        &--#{$color} {
+            background-color: functions.get-color-lighter($color, 30%);
+            color: functions.get-color-darker($color);
+        }
+        //Close icon color
+        &--#{$color} &-close::before,
+        &--#{$color} &-close::after {
+            background-color: functions.get-color-darker($color);
+        }
+    }
+}
+

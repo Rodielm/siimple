@@ -1,0 +1,36 @@
+@use "../variables.scss" as variables;
+@use "../functions.scss" as functions;
+
+$column-padding: 10px !default;
+//$column-sizes: siimple.$columns;
+
+//Grid column class
+.#{variables.$prefix}column {
+    flex: 1; //Allow flex grow
+    padding: $column-padding;
+    //Grid default column sizes
+    @each $name, $width in variables.$columns {
+        &--#{$name} {
+            //width: #{$grid-width};
+            width: calc(#{$width} - 2 * #{$column-padding});
+            flex: none; //Disable flex grow
+        }
+    }
+}
+//Grid columns for each breakpoint
+@each $breakpoint, $screen in variables.$breakpoints {
+    @media (max-width: $screen) {
+        @each $name, $width in variables.$columns {
+            .#{$breakpoint}\:#{variables.$prefix}column--#{$name} {
+                //width: #{$grid-width};
+                width: calc(#{$width} - 2 * #{$column-padding});
+                flex: none; //Disable flex grow
+            }
+        }
+        //Hide grid column
+        .#{$breakpoint}\:#{variables.$prefix}column--hide {
+            display: none !important;
+        }
+    }
+}
+

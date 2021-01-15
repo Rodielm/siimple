@@ -1,0 +1,59 @@
+@use "../variables.scss" as variables;
+@use "../functions.scss" as functions;
+
+$list-item-padding: 15px !default;
+$list-item-background: functions.get-color("light") !default;
+$list-item-color: functions.get-color("dark") !default;
+
+$list-item-active-background: functions.get-color-lighter("primary") !default;
+
+//List class
+.#{variables.$prefix}list {
+    display: block;
+    width: 100%;
+    margin-bottom: variables.$margin-bottom;
+    //color: variables.$text-color;
+    //font-size: variables.$text-size;
+    //line-height: variables.$line-height;
+    //List item 
+    &-item {
+        display: block;
+        padding: $list-item-padding;
+        background-color: $list-item-background; 
+        //transition: all 0.3s ease;
+        text-decoration: none;
+        color: $list-item-color;
+        //font-size: variables.$text-size;
+        //line-height: variables.$line-height;
+        //position: relative;
+        //List with tag
+        & .#{variables.$prefix}tag {
+            //position: absolute;
+            //top: 0px;
+            //right: 0px;
+            float: right;
+        }
+    }
+    &-item:first-child {
+        border-top-left-radius: variables.$border-radius-base;
+        border-top-right-radius: variables.$border-radius-base;
+    }
+    &-item:last-child {
+        border-bottom-left-radius: variables.$border-radius-base;
+        border-bottom-right-radius: variables.$border-radius-base;
+    }
+    &-item:not(:last-child) {
+        margin-bottom: 2px;
+    }
+    &--hover &-item:not(#{&}-item--active):hover {
+        background-color: functions.get-color-darker("light", 10%);
+        transition: background-color 0.3s;
+        cursor: pointer;
+    }
+    //Active list item
+    &-item.is-active {
+        background-color: $list-item-active-background;
+    }
+    //Dark list [TODO]
+}
+

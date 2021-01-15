@@ -1,0 +1,62 @@
+@use "../variables.scss" as variables;
+@use "../functions.scss" as functions;
+
+//Code variables
+$code-font-size: 0.8rem !default;
+$code-font-weight: variables.$font-weight-bold !default;
+$code-font-family: variables.$font-family-mono !default;
+//$code-line-height: 21px !default;
+$code-color: functions.get-color("primary") !default;
+$code-padding-left: 3px !default;
+$code-padding-right: 3px !default;
+
+//Code class
+.#{variables.$prefix}code {
+    color: $code-color;
+    text-decoration: none;
+    //line-height: $code-line-height;
+    font-size: $code-font-size;
+    font-weight: $code-font-weight;
+    font-family: $code-font-family;
+    padding-left: $code-padding-left;
+    padding-right: $code-padding-right;
+    word-wrap: break-word;
+    //text-size-adjust: 100%;
+}
+
+//code block variables
+$blockcode-font-size: 0.8rem !default;
+$blockcode-font-family: variables.$font-family-mono !default;
+//$pre-line-height: 1.5 !default;
+$blockcode-padding-left: 20px !default;
+$blockcode-padding-right: 20px !default;
+$blockcode-padding-top: 20px !default;
+$blockcode-padding-bottom: 20px !default;
+$blockcode-color: functions.get-color("dark") !default; //siimple.color("white");
+$blockcode-background: functions.get-color("light") !default; //siimple.color("dark");
+
+//Pre class
+.#{variables.$prefix}blockcode {
+    display: block;
+    overflow-x: auto;
+    width: calc(100% - #{$blockcode-padding-left} - #{$blockcode-padding-right});
+    color: $blockcode-color;
+    //line-height: $pre-line-height;
+    font-size: $blockcode-font-size;
+    font-family: $blockcode-font-family;
+    background-color: $blockcode-background;
+    border-radius: variables.$border-radius-base;
+    padding-top: $blockcode-padding-top;
+    padding-bottom: $blockcode-padding-bottom;
+    padding-left: $blockcode-padding-left;
+    padding-right: $blockcode-padding-right;
+    margin-bottom: variables.$margin-bottom;
+    margin-top: 0px;
+    //Pre dark mode
+    //&--dark {
+    //    background-color: siimple.color("dark") !important;
+    //    color: siimple.color("white");
+    //}
+}
+
+

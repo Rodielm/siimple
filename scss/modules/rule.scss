@@ -1,0 +1,27 @@
+@use "../variables.scss" as variables;
+@use "../functions.scss" as functions;
+
+//Rule variables
+$rule-background: functions.get-color("light") !default;
+$rule-height: 2px !default;
+$rule-margin-top: 15px !default;
+$rule-margin-bottom: 15px !default;
+
+//Rule class 
+.#{variables.$prefix}rule {
+    display: block;
+    height: $rule-height;
+    background-color: $rule-background;
+    padding: 0px;
+    //margin-top: $rule-margin-top;
+    //margin-bottom: $rule-margin-bottom;
+    border: 0px;
+    //Rule first and last child
+    &:not(:first-child) {
+        margin-top: $rule-margin-top;
+    }
+    &:not(:last-child) {
+        margin-bottom: $rule-margin-bottom;
+    }
+}
+

@@ -1,0 +1,109 @@
+@use "../variables.scss" as variables;
+@use "../functions.scss" as functions;
+
+$card-padding: 32px !default;
+
+//Card element class
+.#{variables.$prefix}card {
+    display: block;
+    width: 100%;
+    margin-bottom: variables.$margin-bottom;
+    border-radius: variables.$border-radius-base;
+    text-decoration: none !important;
+    background-color: functions.get-color("white"); //Default using white color
+    color: functions.get-color("dark");
+    //Common styles
+    &-image,
+    &-content, 
+    &-link {
+        display: block;
+         //First child of the card --> add border top radius
+        &:first-child {
+            border-top-left-radius: variables.$border-radius-base;
+            border-top-right-radius: variables.$border-radius-base;
+        }
+        //Last child of the card --> add border bottom radius
+        &:last-child {
+            border-bottom-left-radius: variables.$border-radius-base;
+            border-bottom-right-radius: variables.$border-radius-base;
+        }
+    }
+    //Card image
+    &-image {
+        background-color: functions.get-color-lighter("dark");
+        //font-weight: bold;
+    }
+    //Card content
+    &-content {
+        //display: block;
+        padding-top: $card-padding;
+        padding-left: $card-padding;
+        padding-right: $card-padding;
+        //Last card content child
+        &:last-child {
+            padding-bottom: $card-padding;
+        }
+    }
+    //Card link 
+    &-link {
+        position: relative;
+        //font-weight: bold;
+        //font-size: 15px;
+        padding: $card-padding;
+        color: functions.get-color("dark"); //variables.$text-color;
+        cursor: pointer;
+        //transition: opacity 0.3s;
+        opacity: 0.5;
+        text-decoration: none;
+        //Card link arrow
+        &::before {
+            display: block;
+            content: "";
+            width: 11px;
+            height: 11px;
+            border-top: 4px solid functions.get-color("dark"); 
+            border-right: 4px solid functions.get-color("dark");
+            transform: rotate(45deg);
+            border-radius: 2px;
+            position: absolute;
+            top: calc(#{$card-padding} + 4px);
+            right: calc(#{$card-padding} + 2px);
+            transition: right 0.3s;
+        }
+    }
+    //Card hover --> active link
+    &:hover &-link,
+    &-link:hover {
+        transition: opacity 0.3s;
+        opacity: 1.0;
+    }
+    &:hover &-link::before,
+    &-link:hover &-link::before {
+        right: calc(#{$card-padding} - 3px);
+    }
+    //Light card --> default style
+    &--light {
+        background-color: functions.get-color("light");
+        //color: functions.get-color("dark");
+    }
+    &--light &-link {
+        color: functions.get-color("dark");
+    }
+    &--light &-link::before {
+        border-top-color: functions.get-color("dark");
+        border-right-color: functions.get-color("dark");
+    }
+    //Dark card
+    &--dark {
+        background-color: functions.get-color("dark");
+        color: functions.get-color("white");
+    }
+    &--dark &-link {
+        color: functions.get-color("white");
+    }
+    &--dark &-link::before {
+        border-top-color: functions.get-color("white");
+        border-right-color: functions.get-color("white");
+    }
+}
+

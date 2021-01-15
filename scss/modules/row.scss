@@ -1,0 +1,16 @@
+@use "../variables.scss" as variables;
+@use "../mixins.scss" as mixins;
+
+$row-margin-left: -10px !default;
+$row-margin-right: -10px !default;
+
+//Grid Row class
+.#{variables.$prefix}row {
+    display: flex;
+    flex-wrap: wrap;
+    //width: 100%;
+    margin-left: $row-margin-left;
+    margin-right: $row-margin-right;
+    @include mixins.clearfix();
+}
+

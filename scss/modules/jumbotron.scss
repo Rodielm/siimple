@@ -1,0 +1,74 @@
+@use "../variables.scss" as variables;
+@use "../functions.scss" as functions;
+@use "../mixins.scss" as mixins;
+@use "../utils.scss" as utils;
+
+$jumbotron-padding-top: 85px !default;
+$jumbotron-padding-bottom: 85px !default;
+$jumbotron-background: functions.get-color("white") !default;
+
+$jumbotron-title-font-size: 50px !default;
+$jumbotron-title-line-height: 1em !default;
+$jumbotron-title-font-weight: variables.$font-weight-bold !default;
+
+$jumbotron-subtitle-font-size: 30px !default;
+$jumbotron-subtitle-line-height: 1em !default;
+$jumbotron-subtitle-font-weight: variables.$font-weight-bold !default;
+
+//Jumbotron class
+.#{variables.$prefix}jumbotron {
+    display: flex;
+    //display: block;
+    //font-family: $siimple-default-text-font;
+    //justify-content: space-between;
+    align-items: stretch;
+    flex-direction: column;
+    padding-top: $jumbotron-padding-top;
+    padding-bottom: $jumbotron-padding-bottom;
+    //color: variables.$text-color;
+    background-color: $jumbotron-background;
+    @include mixins.content-fluid(); //Default jumbotron size
+    //Jumbotron title
+    &-title {
+        display: block;
+        line-height: $jumbotron-title-line-height;
+        font-size: $jumbotron-title-font-size;
+        font-weight: $jumbotron-title-font-weight;
+        text-decoration: none;
+    }
+    //Jumbotron subtitle
+    &-subtitle {
+        display: block;
+        line-height: $jumbotron-subtitle-line-height;
+        font-size: $jumbotron-subtitle-font-size;
+        font-weight: $jumbotron-subtitle-font-weight;
+        opacity: 0.8;
+        text-decoration: none;
+    }
+    &-title + &-subtitle {
+        margin-top: 8px;
+    }
+    //Jumbotron full height
+    &--fullheight {
+        min-height: 100vh;
+        //display: flex;
+        //align-items: center;
+        justify-content: center;
+        //flex-direction: column;
+        padding: 0px;
+    }
+    //Colored jumbotron
+    @each $color in variables.$colors-modifiers {
+        &--#{$color} {
+            background-color: functions.get-color($color);
+            color: functions.get-color-invert($color);
+        }
+    }
+    //Jumbotron sizes
+    @each $size in utils.keys(variables.$content-sizes) {
+        &--#{$size} {
+            @include mixins.content-size($size);
+        }
+    }
+}
+

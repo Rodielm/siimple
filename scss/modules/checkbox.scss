@@ -1,0 +1,66 @@
+@use "../variables.scss" as variables;
+@use "../functions.scss" as functions;
+
+//Checkbox variables
+$checkbox-width: 18px !default;
+$checkbox-height: 18px !default;
+$checkbox-margin: 6px !default;
+$checkbox-border-radius: 3px !default;
+
+//Checkbox class
+.#{variables.$prefix}checkbox {
+    display: inline-block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    width: $checkbox-width;
+    height: $checkbox-height;
+    margin: $checkbox-margin;
+    vertical-align: top;
+    cursor: pointer;
+    border-radius: $checkbox-border-radius;
+    background: functions.get-color("light");
+    //Label icon
+    //Check icon for checked status
+    //Minus icon for indeterminate status
+    &:after {
+        content: "";
+        width: 8px;
+        height: 4px;
+        position: absolute;
+        background: transparent;
+    }
+    //Checked/Indeterminate -> change background
+    &:checked,
+    &.is-active,
+    &:indeterminate {
+        background-color: functions.get-color("primary");
+        transition: background-color 0.3s;
+    }
+    //Indeterminate-> change tick
+    &:indeterminate:after {
+        border-bottom: 2px solid functions.get-color("white");
+        top: 4px;
+        left: 5px;
+    }
+    //Checked --> display tick
+    &:checked:after,
+    &is-active:after {
+        //opacity: 1;
+        top: 4px;
+        left: 4px;
+        transform: rotate(-45deg);
+        border-left: 2px solid functions.get-color("white");
+        border-bottom: 2px solid functions.get-color("white");
+    }
+    //Checkbox colors
+    //@each $color in variables.utils-keys(variables.$status-colors) {
+    //    &--#{$color}:checked,
+    //    &--#{$color}#{&}--active,
+    //    &--#{$color}:indeterminate {
+    //        background-color: functions.get-color($color);
+    //    }
+    //}
+}
+

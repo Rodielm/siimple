@@ -1,0 +1,244 @@
+@use "../variables.scss" as variables;
+@use "../functions.scss" as functions;
+@use "../mixins.scss" as mixins;
+@use "../utils.scss" as utils;
+
+$navbar-height: 40px !default;
+$navbar-padding: 24px !default;
+$navbar-background: functions.get-color("white") !default;
+$navbar-breakpoint-desktop: variables.$desktop !default;
+$navbar-breakpoint-mobile: variables.$desktop - 1px !default;
+
+$navbar-item-padding: 10px !default;
+$navbar-item-margin: 10px !default;
+$navbar-item-font-weight: variables.$font-weight-normal !default;
+$navbar-item-color: variables.$body-color !default;
+
+$navbar-brand-font-size: 22px !default;
+$navbar-brand-color: variables.$body-color !default;
+
+//Navbar class
+.#{variables.$prefix}navbar {
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    //position: absolute; top: 0px; left: 0px;
+    z-index: 3;
+    //width: 100%;
+    //max-width: calc(100% - 2 * #{$siimple-navbar-padding});
+    min-height: $navbar-height; 
+    //font-family: $siimple-default-text-font;
+    //margin: $siimple-navbar-margin;
+    padding-top: $navbar-padding;
+    padding-bottom: $navbar-padding;
+    vertical-align: top;
+    @include mixins.content-fluid(); //Default navbar size
+    position: relative;
+    background-color: $navbar-background;
+    //color: siimple.$text-color;
+    //Common navbar brand and navbar link styles
+    &-brand,
+    &-item {
+        display: block;
+        //height: 34px;
+        height: $navbar-height;
+        line-height: $navbar-height;
+        //padding: 10px;
+        //vertical-align: top;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    //Navbar brand (previous navbar-title)
+    &-brand {
+        //font-weight: bold;
+        font-size: $navbar-brand-font-size;
+        margin-right: 10px;
+        color: $navbar-brand-color;
+        //transition: all 0.3s;
+    }
+    //Navbar item
+    &-item {
+        display: block;
+        //text-align: center;
+        //font-weight: bold;
+        //font-size: siimple.$text-size;
+        font-weight: $navbar-item-font-weight;
+        //transition: opacity 0.3s;
+        opacity: 0.6;
+        color: $navbar-item-color; //Default text color
+        //cursor: pointer;
+        //vertical-align: middle;
+        &:hover {
+            opacity: 1.0;
+            transition: opacity 0.3s;
+        }
+        //Navbar link active
+        &.is-active {
+            font-weight: variables.$font-weight-bold;
+            opacity: 1.0 !important;
+        }
+        //Navbar link disabled
+        &.is-disabled {
+            opacity: 0.4 !important;
+            cursor: not-allowed;
+            pointer-events: none; //Disable clicks
+        }
+    }
+    //Styles for desktop
+    @media screen and (min-width: $navbar-breakpoint-desktop) {
+        //Navbar content
+        &-content {
+            display: flex;
+            flex-grow: 1;
+            justify-content: flex-end; //Right aligned
+        }
+        //Navigation item
+        &-item {
+            padding-left: $navbar-item-padding;
+            padding-right: $navbar-item-padding;
+            //margin-right: $navbar-item-margin-right;
+        }
+        //Next item of the navbar content with no the item class
+        &-item + *:not(#{&}-item) {
+            margin-left: $navbar-item-margin;
+        }
+        //Previous item of the navbar content with no the item class
+        *:not(#{&}-item) + &-item {
+            margin-left: $navbar-item-margin;
+        }
+        //Navbar toggle
+        &-toggle {
+            display: none !important;
+        }
+    }
+    //Styles for mobile devices
+    @media screen and (max-width: $navbar-breakpoint-mobile) {
+        //Navbar content for mobile devices
+        &-content {
+            display: block;
+            width: 100%;
+            max-height: 0px;
+            overflow: hidden;
+            transition: max-height 0.3s;
+        }
+        //Menu items
+        &-item {
+            padding-top: $navbar-item-padding;
+            //padding-bottom: $navbar-item-padding;
+        }
+        //Next item of the navbar content with no the item class
+        &-item + *:not(#{&}-item) {
+            margin-top: $navbar-item-margin;
+        }
+        //Previous item of the navbar content with no the item class
+        *:not(#{&}-item) + &-item {
+            margin-top: $navbar-item-margin;
+        }
+        //Navbar toggle
+        &-toggle {
+            display: block;
+            position: relative;
+            width: 26px;
+            height: 30px;
+            //outline: 0;
+            cursor: pointer;
+            //Disable apperance for checkbox toggles
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        //Toggle icon
+        &-toggle::before {
+            content: "";
+            position: absolute;
+            border-top: 4px solid functions.get-color("dark");
+            border-bottom: 4px solid functions.get-color("dark");
+            width: 100%;
+            height: 16px;
+            top: 3px;
+        }
+        &-toggle::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background-color: functions.get-color("dark");
+            top: 13px;
+        }
+        //Toggle focus --> display navbar content
+        &-toggle:not(input):focus + &-content,
+        &-toggle:checked + &-content,
+        &--expand &-content {
+            display: block !important;
+            max-height: 100vh;
+        }
+    }
+    //Navigation hamburger icon
+    //&-icon,
+    //&-icon::before,
+    //&-icon::after {
+    //    content: "";
+    //    display: block;
+    //    width: 100%;
+    //    height: 4px;
+    //    border-radius: 10px;
+    //    background-color: functions.get-color("dark"); //Default color
+    //}
+    //&-icon {
+    //    position: relative;
+    //    margin-top: 13px;
+    //    margin-bottom: 13px;
+    //}
+    //&-icon::before {
+    //    position: absolute;
+    //    top: -8px;
+    //}
+    //&-icon::after {
+    //    position: absolute;
+    //    bottom: -8px;
+    //}
+    //Fixed navbar
+    &--fixed-top,
+    &--fixed-bottom {
+        position: fixed;
+        left: 0;
+        right: 0;
+        z-index: 50;
+    }
+    //Fixed navbar to top
+    &--fixed-top {
+        top: 0;
+    }
+    //Fixed navbar to bottom
+    &--fixed-bottom {
+        bottom: 0;
+    }
+    //Colored navbar
+    @each $color in variables.$colors-modifiers {
+        &--#{$color} {
+            background-color: functions.get-color($color);
+            color: functions.get-color-invert($color);
+        }
+        //Links and brand colors
+        &--#{$color} &-item,
+        &--#{$color} &-brand {
+            color: functions.get-color-invert($color);
+        }
+        //Toggle icon color
+        &--#{$color} &-toggle::before {
+            border-top-color: functions.get-color-invert($color);
+            border-bottom-color: functions.get-color-invert($color);
+        }
+        &--#{$color} &-toggle::after {
+            background-color: functions.get-color-invert($color);
+        }
+    }
+    //Navbar sizes
+    @each $size in utils.keys(variables.$content-sizes) {
+        &--#{$size} {
+            @include mixins.content-size($size);
+        }
+    }
+}
+

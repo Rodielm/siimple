@@ -1,0 +1,150 @@
+@use "../variables.scss" as variables;
+@use "../functions.scss" as functions;
+
+$tip-color: functions.get-color("dark") !default;
+$tip-background: functions.get-color("light") !default;
+$tip-padding: 24px !default;
+$tip-border-width: 40px !default;
+
+//Tip class
+.#{variables.$prefix}tip {
+    display: block;
+    position: relative;
+    //width: calc(100% - 25px - 20px - 5px);
+    border-left-style: solid;
+    border-left-width: 5px; //$tip-border-width;
+    border-radius: variables.$border-radius-base;
+    padding: $tip-padding;
+    //padding-top: $tip-padding;
+    //padding-right: $tip-padding !important;
+    //padding-bottom: $tip-padding;
+    //padding-left: $tip-padding !important;
+    margin-bottom: variables.$margin-bottom;
+    //font-size: $siimple-default-font-size;
+    color: $tip-color;
+    //line-height: $siimple-default-line-height;
+    //Default tip color style
+    background-color: $tip-background;
+    border-left-color: functions.get-color("light");
+    //Tip colors
+    @each $color in variables.$colors-modifiers {
+        &--#{$color} {
+            //background-color: functions.get-color-lighter($color, 8%);
+            border-left-color: functions.get-color($color);
+        }
+    }
+    //Common tip icons styles
+    &--exclamation,
+    &--question,
+    &--info,
+    &--heart,
+    &--cross,
+    &--check {
+        border-left-width: $tip-border-width;
+    }
+    //Exclamation tip icon
+    &--exclamation::before {
+        content: "!";
+    }
+    //Question tip
+    &--question::before {
+        content: "?";
+    }
+    //Common question and exclamation styles
+    &--exclamation::before,
+    &--question::before {
+        position: absolute;
+        color: functions.get-color("white");
+        width: 20px;
+        left: -30px;
+        top: 16px;
+        text-align: center;
+        font-weight: 600;
+        //font-family: monospace;
+        //font-size: 16px;
+    }
+    &--exclamation::after,
+    &--question::after {
+        content: "";
+        position: absolute;
+        border: 2px solid functions.get-color("white");
+        border-radius: 100px;
+        width: 20px;
+        height: 20px;
+        top: 15px;
+        left: -32px;
+    }
+    //Heart tip icon
+    &--heart::before,
+    &--heart::after {
+        content: "";
+        position: absolute;
+        top: 17px;
+        background-color: functions.get-color("white");
+        border-radius: 100px 100px 0 0;
+        width: 10px;
+        height: 15px;
+    }
+    &--heart::before {
+        transform: rotate(-45deg);
+        left: -27px;
+    }
+    &--heart::after {
+        transform: rotate(45deg);
+        left: -23px;
+    }
+    //Info tip icons
+    &--info::before {
+        content: "i";
+        color: functions.get-color("white");
+        font-family: monospace;
+        position: absolute;
+        top: 13px;
+        left: -30px;
+        width: 20px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 24px;
+    }
+    //Cross tip icon
+    &--cross::after,
+    &--cross::before {
+        content: "";
+        position: absolute;
+        background-color: functions.get-color("white");
+        width: 5px;
+        height: 20px;
+        border-radius: 2px;
+        top: 16px;
+    }
+    &--cross::after {
+        transform: rotate(-45deg);
+        left: -22px;
+    }
+    &--cross::before {
+        transform: rotate(45deg);
+        left: -22px;
+    }
+    //Check tip icon
+    &--check::after,
+    &--check::before {
+        content: "";
+        position: absolute;
+        background-color: functions.get-color("white");
+        width: 5px;
+        border-radius: 2px;
+    }
+    &--check::after {
+        transform: rotate(45deg);
+        left: -20px;
+        height: 20px;
+        top: 15px;
+    }
+    &--check::before {
+        transform: rotate(-45deg);
+        left: -28px;
+        height: 12px;
+        top: 22px;
+    }
+}
+
