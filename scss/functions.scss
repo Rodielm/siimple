@@ -63,10 +63,10 @@
     @return utils.get(variables.$content-sizes, $index);
 }
 
-//Get a spacing value by name
-@function get-spacing ($index) {
-    @return utils.get(variables.$spacing, $index);
-}
+////Get a spacing value by name
+//@function get-spacing ($index) {
+//    @return utils.get(variables.$spacing, $index);
+//}
 
 //Get a gray color
 //DEPRECATED: use light or dark instead
@@ -94,13 +94,4 @@
     @return get-color("dark");
 }
 
-////Get a single icon by name
-//@function get-icon ($name) {
-//    @return utils.get(lists.$icons, "#{$name}");
-//}
-//
-////Use an icon by name
-//@function use-icon($name) {
-//    @return string.unquote("\"") + string.unquote(string.insert(icon($name), "\\", 1)) + string.unquote("\"");
-//}
 

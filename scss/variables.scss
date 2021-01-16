@@ -4,7 +4,7 @@
 //Default class prefix
 $prefix: "siimple-" !default;
 $variable-prefix: "siimple-" !default;
-$helper-prefix: "siimple-" !default;
+$state-prefix: "is-" !default;
 
 //Darker/lighter color amount
 $darker-amount: 20% !default;
@@ -37,7 +37,8 @@ $colors: (
     "dark": utils.get(theme.$colors, "cool-gray-900"),
     "muted": utils.get(theme.$colors, "cool-gray-500"),
     "white": theme.$white,
-    "black": theme.$black
+    "black": theme.$black,
+    "transparent": transparent
 ) !default;
 
 //Colors names by group
@@ -122,20 +123,6 @@ $shadow-color: rgba(0, 0, 0, 0.05) !default;
 $shadow-offset: 0 !default;
 $shadow-blur: 1rem !default;
 $shadow-spread: 0.5rem !default;
-
-//Spacing values map
-$spacing: (
-    "0": 0px,  //No spacing
-    "1": 0.25rem, //for f.s. of 16px --> 4px
-    "2": 0.5rem,  //for f.s. of 16px --> 8px
-    "3": 1rem,    //for f.s. of 16px --> 16px
-    "4": 1.5rem,  //for f.s. of 16px --> 24px
-    "5": 2rem,    //for f.s. of 16px --> 32px
-    "6": 3rem,    //for f.s. of 16px --> 48px
-    "7": 4rem,    //for f.s. of 16px --> 64px
-    "8": 5rem,    //for f.s. of 16px --> 80px
-    "9": 6rem     //for f.s. of 16px --> 96px
-) !default;
 
 //Default columns values
 //$column-count: 12 !default;
