@@ -1,0 +1,43 @@
+@use "../plugins/icons.scss" as icons;
+@use "../variables.scss" as variables;
+@use "../utils.scss" as utils;
+
+//Font face
+@font-face {
+    font-family: icons.$font-name;
+    src: url(icons.$font-url-ttf) format("truetype"),
+    url(icons.$font-url-woff) format("woff"),
+    url(icons.$font-url-woff2) format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+//Icon class
+.#{variables.$prefix}icon {
+    display: inline-flex; //inline-block;
+    align-self: center;
+    font-family: icons.$font-name;
+    //font-size: siimple.$icons-font-size;
+    line-height: icons.$line-height; //normal;
+    font-weight: normal !important;
+    font-style: normal;
+    text-rendering: auto;
+    //height: 1.5em;
+    //width: 1.5em;
+    //align-items: center;
+    //justify-content: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    &::before {
+        box-sizing: border-box; //inherit;
+        display: block;
+    }
+    //For each icon in the list
+    @each $name in utils.keys(icons.$list) {
+        &-#{$name}:before {
+            content: icons.use-icon($name);
+        }
+    }
+}
+
+
