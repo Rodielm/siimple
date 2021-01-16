@@ -6,6 +6,7 @@ let resolveTo = function (to) {
 };
 
 //Common folders
+let root = __dirname;
 let packages = resolveTo("./packages");
 
 //Export build paths
@@ -26,8 +27,7 @@ module.exports = {
     //Icons sources
     "icons": {
         "list": resolveTo("./icons.json"),
-        "folder": path.join(packages, "siimple-icons", "svg"),
-        "lib": path.join(packages, "siimple-lib", "scss", "lists", "icons.scss"),
+        "folder": path.join(root, "icons")
     },
     //Colors sources
     "colors": {
