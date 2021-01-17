@@ -82,26 +82,26 @@ $card-padding: 32px !default;
         right: calc(#{$card-padding} - 3px);
     }
     //Light card --> default style
-    &--light {
+    &.is-light {
         background-color: functions.get-color("light");
         //color: functions.get-color("dark");
     }
-    &--light &-link {
+    &.is-light &-link {
         color: functions.get-color("dark");
     }
-    &--light &-link::before {
+    &.is-light &-link::before {
         border-top-color: functions.get-color("dark");
         border-right-color: functions.get-color("dark");
     }
     //Dark card
-    &--dark {
+    &.is-dark {
         background-color: functions.get-color("dark");
         color: functions.get-color("white");
     }
-    &--dark &-link {
+    &.is-dark &-link {
         color: functions.get-color("white");
     }
-    &--dark &-link::before {
+    &.is-dark &-link::before {
         border-top-color: functions.get-color("white");
         border-right-color: functions.get-color("white");
     }

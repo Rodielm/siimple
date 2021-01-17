@@ -45,7 +45,7 @@ $list-item-active-background: functions.get-color-lighter("primary") !default;
     &-item:not(:last-child) {
         margin-bottom: 2px;
     }
-    &--hover &-item:not(#{&}-item--active):hover {
+    &.is-hoverable &-item:not(#{&}-item--active):hover {
         background-color: functions.get-color-darker("light", 10%);
         transition: background-color 0.3s;
         cursor: pointer;

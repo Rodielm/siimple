@@ -10,7 +10,7 @@ $column-padding: 10px !default;
     padding: $column-padding;
     //Grid default column sizes
     @each $name, $width in variables.$columns {
-        &--#{$name} {
+        &.is-#{$name} {
             //width: #{$grid-width};
             width: calc(#{$width} - 2 * #{$column-padding});
             flex: none; //Disable flex grow
@@ -21,14 +21,14 @@ $column-padding: 10px !default;
 @each $breakpoint, $screen in variables.$breakpoints {
     @media (max-width: $screen) {
         @each $name, $width in variables.$columns {
-            .#{$breakpoint}\:#{variables.$prefix}column--#{$name} {
+            .#{variables.$prefix}column.#{$breakpoint}\:is-#{$name} {
                 //width: #{$grid-width};
                 width: calc(#{$width} - 2 * #{$column-padding});
                 flex: none; //Disable flex grow
             }
         }
         //Hide grid column
-        .#{$breakpoint}\:#{variables.$prefix}column--hide {
+        .#{variables.$prefix}column.#{$breakpoint}\:is-hide {
             display: none !important;
         }
     }

@@ -48,10 +48,10 @@ $spinner-border-color: functions.get-color("white") !default;
     }
     //Spinner colors
     @each $color in variables.$colors-modifiers {
-        &--#{$color}:before {
+        &.is-#{$color}:before {
             border-color: functions.get-color($color) !important;
         }
-        &--#{$color}:after {
+        &.is-#{$color}:after {
             border-top-color: functions.get-color($color) !important;
         }
     }

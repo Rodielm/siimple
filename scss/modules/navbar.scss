@@ -169,7 +169,7 @@ $navbar-brand-color: variables.$body-color !default;
         //Toggle focus --> display navbar content
         &-toggle:not(input):focus + &-content,
         &-toggle:checked + &-content,
-        &--expand &-content {
+        &.is-expanded &-content {
             display: block !important;
             max-height: 100vh;
         }
@@ -199,38 +199,38 @@ $navbar-brand-color: variables.$body-color !default;
     //    bottom: -8px;
     //}
     //Fixed navbar
-    &--fixed-top,
-    &--fixed-bottom {
+    &.is-fixed-top,
+    &.is-fixed-bottom {
         position: fixed;
         left: 0;
         right: 0;
         z-index: 50;
     }
     //Fixed navbar to top
-    &--fixed-top {
+    &.is-fixed-top {
         top: 0;
     }
     //Fixed navbar to bottom
-    &--fixed-bottom {
+    &.is-fixed-bottom {
         bottom: 0;
     }
     //Colored navbar
     @each $color in variables.$colors-modifiers {
-        &--#{$color} {
+        &.is-#{$color} {
             background-color: functions.get-color($color);
             color: functions.get-color-invert($color);
         }
         //Links and brand colors
-        &--#{$color} &-item,
-        &--#{$color} &-brand {
+        &.is-#{$color} &-item,
+        &.is-#{$color} &-brand {
             color: functions.get-color-invert($color);
         }
         //Toggle icon color
-        &--#{$color} &-toggle::before {
+        &.is-#{$color} &-toggle::before {
             border-top-color: functions.get-color-invert($color);
             border-bottom-color: functions.get-color-invert($color);
         }
-        &--#{$color} &-toggle::after {
+        &.is-#{$color} &-toggle::after {
             background-color: functions.get-color-invert($color);
         }
     }

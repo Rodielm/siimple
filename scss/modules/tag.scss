@@ -21,12 +21,12 @@ $tag-border-radius: variables.$border-radius-small !default;
     //margin-right: 1px;
     //margin-bottom: 8px;
     //Rounded tag 
-    &--rounded {
+    &.is-rounded {
         border-radius: 15px;        
     }
     //Tag colors
     @each $color in variables.$colors-modifiers {
-        &--#{$color} {
+        &.is-#{$color} {
             background-color: functions.get-color($color);
             color: functions.get-color-invert($color);
         }

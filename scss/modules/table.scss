@@ -56,7 +56,7 @@ $table-cell-border-color: functions.get-color("light") !default;
         vertical-align: top;
         background-color: functions.get-color("white");
         //Sortable cell
-        &--sortable {
+        &.is-sortable {
             padding-right: 20px !important;
             cursor: pointer;
             position: relative;
@@ -85,22 +85,22 @@ $table-cell-border-color: functions.get-color("light") !default;
             }
         }
         //Asc order
-        &--asc::before {
+        &.is-asc::before {
             border-bottom-color: functions.get-color("primary");
         }
         //Desc order
-        &--desc::after {
+        &.is-desc::after {
             border-top-color: functions.get-color("primary");
         }
     }
     //Table cell sizes
-    @each $cell-name, $cell-width in $table-cell-sizes {
-        &-cell--#{$cell-name} {
-            width: #{$cell-width};
-        }
-    }
+    //@each $cell-name, $cell-width in $table-cell-sizes {
+    //    &-cell--#{$cell-name} {
+    //        width: #{$cell-width};
+    //    }
+    //}
     //Small table --> reduce table cell padding
-    &--small &-cell {
+    &.is-small &-cell {
         padding: $table-cell-padding-small;
         &::before {
             top: 8px
@@ -110,14 +110,14 @@ $table-cell-border-color: functions.get-color("light") !default;
         }
     }
     //Large table --> increase table cell padding
-    &--large &-cell {
+    &.is-large &-cell {
         padding: $table-cell-padding-large;
     }
     //Table with border
-    &--border &-cell {
+    &.is-bordered &-cell {
         border: $table-cell-border-width solid $table-cell-border-color;
     }
-    &--border &-cell:not(:last-child) {
+    &.is-bordered &-cell:not(:last-child) {
         border-right: 0px !important;
     }
     //Table header
@@ -169,7 +169,7 @@ $table-cell-border-color: functions.get-color("light") !default;
         border-bottom-right-radius: variables.$border-radius-base;
     }
     //Bordered table
-    &--border &-body &-row:not(:last-child) &-cell {
+    &.is-bordered &-body &-row:not(:last-child) &-cell {
         border-bottom: 0px !important;
     }
     //&--border &-body &-row &-cell:first-child {
@@ -179,20 +179,20 @@ $table-cell-border-color: functions.get-color("light") !default;
     //    border-right-width: 0px !important;
     //}
     //Table with rows divider
-    &--divider &-body &-cell {
+    &.is-divided &-body &-cell {
         border-top: $table-cell-border-width solid $table-cell-border-color;
     }
     //Striped table
-    &--striped &-body &-row:nth-child(odd) &-cell {
+    &.is-striped &-body &-row:nth-child(odd) &-cell {
         background-color: functions.get-color-lighter("light", 3%);
     }
     //Hovered table
-    &--hover &-body &-row:hover &-cell {
+    &.is-hoverable &-body &-row:hover &-cell {
         background-color: functions.get-color("light");
         transition: background-color 0.3s;
     }
     //Fixed columns width
-    &--fixed {
+    &.is-fixed {
         table-layout: fixed;
     }
     //Responsive table container
@@ -204,8 +204,8 @@ $table-cell-border-color: functions.get-color("light") !default;
     //Colored table rows
     @each $color in variables.$colors-modifiers {
         @if $color != "dark" and $color != "light" {
-            &-row--#{$color},
-            &-row--#{$color} &-cell {
+            &-row.is-#{$color},
+            &-row.is-#{$color} &-cell {
                 background-color: utils.get($table-colors, $color) !important;
             }
         }

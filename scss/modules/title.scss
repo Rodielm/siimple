@@ -6,16 +6,19 @@ $title-line-height: variables.$body-line-height !default;
 $title-font-weight: variables.$font-weight-bold !default;
 
 //Title class
-@each $name,$value in variables.$font-sizes {
-   .#{variables.$prefix}title#{$name} {
-       display: block;
-       font-size: $value;
-       font-weight: $title-font-weight;
-       line-height: $title-line-height;
-       padding: 0px;
-       margin-bottom: $title-margin-bottom;
-       &:not(:first-child) {
-           margin-top: $title-margin-top; 
+.#{variables.$prefix}title {
+   display: block;
+   font-weight: $title-font-weight;
+   line-height: $title-line-height;
+   padding: 0px;
+   margin-bottom: $title-margin-bottom;
+   &:not(:first-child) {
+       margin-top: $title-margin-top; 
+   }
+   //Title sizes
+   @each $name,$value in variables.$font-sizes {
+       &.is-#{$name} {
+           font-size: $value;
        }
    }
 }

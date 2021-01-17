@@ -44,7 +44,7 @@ $btn-padding-bottom: 8px !default;
     }
     //Button colors
     @each $color in variables.$colors-modifiers {
-        &--#{$color} {
+        &.is-#{$color} {
             background-color: functions.get-color($color);
             color: functions.get-color-invert($color);
             //Button hover
@@ -61,7 +61,7 @@ $btn-padding-bottom: 8px !default;
         cursor: not-allowed !important;
     }
     //Small button
-    &--small {
+    &.is-small {
         padding-left: 12px;
         padding-right: 12px;
         padding-top: 6px;
@@ -70,7 +70,7 @@ $btn-padding-bottom: 8px !default;
         //line-height: 15px;
     }
     //Large button
-    &--large {
+    &.is-large {
         padding-left: 20px;
         padding-right: 20px;
         padding-top: 10px;
@@ -79,8 +79,7 @@ $btn-padding-bottom: 8px !default;
         //line-height: 30px;
     }
     //Block button
-    &--fluid,
-    &--block {
+    &.is-full {
         display: block;
         width: 100%;
         padding-left: 0px !important;
@@ -105,7 +104,7 @@ $btn-padding-bottom: 8px !default;
         margin-right: -2px;
     }
     //White button
-    &--white {
+    &.is-white {
         //transition: opacity 0.3s !important;
         background-color: functions.get-color("white");
         opacity: 1.0;

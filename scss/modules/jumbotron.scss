@@ -49,7 +49,7 @@ $jumbotron-subtitle-font-weight: variables.$font-weight-bold !default;
         margin-top: 8px;
     }
     //Jumbotron full height
-    &--fullheight {
+    &.is-fullheight {
         min-height: 100vh;
         //display: flex;
         //align-items: center;
@@ -59,7 +59,7 @@ $jumbotron-subtitle-font-weight: variables.$font-weight-bold !default;
     }
     //Colored jumbotron
     @each $color in variables.$colors-modifiers {
-        &--#{$color} {
+        &.is-#{$color} {
             background-color: functions.get-color($color);
             color: functions.get-color-invert($color);
         }
