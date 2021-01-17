@@ -25,11 +25,11 @@ $textarea-background: functions.get-color("light") !default;
     box-sizing: border-box;
     resize: vertical;
     //Fluid textarea
-    &--fluid {
+    &.is-full {
         width: 100%;
     }
     //Dark textarea style
-    &--dark {
+    &.is-dark {
         background-color: functions.get-color("dark");
         color: functions.get-color("white");
     }

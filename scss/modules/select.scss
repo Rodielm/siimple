@@ -26,12 +26,12 @@ $select-color: functions.get-color("dark") !default;
     background-color: $select-background;
     vertical-align: top;
     box-sizing: border-box;
-    //Fluid select
-    &--fluid {
+    //Full width select
+    &.is-full {
         width: 100%;
     }
     //Dark select style
-    &--dark {
+    &.is-dark {
         background-color: functions.get-color("dark");
         color: functions.get-color("white");
     }

@@ -28,11 +28,11 @@ $input-padding: 15px !default;
     vertical-align: top;
     box-sizing: border-box;
     //Fluid input
-    &--fluid {
+    &.is-full {
         width: 100%;
     }
     //Dark input
-    &--dark {
+    &.is-dark {
         background-color: functions.get-color("dark");
         color: functions.get-color("white");
     }
