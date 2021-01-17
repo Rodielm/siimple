@@ -42,10 +42,10 @@ $footer-link-color: functions.get-color("dark") !default;
         }
     }
     //Footer sizes
-    @each $size in utils.keys(variables.$content-sizes) {
-        &--#{$size} {
-            @include mixins.content-size($size);
-        }
-    }
+    //@each $size in utils.keys(variables.$content-sizes) {
+    //    &--#{$size} {
+    //        @include mixins.content-size($size);
+    //    }
+    //}
 }
 

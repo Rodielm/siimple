@@ -7,7 +7,7 @@ $title-font-weight: variables.$font-weight-bold !default;
 
 //Title class
 @each $name,$value in variables.$font-sizes {
-   .#{variables.$prefix}title-#{$name} {
+   .#{variables.$prefix}title#{$name} {
        display: block;
        font-size: $value;
        font-weight: $title-font-weight;

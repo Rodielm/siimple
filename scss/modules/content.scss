@@ -13,10 +13,10 @@ $content-padding-bottom: 40px !default;
     //Default content size
     @include mixins.content-fluid();
     //Content sizes
-    @each $size in utils.keys(variables.$content-sizes) {
-        &--#{$size} {
-            @include mixins.content-size($size);
-        }
-    }
+    //@each $size in utils.keys(variables.$content-sizes) {
+    //    &--#{$size} {
+    //        @include mixins.content-size($size);
+    //    }
+    //}
 }
 
