@@ -1,6 +1,6 @@
-@use "../plugins/icons.scss" as icons;
-@use "../variables.scss" as variables;
-@use "../utils.scss" as utils;
+@use "./config.scss" as icons;
+@use "../../variables.scss" as variables;
+@use "../../utils.scss" as utils;
 
 //Font face
 @font-face {
@@ -34,10 +34,9 @@
     }
     //For each icon in the list
     @each $name in utils.keys(icons.$list) {
-        &-#{$name}:before {
+        &.is-#{$name}:before {
             content: icons.use-icon($name);
         }
     }
 }
-
 
