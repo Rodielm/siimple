@@ -1,0 +1,154 @@
+@use "./config.scss" as helpers;
+@use "../../variables.scss" as variables;
+@use "../../mixins.scss" as mixins;
+@use "sass:string";
+
+//Only base helpers
+@include helpers.use-helper-with ("base") using ($p, $s) {
+    //Rounded border
+    @each $key,$value in helpers.$border-rounded {
+        .#{$p}border-#{$key}#{$s} { border-radius: $value !important; }
+    }
+    //Sizing helpers
+    @each $size in helpers.$sizing-shortcuts {
+        @each $key,$value in helpers.$sizing-values {
+            .#{$p}#{$size}-#{$key}#{$s} { 
+                #{$size}: $value; // !important; 
+            }
+        }
+    }
+    //Text weight
+    @each $key,$value in helpers.$text-weight {
+        .#{$p}text-#{$key}#{$s} { font-weight: $value; }
+    }
+    //Text size
+    @each $key,$value in helpers.$text-size {
+        .#{$p}text-#{$key}#{$s} { font-size: $value; }
+    }
+    //Text wrapping
+    //&-wrap { white-space: normal !important; }
+    .#{$p}text-nowrap#{$s} { white-space: nowrap!important; }
+    .#{$p}text-truncate#{$s} {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .#{$p}text-break#{$s} { word-wrap: break-word !important; }
+    //Text transformations and decorations
+    .#{$p}text-uppercase#{$s} { text-transform: uppercase !important; }
+    .#{$p}text-lowercase#{$s} { text-transform: lowercase !important; }
+    .#{$p}text-capitalize#{$s} { text-transform: capitalize !important; }
+    .#{$p}text-italic#{$s} { font-style: italic !important; }
+    .#{$p}text-underline#{$s} { text-decoration: underline !important; }
+}
+
+//Base + hover helpers
+@include helpers.use-helper-with ("base", "hover") using ($p, $s) {
+    //Background color helpers
+    @each $key,$value in helpers.$background-color {
+        .#{$p}bg-#{$key}#{$s} { background-color: $value; }
+    }
+    //Text color helpers
+    @each $key,$value in helpers.$text-color {
+        .#{$p}text-#{$key}#{$s} { color: $value; }
+    }
+}
+
+//Base + responsive helpers
+@include helpers.use-helper-with ("base", "responsive") using ($p, $s) {
+    //Display flex
+    //.#{$p}flex#{$s} { display: flex !important; }
+    //.#{$p}flex-inline#{$s} { display: inline-flex !important; }
+    //Flex directions
+    @each $key,$value in helpers.$flexbox-directions {
+        .#{$p}flex-#{$key}#{$s} { flex-direction: string.unquote($value); }
+    }
+    //Horizontal align
+    @each $key,$value in helpers.$flexbox-horizontal-align {
+        .#{$p}flex-#{$key}#{$s} { justify-content: string.unquote($value); }
+    }
+    //Verticla align
+    @each $key,$value in helpers.$flexbox-vertical-align {
+        .#{$p}flex-#{$key}#{$s} { align-items: string.unquote($value); }
+    }
+    //Flex wrap
+    @each $key,$value in helpers.$flexbox-wrap {
+        .#{$p}flex-#{$key}#{$s} { flex-wrap: string.unquote($value); }
+    }
+    //Flex order
+    @each $key,$value in helpers.$flexbox-order {
+        .#{$p}flex-#{$key}#{$s} { order: $value; }
+    }
+    //Spacing helpers
+    @each $sk,$sv in helpers.$spacing-shortcuts {
+        @each $vk,$vv in helpers.$spacing-values {
+            //Check for adding horizontal spacings
+            @if helpers.$spacing-horizontal == true {
+                .#{$p}#{$sk}x-#{$vk}#{$s} {
+                    #{$sv}-left: $vv; // !important;
+                    #{$sv}-right: $vv; // !important;
+                }
+            }
+            //Check for adding vertical spacings
+            @if helpers.$spacing-vertical == true {
+                .#{$p}#{$sk}y-#{$vk}#{$s} {
+                    #{$sv}-top: $vv; // !important;
+                    #{$sv}-bottom: $vv; // !important;
+                }
+            }
+            //Add all positions
+            .#{$p}#{$sk}-#{$vk}#{$s} {
+                #{$sv}: $vv; // !important;
+            }
+            //Add positions
+            @each $pk,$pv in helpers.$spacing-positions {
+                .#{$p}#{$sk}#{$pk}-#{$vk}#{$s} {
+                    #{$sv}-#{$pv}: $vv; // !important;
+                }
+            }
+        }
+    }
+    //Margin auto
+    @if helpers.$spacing-auto == true {
+        .#{$p}mx-auto#{$s} {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    //Text align helpers
+    @each $key,$value in helpers.$text-align {
+        .#{$p}text-#{$key}#{$s} { text-align: string.unquote($value); }
+    }
+    //Visibility helpers
+    @each $key,$value in helpers.$visibility-display {
+        .#{$p}display-#{$key}#{$s} { display: string.unquote($value); }
+    }
+}
+
+//Other helpers
+.#{helpers.$prefix} {
+    //Border helpers
+    //&rounded { border-radius: variables.$border-radius-base !important; }
+    //&rounded-small { border-radius: variables.$border-radius-small !important; }
+    //&rounded-large { border-radius: variables.$border-radius-large !important; }
+    &circle { border-radius: 50% !important; }
+    //Clearing and floating
+    &float-left { float: left !important; }
+    &float-right { float: right !important; }
+    &clearfix {
+        @include mixins.clearfix();
+    }
+    //Cursor helpers
+    &cursor-auto { cursor: auto !important; }
+    &cursor-none { cursor: none !important; }
+    &cursor-pointer { cursor: pointer !important; }
+    //Overflow helpers
+    &overflow-hidden { overflow: hidden !important;}
+    &overflow-auto { overflow: auto !important; }
+    //Shadow helper
+    &shadow {
+        box-shadow: 0 0 1rem 0.5rem rgba(0, 0, 0, 0.05) !important;
+    }
+}
+
+
