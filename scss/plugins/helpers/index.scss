@@ -9,18 +9,34 @@ $prefix: "has-" !default;
 //Background helpers variables
 //$background: true !default; //Add background helpers
 $background-color: variables.$colors !default;
+$background-size: ("cover": cover, "contain": contain) !default;
+$background-position: (
+    "center": "center"
+) !default;
+$background-repeat: ("norepeat": no-repeat) !default;
+$background-attachment: ("fixed": fixed) !default;
 
 //Border helpers
 //$border: true !default; //Add border helpers
-$border-rounded: (
+$border-radius: (
     "rounded": variables.$border-radius-base,
     "rounded-small": variables.$border-radius-small,
     "rounded-large": variables.$border-radius-large
 ) !default;
 
+//Cursor helpers
+$cursor: (
+    "hand": "pointer",
+    "move": "move",
+    "none": "none",
+    "zoom-in": "zoom-in",
+    "zoom-out": "zoom-out",
+    "not-allowed": "not-allowed"
+) !default;
+
 //Flexbox utils
 //$flexbox: true; //Add flexbox helpers
-$flexbox-directions: (
+$flexbox-direction: (
     "row": "row", 
     "column": "column", 
     "row-rev": "row-reverse", 
@@ -42,19 +58,26 @@ $flexbox-vertical-align: (
 $flexbox-wrap: ("wrap": "wrap", "nowrap": "nowrap") !default;
 $flexbox-order: ("first": -1, "last": 99) !default;
 
+//Overflow helpers
+$overflow: (
+    "auto": "auto",
+    "scroll": "scroll",
+    "hidden": "hidden"
+) !default;
+
 //Sizing helpers variables
 //$sizing: true !default; //Add sizing helpers
-$sizing-shortcuts: "width", "height", "max-width", "max-height" !default;
-$sizing-values : ("0": 0%, "25": 25%, "50": 50%, "75": 75%, "100": 100%) !default;
+//$sizing-shortcuts: "width", "height", "max-width", "max-height" !default;
+$sizing : ("0": 0%, "25": 25%, "50": 50%, "75": 75%, "100": 100%) !default;
 
 //Spacing variables
 //$spacing: true !default; //Add spacing helpers
-$spacing-positions: ("t": "top", "b": "bottom", "l": "left", "r": "right") !default;
-$spacing-horizontal: true !default; //Allow horizontal spacing (x)
-$spacing-vertical: true !default; //Allow vertical spacing (y)
-$spacing-auto: true !default; //Allow horizontal centering (mx-auto)
-$spacing-shortcuts: ("m": "margin", "p": "padding") !default;
-$spacing-values: (
+//$spacing-positions: ("t": "top", "b": "bottom", "l": "left", "r": "right") !default;
+//$spacing-horizontal: true !default; //Allow horizontal spacing (x)
+//$spacing-vertical: true !default; //Allow vertical spacing (y)
+//$spacing-auto: true !default; //Allow horizontal centering (mx-auto)
+//$spacing-shortcuts: ("m": "margin", "p": "padding") !default;
+$spacing: (
     "0": 0px,  //No spacing
     "1": 0.25rem, //for f.s. of 16px --> 4px
     "2": 0.5rem,  //for f.s. of 16px --> 8px
@@ -66,48 +89,32 @@ $spacing-values: (
     "8": 5rem,    //for f.s. of 16px --> 80px
     "9": 6rem     //for f.s. of 16px --> 96px
 ) !default;
-
+$spacing-auto: ("auto": auto) !default;
 
 //Text helpers
 //$text: true !default; //Enable text helpers
-$text-align: ("justify":"justify", "left":"left", "center":"center", "right":"right") !default;
+$text-align: ("justify": justify, "left": left, "center": center, "right": right) !default;
 $text-weight: (
     "normal": variables.$font-weight-normal,
     "bold": variables.$font-weight-bold
 ) !default;
 $text-size: ("small": variables.$font-size-small, "large": variables.$font-size-large) !default;
 $text-color: variables.$colors !default;
+$text-overflow: ("wrap": "normal", "nowrap": "nowrap") !default;
+$text-style: ("italic": "italic") !default;
+$text-transform: (
+    "capitalize": "capitalize",
+    "uppercase": "uppercase",
+    "lowercase": "lowercase"
+) !default;
 
 //Visibility
-//$visibility: true !default; //Add visibility helpers
-$visibility-display: (
+$visibilityy: (
     "hidden": "none",
     "block": "block",
     "inline": "inline-block",
     "flex": "flex",
     "flex-inline": "inline-flex"
 ) !default;
-
-
-//Register helper for the specified variants
-@mixin use-helper-with ($variants...) {
-    $enabled: true; //TODO: this will be the first argument
-    //Check for default style
-    @if list.index($variants, "base") and $enabled {
-        @content("#{$prefix}", "");
-    }
-    //Check for hover 
-    @if list.index($variants, "hover") and $enabled {
-        @content("hover\\:#{$prefix}", "\:hover");
-    }
-    //Check for responsive
-    @if list.index($variants, "responsive") and $enabled {
-        @each $name,$size in variables.$breakpoints {
-            @media screen and (max-width: #{$size}) {
-                @content("#{$name}\\:#{$prefix}", "");
-            }
-        }
-    }
-}
 
 
