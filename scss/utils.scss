@@ -128,3 +128,12 @@
     @return $str;
 }
 
+//Secure string unquote
+@function unquote($str) {
+    @if is-string($str) == true {
+        @return string.unquote($str);
+    }
+    //If is not string --> return the value
+    @return $str;
+}
+
