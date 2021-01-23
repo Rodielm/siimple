@@ -15,10 +15,10 @@
     @if map.has-key(variables.$colors, "#{$color}") {
         @return utils.get(variables.$colors, "#{$color}");
     }
-    //Check for theme color 
-    @if map.has-key(theme.$colors, "#{$color}") {
-        @return utils.get(theme.$colors, "#{$color}");
-    }
+    ////Check for theme color 
+    //@if map.has-key(theme.$colors, "#{$color}") {
+    //    @return utils.get(theme.$colors, "#{$color}");
+    //}
     //Fallback --> return black color
     @warn "Unknown color '#{$color}' provided to siimple.get-color";
     @return theme.$black;

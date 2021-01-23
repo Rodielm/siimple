@@ -1,0 +1,39 @@
+//
+// Color palettes
+// cool-gray: https://coolors.co/f6f7f9-ebedef-d4d8dd-a4abb6-747c8b-4b5563-363f4f-1d2734-101623
+// gray:      https://coolors.co/fafafa-eaeaec-dadadd-a7a7af-76767f-55555e-44444b-2c2c30-1d1d20 
+//
+$grays: (
+    "100": #f6f7f9,
+    "200": #ebedef,
+    "300": #d4d8dd,
+    "400": #a4abb6,
+    "500": #747c8b,
+    "600": #4b5563,
+    "700": #363f4f,
+    "800": #1d2734,
+    "900": #101623
+);
+
+//Default colors
+$primary: #4e91e4;
+$secondary: #4ccdac;
+$success: #4acf7f;
+$warning: #fbc850;
+$error: #ee675d;
+$white: #ffffff;
+$black: #000000;
+
+//Code colors (only for internal use)
+$code-colors: (
+    "blue": #9be0fd,
+    "green": #b4f4a4,
+    "red": #ff9999,
+    "yellow": #ffe999,
+    "purple": #d199ff,
+    "black": #2d3648,
+    "white": #ffffff
+);
+
+
+
