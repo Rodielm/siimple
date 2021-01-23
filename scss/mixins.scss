@@ -2,6 +2,7 @@
 @use "./functions.scss" as functions;
 @use "./utils.scss" as utils;
 @use "sass:string";
+@use "sass:list";
 
 //Set text selection
 //Mixin by @icetee (PR #5) and edited by @dyzajash (PR #11)
@@ -29,7 +30,7 @@
 
 //Truncate the text
 //$overflow: clip, ellipsis, or a string
-@mixin truncate-text ($overflow: "ellipsis") {
+@mixin truncate ($overflow: "ellipsis") {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: $overflow;
@@ -71,4 +72,57 @@
 @mixin define-variable ($name, $value) {
     --#{variables.$variable-prefix}#{$name}: #{$value};
 }
+
+//Define a property
+@mixin define-property ($property, $value, $is-important: false) {
+    //Check for important property --> add !important flag
+    @if $is-important == true {
+        #{utils.unquote($property)}: utils.unquote($value) !important;
+    }
+    //If is not important --> add the property without the !important flag
+    @if $is-important == false {
+        #{utils.unquote($property)}: utils.unquote($value);
+    }
+}
+
+//Define utility rule
+@mixin define-utility ($prefix, $variants...) {
+    //Check for default style
+    @if list.index($variants, "base") {
+        @content("#{$prefix}", "");
+    }
+    //Check for hover 
+    @if list.index($variants, "hover") {
+        @content("hover\\:#{$prefix}", "\:hover");
+    }
+    //Check for responsive
+    @if list.index($variants, "responsive") {
+        @each $name,$size in variables.$breakpoints {
+            @media screen and (max-width: #{$size}) {
+                @content("#{$name}\\:#{$prefix}", "");
+            }
+        }
+    }
+}
+
+//Utility mixin
+@mixin utility ($prefix, $maps...) {
+    @each $map in $maps {
+        $name: utils.get($map, "name");
+        $properties: utils.get($map, "properties");
+        $variants: utils.get($map, "variants");
+        //Build for each variant provided
+        @include define-utility($prefix, $variants...) using ($p, $s) {
+            @each $key,$value in utils.get($map, "values") {
+                .#{$p}#{$name}-#{$key}#{$s} { 
+                    //NOTE: we will assign the same value to all properties provided
+                    @each $property in $properties {
+                        @include define-property($property, $value, false); 
+                    }
+                }
+            }
+        }
+    }
+}
+
 
