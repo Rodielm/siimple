@@ -240,6 +240,34 @@
     "values": helpers.$cursor
 ));
 
+//Position helpers
+@include mixins.utility(helpers.$prefix, (
+    "name": "position",
+    "variants": ("base" "responsive"),
+    "properties": ("position"),
+    "values": helpers.$position
+), (
+    "name": "top",
+    "variants": ("base" "responsive"),
+    "properties": ("top"),
+    "values": helpers.$position-arrange
+), (
+    "name": "bottom",
+    "variants": ("base" "responsive"),
+    "properties": ("bottom"),
+    "values": helpers.$position-arrange
+), (
+    "name": "left",
+    "variants": ("base" "responsive"),
+    "properties": ("left"),
+    "values": helpers.$position-arrange
+), (
+    "name": "right",
+    "variants": ("base" "responsive"),
+    "properties": ("right"),
+    "values": helpers.$position-arrange
+));
+
 //Other helpers
 .#{helpers.$prefix} {
     //Border helpers

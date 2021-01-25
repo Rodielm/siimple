@@ -68,7 +68,7 @@ $overflow: (
 //Sizing helpers variables
 //$sizing: true !default; //Add sizing helpers
 //$sizing-shortcuts: "width", "height", "max-width", "max-height" !default;
-$sizing : ("0": 0%, "25": 25%, "50": 50%, "75": 75%, "100": 100%) !default;
+$sizing : ("0": 0%, "25": 25%, "50": 50%, "75": 75%, "100": 100%, "screen": 100vh) !default;
 
 //Spacing variables
 //$spacing: true !default; //Add spacing helpers
@@ -116,5 +116,14 @@ $display: (
     "flex": "flex",
     "flex-inline": "inline-flex"
 ) !default;
+
+//Position helpers
+$position: (
+    "relative": "relative",
+    "absolute": "absolute",
+    "sticky": "sticky",
+    "fixed": "fixed"
+) !default;
+$position-arrange: ("0": 0%, "50": 50%, "100": 100%) !default;
 
 
