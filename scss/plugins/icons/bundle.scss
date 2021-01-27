@@ -1,13 +1,23 @@
 @use "./index.scss" as icons;
 @use "../../variables.scss" as variables;
 @use "../../utils.scss" as utils;
+@use "../../functions.scss" as functions;
+
+//Icons variables
+$font-name: "siimple-icons" !default;
+$font-folder: "./fonts" !default;
+$font-url-ttf:   $font-folder + "/" + $font-name + ".ttf" !default;
+$font-url-woff:  $font-folder + "/" + $font-name + ".woff" !default;
+$font-url-woff2: $font-folder + "/" + $font-name + ".woff2" !default;
+//$icons-font-size: variables.$font-size-base !default;
+$line-height: 1 !default;
 
 //Font face
 @font-face {
-    font-family: icons.$font-name;
-    src: url(icons.$font-url-ttf) format("truetype"),
-    url(icons.$font-url-woff) format("woff"),
-    url(icons.$font-url-woff2) format("woff2");
+    font-family: $font-name;
+    src: url($font-url-ttf) format("truetype"),
+    url($font-url-woff) format("woff"),
+    url($font-url-woff2) format("woff2");
     font-weight: normal;
     font-style: normal;
 }
@@ -16,9 +26,9 @@
 .#{variables.$prefix}icon {
     display: inline-flex; //inline-block;
     align-self: center;
-    font-family: icons.$font-name;
+    font-family: $font-name;
     //font-size: siimple.$icons-font-size;
-    line-height: icons.$line-height; //normal;
+    line-height: $line-height; //normal;
     font-weight: normal !important;
     font-style: normal;
     text-rendering: auto;
@@ -35,7 +45,7 @@
     //For each icon in the list
     @each $name in utils.keys(icons.$list) {
         &.is-#{$name}:before {
-            content: icons.use-icon($name);
+            content: functions.use-icon($name);
         }
     }
 }
