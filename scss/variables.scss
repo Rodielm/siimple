@@ -1,27 +1,50 @@
 @use "./utils.scss" as utils;
-@use "./theme.scss" as theme;
 
 //Default class prefix
 $prefix: "siimple-" !default;
 $variable-prefix: "siimple-" !default;
 $state-prefix: "is-" !default;
+$helper-prefix: "has-" !default;
 
 //Darker/lighter color amount
 $darker-amount: 20% !default;
 $lighter-amount: 20% !default;
 
+//Default colors
+$primary: #307ad5 !default; //#4e91e4 !default;
+$secondary: #38c7a3 !default; //#4ccdac !default;
+$success: #34c56e !default; //#4acf7f !default;
+$warning: #f0a905 !default; //#fbc850 !default;
+$error: #e23636 !default; //#ee675d !default;
+$light: #ebedef !default;
+$muted: #747c8b !default;
+$dark: #101623 !default;
+$white: #ffffff !default;
+$black: #000000 !default;
+
+//Code colors (only for internal use)
+$code-colors: (
+    "blue": #9be0fd,
+    "green": #b4f4a4,
+    "red": #ff9999,
+    "yellow": #ffe999,
+    "purple": #d199ff,
+    "black": #2d3648,
+    "white": #ffffff
+) !default;
+
 //Colors
 $colors: (
-    "primary": theme.$primary,
-    "secondary": theme.$secondary,
-    "success": theme.$success,
-    "warning": theme.$warning,
-    "error": theme.$error,
-    "light": utils.get(theme.$grays, "200"),
-    "dark": utils.get(theme.$grays, "900"),
-    "muted": utils.get(theme.$grays, "500"),
-    "white": theme.$white,
-    "black": theme.$black,
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "warning": $warning,
+    "error": $error,
+    "light": $light, //utils.get($grays, "200"),
+    "dark": $dark, //utils.get($grays, "900"),
+    "muted": $muted, //utils.get($grays, "500"),
+    "white": $white,
+    "black": $black,
     "transparent": transparent
 ) !default;
 
@@ -87,7 +110,7 @@ $body-font-weight: $font-weight-normal !default;
 $body-font-size: $font-size-base !default;
 $body-color: utils.get($colors, "dark") !default;
 $body-line-height: $line-height-base !default;
-$body-background: theme.$white !default;
+$body-background: $white !default;
 
 //Dorder values
 $border-radius-base: 0.5rem !default;
