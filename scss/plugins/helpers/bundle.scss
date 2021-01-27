@@ -4,7 +4,7 @@
 @use "sass:string";
 
 //Background helpers
-@include mixins.utility(helpers.$prefix, (
+@include mixins.utility(variables.$helper-prefix, (
     "name": "bg",
     "variants": ("base" "hover"),
     "properties": ("background-color"),
@@ -22,7 +22,7 @@
 ));
 
 //Border helpers
-@include mixins.utility(helpers.$prefix, (
+@include mixins.utility(variables.$helper-prefix, (
     "name": "border",
     "variants": ("base"),
     "properties": ("border-radius"),
@@ -30,7 +30,7 @@
 ));
 
 //Sizing helpers
-@include mixins.utility(helpers.$prefix, (
+@include mixins.utility(variables.$helper-prefix, (
     "name": "w",
     "variants": ("base"),
     "properties": ("width"),
@@ -63,7 +63,7 @@
 ));
 
 //Text helpers
-@include mixins.utility(helpers.$prefix, (
+@include mixins.utility(variables.$helper-prefix, (
     "name": "text",
     "variants": ("base"),
     "properties": ("font-weight"),
@@ -100,8 +100,16 @@
     "values": helpers.$text-align
 ));
 
+//Line height helpers
+@include mixins.utility(variables.$helper-prefix, (
+    "name": "lh",
+    "variants": ("base"),
+    "properties": ("line-height"),
+    "values": helpers.$line-height
+));
+
 //Flexbox helpers
-@include mixins.utility(helpers.$prefix, (
+@include mixins.utility(variables.$helper-prefix, (
     "name": "flex",
     "variants": ("base" "responsive"),
     "properties": ("flex-direction"),
@@ -129,7 +137,7 @@
 ));
 
 //Spacing helpers
-@include mixins.utility(helpers.$prefix, (
+@include mixins.utility(variables.$helper-prefix, (
     "name": "p",
     "variants": ("base" "responsive"),
     "properties": ("padding"),
@@ -207,7 +215,7 @@
 ));
 
 //Display helpers
-@include mixins.utility(helpers.$prefix, (
+@include mixins.utility(variables.$helper-prefix, (
     "name": "display",
     "variants": ("base" "responsive"),
     "properties": ("display"),
@@ -215,7 +223,7 @@
 ));
 
 //Overflow
-@include mixins.utility(helpers.$prefix, (
+@include mixins.utility(variables.$helper-prefix, (
     "name": "overflow",
     "varians": ("base"),
     "properties": ("overflow"),
@@ -233,7 +241,7 @@
 ));
 
 //Cursors helpers
-@include mixins.utility(helpers.$prefix, (
+@include mixins.utility(variables.$helper-prefix, (
     "name": "cursor",
     "variants": ("base" "hover"),
     "properties": ("cursor"),
@@ -241,7 +249,7 @@
 ));
 
 //Position helpers
-@include mixins.utility(helpers.$prefix, (
+@include mixins.utility(variables.$helper-prefix, (
     "name": "position",
     "variants": ("base" "responsive"),
     "properties": ("position"),
@@ -269,7 +277,7 @@
 ));
 
 //Other helpers
-.#{helpers.$prefix} {
+.#{variables.$helper-prefix} {
     //Border helpers
     //&rounded { border-radius: variables.$border-radius-base !important; }
     //&rounded-small { border-radius: variables.$border-radius-small !important; }

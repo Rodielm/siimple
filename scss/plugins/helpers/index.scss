@@ -108,6 +108,14 @@ $text-transform: (
     "lowercase": "lowercase"
 ) !default;
 
+//Line height helpers
+$line-height: (
+    "1": 1,
+    "base": variables.$line-height-base,
+    "sm": variables.$line-height-small,
+    "lg": variables.$line-height-large
+) !default;
+
 //Display helpers
 $display: (
     "hidden": "none",
