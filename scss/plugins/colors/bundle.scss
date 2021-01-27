@@ -1,0 +1,24 @@
+@use "./index.scss" as colors;
+@use "../../mixins.scss" as mixins;
+@use "../../variables.scss" as variables;
+
+//Define colors
+@include mixins.utility(variables.$helper-prefix, (
+    "name": "bg",
+    "variants": ("base" "hover"),
+    "properties": ("background-color"),
+    "values": colors.$list
+), (
+    "name": "text",
+    "variants": ("base" "hover"),
+    "properties": ("color"),
+    "values": colors.$list
+));
+
+//Register CSS color variables
+:root {
+    @each $key,$value in colors.$list {
+        @include mixins.define-variable($key, $value);
+    }
+}
+
