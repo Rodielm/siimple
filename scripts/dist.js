@@ -8,20 +8,15 @@ process.nextTick(function () {
     //utils.rmdir(paths.dist); //Clean dist folder
     let distFiles = []; //Output CDN files
     let package = utils.readJSON(paths.package); //Get package content
-    //Read all files to publish in the CDN and move to the CDN folder
-    package.packages.forEach(function (name) {
-        let packagePath = path.join(paths.packages.folder, name);
-        return utils.readJSON(path.join(packagePath, "package.json")).dist.forEach(function (file) {
-            let inputFilePath = path.join(packagePath, "dist", file);
-            let outputFilePath = path.join(paths.dist, file);
-            //First ensure the folder is created, and then copy the file
-            utils.mkdir(path.dirname(outputFilePath));
-            fs.copyFileSync(inputFilePath, outputFilePath);
-            //Save the file to the distFiles object and continue
-            distFiles.push({
-                "file": file,
-                "size": utils.fileSize(inputFilePath)
-            });
+    //Read the dist folder and get all *.min.css files
+    fs.readdirSync(paths.dist, "utf8").forEach(function (file) {
+        if (file.endsWith(".min.css") === false) {
+            return null; //Ignore this file
+        }
+        //Save the file to the distFiles object and continue
+        distFiles.push({
+            "file": file,
+            "size": utils.fileSize(path.join(paths.dist, file))
         });
     });
     //Build the index file
