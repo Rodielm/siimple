@@ -3,6 +3,7 @@
 
 $progress-height: 20px !default;
 $progress-striped: functions.get-color("white") !default;
+$progress-background: functions.get-color("coolgray-100") !default;
 
 //Progress animation
 @keyframes siimple-progress-animation {
@@ -23,7 +24,7 @@ $progress-striped: functions.get-color("white") !default;
     margin-top: 0px;
     margin-bottom: variables.$margin-bottom;
     border-radius: variables.$border-radius-base;
-    background-color: functions.get-color("light"); 
+    background-color: $progress-background; 
     overflow: hidden;
     //Disable default appearance in webkit and gecko
     -webkit-appearance: none;
@@ -40,9 +41,7 @@ $progress-striped: functions.get-color("white") !default;
         font-size: 12px;
     }
     //Striped progress bar
-    &--striped > span::after, 
-    &--striped-slow > span::after, 
-    &--striped-fast > span::after  {
+    &.is-striped > span::after  {
         content: "";
         position: absolute;
         top: 0px;
@@ -60,24 +59,24 @@ $progress-striped: functions.get-color("white") !default;
             transparent 75%, 
             transparent);
     }
-    &--striped > span::after {
+    &.is-striped > span::after {
         animation: siimple-progress-animation 2.5s linear infinite;
     }
-    &--striped-fast > span::after {
+    &.is-fast > span::after {
         animation: siimple-progress-animation 1s linear infinite;
     }
-    &--striped-slow > span::after {
+    &.is-slow > span::after {
         animation: siimple-progress-animation 4s linear infinite;
     }
     //Colored progress bar
     @each $color in variables.$colors-modifiers {
-        &#{&}--#{$color} > span {
+        &.is-#{$color} > span {
             background-color: functions.get-color($color);
             color: functions.get-color-invert($color);
         }
     }
     //Small progress bar
-    &--small {
+    &.is-small {
         height: 10px;
         //Progress bar style: remove text displayed
         & > span {
