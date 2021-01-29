@@ -2,6 +2,7 @@
 @use "../functions.scss" as functions;
 
 $modal-padding: 15px !default;
+$modal-background: rgba(functions.get-color-darker("dark"), 0.4) !default;
 
 //Modal class
 .#{variables.$prefix}modal {
@@ -17,7 +18,7 @@ $modal-padding: 15px !default;
     overflow-y: hidden;
     justify-content: center;
     align-items: center;
-    background-color: rgba(functions.get-color-darker("dark"), 0.4);
+    background-color: $modal-background;
     //Modal content
     &-content {
         display: block;
@@ -51,6 +52,7 @@ $modal-padding: 15px !default;
     //Modal header
     &-header {
         height: 34px;
+        background-color: functions.get-color("white");
         //border-bottom: 1px solid functions.get-color("light");
         //Modal header title
         &-title {
@@ -107,13 +109,13 @@ $modal-padding: 15px !default;
         background-color: functions.get-color("white");
     }
     //Modal sizes
-    &--small &-content {
+    &.is-small &-content {
         max-width: functions.get-content-size("small");
     }
-    &--medium &-content {
+    &.is-medium &-content {
         max-width: functions.get-content-size("medium");
     }
-    &--large &-content {
+    &.is-large &-content {
         max-width: functions.get-content-size("large");
     }
 }
