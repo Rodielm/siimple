@@ -8,6 +8,7 @@ $column-padding: 10px !default;
 .#{variables.$prefix}column {
     flex: 1; //Allow flex grow
     padding: $column-padding;
+    min-height: 0;
     //Grid default column sizes
     @each $name, $width in variables.$columns {
         &.is-#{$name} {
