@@ -1,7 +1,9 @@
 @use "../variables.scss" as variables;
 @use "../functions.scss" as functions;
 
-$card-padding: 32px !default;
+$card-padding: 16px !default;
+$card-padding-small: 8px !default;
+$card-padding-large: 32px !default;
 
 //Card element class
 .#{variables.$prefix}card {
@@ -36,12 +38,13 @@ $card-padding: 32px !default;
     //Card content
     &-content {
         //display: block;
-        padding-top: $card-padding;
-        padding-left: $card-padding;
-        padding-right: $card-padding;
-        //Last card content child
-        &:last-child {
-            padding-bottom: $card-padding;
+        //padding-top: $card-padding;
+        //padding-left: $card-padding;
+        //padding-right: $card-padding;
+        padding: $card-padding;
+        //Not last card content child
+        &:not(:last-child) {
+            padding-bottom: 0px !important;
         }
     }
     //Card link 
@@ -63,11 +66,12 @@ $card-padding: 32px !default;
             height: 11px;
             border-top: 4px solid functions.get-color("dark"); 
             border-right: 4px solid functions.get-color("dark");
-            transform: rotate(45deg);
+            //transform: rotate(45deg) translate(-100%, 50%);
+            transform: translateX(-2px) translateY(-50%) rotate(45deg);
             border-radius: 2px;
             position: absolute;
-            top: calc(#{$card-padding} + 4px);
-            right: calc(#{$card-padding} + 2px);
+            top: 50%;
+            right: $card-padding;
             transition: right 0.3s;
         }
     }
@@ -77,8 +81,8 @@ $card-padding: 32px !default;
         transition: opacity 0.3s;
         opacity: 1.0;
     }
-    &:hover &-link::before,
-    &-link:hover &-link::before {
+    &:hover &-link::before {
+    //&-link:hover &-link::before {
         right: calc(#{$card-padding} - 3px);
     }
     //Light card --> default style
@@ -104,6 +108,23 @@ $card-padding: 32px !default;
     &.is-dark &-link::before {
         border-top-color: functions.get-color("white");
         border-right-color: functions.get-color("white");
+    }
+    ////Small sized card --> change card padding
+    //&.is-small &-content,
+    //&.is-large &-link {
+    //    padding: $card-padding-small;
+    //}
+    //Large sized card --> change card padding
+    &.is-large &-content,
+    &.is-large &-link {
+        padding: $card-padding-large;
+    }
+    &.is-large &-link::before {
+        right: $card-padding-large;
+    }
+    &.is-large:hover &-link::before {
+    //&.is-large &-link:hover &-link::before {
+        right: calc(#{$card-padding-large} - 5px) !important;
     }
 }
 
