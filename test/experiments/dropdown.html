@@ -2,14 +2,12 @@
 <link rel="stylesheet" href="../../dist/siimple.css">
 <style>body { margin: 50px; }</style>
 
-<h2>Using dropdowns with buttons</h2>
-<div class="siimple-grid-row">
-    <div class="siimple-grid-col siimple-grid-col--6">
-        <div class="siimple-dropdown siimple-dropdown--visible">
-            <div class="siimple-btn siimple-btn--primary siimple-dropdown-toggle" style="width:170px;">
-                Dropdown button
-            </div>
-            <div class="siimple-dropdown-content" style="width:200px;">
+<h2 class="siimple-title is-2">Using dropdowns with buttons</h2>
+<div class="siimple-row">
+    <div class="siimple-column">
+        <div class="siimple-btn is-primary with-dropdown">
+            Dropdown button
+            <div class="siimple-dropdown has-shadow is-left" style="width:220px;">
                 <div class="siimple-dropdown-item">Item 1</div>
                 <div class="siimple-dropdown-item">Item 2</div>
                 <div class="siimple-dropdown-separator"></div>
@@ -17,12 +15,21 @@
             </div>
         </div>
     </div>
-    <div class="siimple-grid-col siimple-grid-col--6">
-        <div class="siimple-dropdown siimple-dropdown--dark siimple-dropdown--visible">
-            <div class="siimple-btn siimple-btn--primary siimple-dropdown-toggle" style="width:170px;">
-                Dropdown button
+    <div class="siimple-column" align="center">
+        <div class="siimple-btn is-primary with-dropdown">
+            Dropdown button
+            <div class="siimple-dropdown is-light is-center" style="width:220px;">
+                <div class="siimple-dropdown-item">Item 1</div>
+                <div class="siimple-dropdown-item">Item 2</div>
+                <div class="siimple-dropdown-separator"></div>
+                <div class="siimple-dropdown-item">Item 3</div>
             </div>
-            <div class="siimple-dropdown-content" style="width:200px;">
+        </div>
+    </div>
+    <div class="siimple-column" align="right">
+        <div class="siimple-btn is-primary with-dropdown">
+            Dropdown button
+            <div class="siimple-dropdown is-dark is-visible is-right" style="width:200px;">
                 <div class="siimple-dropdown-item">Item 1</div>
                 <div class="siimple-dropdown-item">Item 2</div>
                 <div class="siimple-dropdown-separator"></div>
