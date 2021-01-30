@@ -49,7 +49,8 @@
 
 //Fluid content size
 @mixin content-fluid () {
-    width: calc(100% - #{2 * variables.$content-gap});
+    width: 100%;
+    //width: calc(100% - #{2 * variables.$content-gap});
     padding-left: variables.$content-gap;
     padding-right: variables.$content-gap;
 }
@@ -62,7 +63,7 @@
     }
     //Apply the provided size only in screen widts > $size
     @media screen and (min-width: $size) {
-        width: $size - 2 * variables.$content-gap;
+        //width: $size - 2 * variables.$content-gap;
         padding-left: calc(50% - #{$size - 2 * variables.$content-gap} / 2);
         padding-right: calc(50% - #{$size - 2 * variables.$content-gap} / 2);
     }
