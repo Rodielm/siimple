@@ -1,13 +1,68 @@
+@use "./variables.scss" as variables;
+@use "./functions.scss" as functions;
+@use "./mixins.scss" as mixins;
+@use "./utils.scss" as utils;
+
 //1: import base styles (variables and html styles)
-@use "./imports/base.scss";
+@use "./root.scss";
+//@use "./reboot.scss";
 
-//2: import modules
-@use "./imports/elements.scss";
-@use "./imports/form.scss";
-@use "./imports/grid.scss";
-@use "./imports/layout.scss";
-@use "./imports/typography.scss";
+//2: import elements
+@use "./modules/alert.scss";
+@use "./modules/breadcrumb.scss";
+@use "./modules/btn.scss";
+@use "./modules/card.scss";
+@use "./modules/list.scss";
+@use "./modules/menu.scss";
+@use "./modules/rule.scss";
+@use "./modules/spinner.scss";
+@use "./modules/table.scss";
+@use "./modules/tabs.scss";
+@use "./modules/tag.scss";
+@use "./modules/tip.scss";
 
-//3: import experiments
-@use "./imports/experiments.scss";
+//3: import form modules
+@use "./modules/checkbox.scss";
+@use "./modules/field.scss";
+@use "./modules/input.scss";
+@use "./modules/label.scss";
+@use "./modules/radio.scss";
+@use "./modules/select.scss";
+@use "./modules/switch.scss";
+@use "./modules/textarea.scss";
+
+//4: import grid modules
+@use "./modules/row.scss";
+@use "./modules/column.scss";
+
+//5: import layout modules
+@use "./modules/content.scss";
+@use "./modules/footer.scss";
+@use "./modules/jumbotron.scss";
+@use "./modules/navbar.scss";
+
+//6: define layout elements size modifiers
+@each $size in utils.keys(variables.$content-sizes) {
+    .#{variables.$prefix}content.is-#{$size},
+    .#{variables.$prefix}footer.is-#{$size},
+    .#{variables.$prefix}jumbotron.is-#{$size},
+    .#{variables.$prefix}navbar.is-#{$size} {
+        @include mixins.content-size($size);
+    }
+}
+
+//7: import typography modules
+@use "./modules/blockquote.scss";
+@use "./modules/code.scss";
+@use "./modules/title.scss";
+@use "./modules/text.scss";
+
+//8: import experiments
+@use "./experiments/dropdown.scss";
+@use "./experiments/media.scss";
+@use "./experiments/modal.scss";
+@use "./experiments/panel.scss";
+@use "./experiments/progress.scss";
+//@use "./experiments/steps.scss";
+@use "./experiments/tooltip.scss";
 
