@@ -30,7 +30,7 @@ $breadcrumb-item-padding-right: 25px;
         //display: block;
         //float: left;
         position: relative;
-        height: $breadcrumb-item-height;
+        //height: $breadcrumb-item-height;
         font-size: $breadcrumb-item-font-size;
         line-height: $breadcrumb-item-height;
         padding-left: $breadcrumb-item-padding-left;
@@ -53,12 +53,12 @@ $breadcrumb-item-padding-right: 25px;
         &:not(:last-child)::after {
             display: block;
             content: "";
-            width: 6px;
-            height: 6px;
+            width: 8px;
+            height: 8px;
             border-top: 2px solid functions.get-color-lighter("dark");
             border-right: 2px solid functions.get-color-lighter("dark");
             position: absolute;
-            top: 16px;
+            top: 17px;
             right: 3px;
             transform: rotate(45deg);
         }
