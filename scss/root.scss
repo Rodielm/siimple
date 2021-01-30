@@ -1,5 +1,5 @@
-@use "../variables.scss" as variables;
-@use "../mixins.scss" as mixins;
+@use "./variables.scss" as variables;
+@use "./mixins.scss" as mixins;
 
 //Mixin to define a css variable from a list of variables
 @mixin variables-from-list ($name, $list) {
