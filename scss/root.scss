@@ -30,17 +30,4 @@
     @include mixins.define-variable("font-mono", variables.$font-family-mono);
 }
 
-//Default html style
-html {
-    background-color: variables.$body-background;
-    color: variables.$body-color; 
-    font-family: variables.$body-font-family;
-    font-weight: variables.$body-font-weight;
-    font-size: variables.$body-font-size;
-    line-height: variables.$body-line-height;
-    font-smooth: antialiased;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-}
 
