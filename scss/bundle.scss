@@ -41,7 +41,22 @@
 @use "./modules/jumbotron.scss";
 @use "./modules/navbar.scss";
 
-//6: define layout elements size modifiers
+//6: import typography modules
+@use "./modules/blockquote.scss";
+@use "./modules/code.scss";
+@use "./modules/title.scss";
+@use "./modules/text.scss";
+
+//7: import experiments
+@use "./experiments/dropdown.scss";
+@use "./experiments/media.scss";
+@use "./experiments/modal.scss";
+@use "./experiments/panel.scss";
+@use "./experiments/progress.scss";
+//@use "./experiments/steps.scss";
+@use "./experiments/tooltip.scss";
+
+//8: define layout elements size modifiers
 @each $size in utils.keys(variables.$content-sizes) {
     .#{variables.$prefix}content.is-#{$size},
     .#{variables.$prefix}footer.is-#{$size},
@@ -51,18 +66,4 @@
     }
 }
 
-//7: import typography modules
-@use "./modules/blockquote.scss";
-@use "./modules/code.scss";
-@use "./modules/title.scss";
-@use "./modules/text.scss";
-
-//8: import experiments
-@use "./experiments/dropdown.scss";
-@use "./experiments/media.scss";
-@use "./experiments/modal.scss";
-@use "./experiments/panel.scss";
-@use "./experiments/progress.scss";
-//@use "./experiments/steps.scss";
-@use "./experiments/tooltip.scss";
 
