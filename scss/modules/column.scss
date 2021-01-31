@@ -12,24 +12,25 @@ $column-padding: 10px !default;
     //Grid default column sizes
     @each $name, $width in variables.$columns {
         &.is-#{$name} {
-            //width: #{$grid-width};
-            width: calc(#{$width} - 2 * #{$column-padding});
+            //width: calc(#{$width} - 2 * #{$column-padding});
+            width: #{$width};
             flex: none; //Disable flex grow
         }
     }
 }
 //Grid columns for each breakpoint
 @each $breakpoint, $screen in variables.$breakpoints {
-    @media (max-width: $screen) {
+    //@media (max-width: $screen) {
+    @media (min-width: $screen) {
         @each $name, $width in variables.$columns {
             .#{variables.$prefix}column.#{$breakpoint}\:is-#{$name} {
-                //width: #{$grid-width};
-                width: calc(#{$width} - 2 * #{$column-padding});
+                //width: calc(#{$width} - 2 * #{$column-padding});
+                width: #{$width};
                 flex: none; //Disable flex grow
             }
         }
         //Hide grid column
-        .#{variables.$prefix}column.#{$breakpoint}\:is-hide {
+        .#{variables.$prefix}column.#{$breakpoint}\:is-hidden {
             display: none !important;
         }
     }
