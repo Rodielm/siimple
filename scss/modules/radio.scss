@@ -23,8 +23,8 @@ $radio-circle: 4px !default;
     //Radio outer circle
     &:before {
         display: block;
-        width: calc(#{$radio-width} - 2 * #{$radio-border});
-        height: calc(#{$radio-height} - 2 * #{$radio-border});
+        width: $radio-width; //calc(#{$radio-width} - 2 * #{$radio-border});
+        height: $radio-height; //calc(#{$radio-height} - 2 * #{$radio-border});
         content: "";
         position: absolute;
         top: 0px;
