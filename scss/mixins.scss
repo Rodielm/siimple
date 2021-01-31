@@ -106,7 +106,8 @@
     //Check for responsive
     @if list.index($variants, "responsive") {
         @each $name,$size in variables.$breakpoints {
-            @media screen and (max-width: #{$size}) {
+            //@media screen and (max-width: #{$size}) {
+            @media screen and (min-width: #{$size}) {
                 @content("#{$name}\\:#{$prefix}", "");
             }
         }
