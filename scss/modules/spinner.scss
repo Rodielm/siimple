@@ -31,8 +31,8 @@ $spinner-border-color: functions.get-color("white") !default;
         position: absolute;
         top: 0px;
         left: 0px;
-        width: $spinner-width - 2 * $spinner-border-width;
-        height: $spinner-height - 2 * $spinner-border-width;
+        width: $spinner-width; // - 2 * $spinner-border-width;
+        height: $spinner-height; // - 2 * $spinner-border-width;
         border: $spinner-border-width solid transparent;
         border-radius: 100%;
     }
