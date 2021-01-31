@@ -2,11 +2,12 @@
 
 //Reset box sizing of all elements
 *, *:before, *:after {
-    box-sizing: border-box;
+    box-sizing: inherit;
 }
 
 //Set default html style
 html {
+    box-sizing: border-box;
     scroll-behavior: smooth;
 }
 
