@@ -47,6 +47,13 @@
     );
 }
 
+//Shadow mixin
+@mixin shadow() {
+    $shadow-color: functions.get-color-darker("dark", 2%);
+    //box-shadow: 0 0 1rem 0.5rem rgba($shadow-color, 0.05);
+    box-shadow: 0 0.5em 1em -0.125em rgba($shadow-color,0.15), 0 0 0 1px rgba($shadow-color,0.02);
+}
+
 //Fluid content size
 @mixin content-fluid () {
     width: 100%;
