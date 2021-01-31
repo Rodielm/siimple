@@ -19,7 +19,7 @@ $alert-title-margin-bottom: 5px !default;
     position: relative;
     border-radius: variables.$border-radius-base;
     //Default background and text color
-    background-color: functions.get-color("white");
+    background-color: functions.get-color-lighter("light", 2%);
     //color: siimple.color("dark");
     padding-top: $alert-padding-top;
     padding-right: $alert-padding-right;
@@ -29,6 +29,7 @@ $alert-title-margin-bottom: 5px !default;
     margin-bottom: variables.$margin-bottom;
     //Alert title
     &-title {
+        color: currentColor;
         font-size: $alert-title-font-size;
         font-weight: bold;
         margin-bottom: $alert-title-margin-bottom;
@@ -53,7 +54,8 @@ $alert-title-margin-bottom: 5px !default;
             content: "";
             width: 16px;
             height: 3px;
-            background-color: functions.get-color("dark");
+            //background-color: functions.get-color("dark");
+            background-color: currentColor;
             position: absolute;
             border-radius: 1px;
             top: 6px;
@@ -65,17 +67,23 @@ $alert-title-margin-bottom: 5px !default;
             transform: rotate(-45deg);
         }
     }
+    //Alert link
+    &-link {
+        color: currentColor !important;
+        font-weight: variables.$font-weight-bold;
+        text-decoration: underline;
+    }
     //Alert colors 
     @each $color in variables.$colors-modifiers {
         &.is-#{$color} {
-            background-color: functions.get-color-lighter($color, 30%);
+            background-color: functions.get-color-lighter($color, 40%);
             color: functions.get-color-darker($color);
         }
         //Close icon color
-        &.is-#{$color} &-close::before,
-        &.is-#{$color} &-close::after {
-            background-color: functions.get-color-darker($color);
-        }
+        //&.is-#{$color} &-close::before,
+        //&.is-#{$color} &-close::after {
+        //    background-color: functions.get-color-darker($color);
+        //}
     }
 }
 
