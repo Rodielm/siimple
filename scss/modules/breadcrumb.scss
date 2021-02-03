@@ -25,6 +25,7 @@ $breadcrumb-item-padding-right: 25px;
     //border: 0px;
     overflow: hidden;
     overflow-x: auto;
+    white-space: nowrap !important;
     //Breadcrumb item
     &-item {
         //display: block;
