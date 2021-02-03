@@ -6,7 +6,7 @@ $code-font-size: 0.8rem !default;
 $code-font-weight: variables.$font-weight-bold !default;
 $code-font-family: variables.$font-family-mono !default;
 //$code-line-height: 21px !default;
-$code-color: functions.get-color("primary") !default;
+$code-color: functions.get-color-darker("primary", 5%) !default;
 $code-padding-left: 3px !default;
 $code-padding-right: 3px !default;
 
@@ -39,7 +39,8 @@ $codeblock-background: functions.get-color("light") !default; //siimple.color("d
 .#{variables.$prefix}codeblock {
     display: block;
     overflow-x: auto;
-    width: calc(100% - #{$codeblock-padding-left} - #{$codeblock-padding-right});
+    //width: calc(100% - #{$codeblock-padding-left} - #{$codeblock-padding-right});
+    width: 100%;
     color: $codeblock-color;
     //line-height: $pre-line-height;
     font-size: $codeblock-font-size;
