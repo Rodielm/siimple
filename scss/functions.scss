@@ -60,6 +60,16 @@
     @return utils.get(variables.$breakpoints, $index);
 }
 
+//Get breakpoint min value
+@function get-breakpoint-min ($index) {
+    @return utils.get(get-breakpoint($index), "min");
+}
+
+//Get breakpoint max value
+@function get-breakpoint-max ($index) {
+    @return utils.get(get-breakpoint($index), "max");
+}
+
 //Get a content size by name
 @function get-content-size ($index) {
     @return utils.get(variables.$content-sizes, $index);
