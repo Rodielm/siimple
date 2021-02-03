@@ -32,7 +32,7 @@
 //Sizing helpers
 @include mixins.utility(variables.$helper-prefix, (
     "name": "w",
-    "variants": ("base"),
+    "variants": ("base" "responsive"),
     "properties": ("width"),
     "values": helpers.$sizing
 ), (
@@ -47,7 +47,7 @@
     "values": helpers.$sizing
 ), (
     "name": "h",
-    "variants": ("base"),
+    "variants": ("base" "responsive"),
     "properties": ("height"),
     "values": helpers.$sizing
 ), (
@@ -141,76 +141,91 @@
     "name": "p",
     "variants": ("base" "responsive"),
     "properties": ("padding"),
+    "important": true,
     "values": helpers.$spacing
 ), (
     "name": "px",
     "variants": ("base" "responsive"),
     "properties": ("padding-left" "padding-right"),
+    "important": true,
     "values": helpers.$spacing
 ), (
     "name": "py",
     "variants": ("base" "responsive"),
     "properties": ("padding-top" "padding-bottom"),
+    "important": true,
     "values": helpers.$spacing
 ), (
     "name": "pt",
     "variants": ("base" "responsive"),
     "properties": ("padding-top"),
+    "important": true,
     "values": helpers.$spacing
 ), (
     "name": "pb",
     "variants": ("base" "responsive"),
     "properties": ("padding-bottom"),
+    "important": true,
     "values": helpers.$spacing
 ), (
     "name": "pl",
     "variants": ("base" "responsive"),
     "properties": ("padding-left"),
+    "important": true,
     "values": helpers.$spacing
 ), (
     "name": "pr",
     "variants": ("base" "responsive"),
     "properties": ("padding-right"),
+    "important": true,
     "values": helpers.$spacing
 ), (
     "name": "m",
     "variants": ("base" "responsive"),
     "properties": ("margin"),
+    "important": true,
     "values": helpers.$spacing
 ), (
     "name": "mx",
     "variants": ("base" "responsive"),
     "properties": ("margin-left" "margin-right"),
+    "important": true,
     "values": helpers.$spacing
 ), (
     "name": "my",
     "variants": ("base" "responsive"),
     "properties": ("margin-top" "margin-bottom"),
+    "important": true,
     "values": helpers.$spacing
 ), (
     "name": "mt",
     "variants": ("base" "responsive"),
     "properties": ("margin-top"),
+    "important": true,
     "values": helpers.$spacing
 ), (
     "name": "mb",
     "variants": ("base" "responsive"),
     "properties": ("margin-bottom"),
+    "important": true,
     "values": helpers.$spacing
 ), (
     "name": "ml",
     "variants": ("base" "responsive"),
     "properties": ("margin-left"),
+    "important": true,
     "values": helpers.$spacing
 ), (
     "name": "mr",
     "variants": ("base" "responsive"),
     "properties": ("margin-right"),
+    "important": true,
     "values": helpers.$spacing
 ), (
     "name": "mx",
     "variants": ("base" "responsive"),
     "properties": ("margin-left" "margin-right"),
+    "important": true,
     "values": helpers.$spacing-auto
 ));
 
