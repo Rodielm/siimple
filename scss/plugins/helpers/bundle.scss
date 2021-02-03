@@ -108,6 +108,14 @@
     "values": helpers.$line-height
 ));
 
+//Vertical align helpers
+@include mixins.utility(variables.$helper-prefix, (
+    "name": "align",
+    "variants": ("base"),
+    "properties": ("vertical-align"),
+    "values": helpers.$vertical-align
+));
+
 //Flexbox helpers
 @include mixins.utility(variables.$helper-prefix, (
     "name": "flex",

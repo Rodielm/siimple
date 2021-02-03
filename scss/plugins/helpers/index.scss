@@ -116,6 +116,16 @@ $line-height: (
     "lg": variables.$line-height-large
 ) !default;
 
+//Vertical align
+$vertical-align: (
+    "baseline": "baseline",
+    "top": "top",
+    "middle": "middle",
+    "bottom": "bottom",
+    "text-top": "text-top",
+    "text-bottom": "text-bottom"
+) !default;
+
 //Display helpers
 $display: (
     "hidden": "none",
