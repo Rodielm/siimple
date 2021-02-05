@@ -21,7 +21,8 @@ $background-attachment: ("fixed": fixed) !default;
 $border-radius: (
     "rounded": variables.$border-radius-base,
     "rounded-small": variables.$border-radius-small,
-    "rounded-large": variables.$border-radius-large
+    "rounded-large": variables.$border-radius-large,
+    "rounded-50": 50%
 ) !default;
 
 //Cursor helpers
@@ -98,7 +99,12 @@ $text-weight: (
     "normal": variables.$font-weight-normal,
     "bold": variables.$font-weight-bold
 ) !default;
-$text-size: ("small": variables.$font-size-small, "large": variables.$font-size-large) !default;
+$text-size: (
+    "small": variables.$font-size-small, 
+    "base": variables.$font-size-base,
+    "large": variables.$font-size-large,
+    "huge": variables.$font-size-huge
+) !default;
 $text-color: variables.$colors !default;
 $text-overflow: ("wrap": "normal", "nowrap": "nowrap") !default;
 $text-style: ("italic": "italic") !default;
@@ -112,8 +118,8 @@ $text-transform: (
 $line-height: (
     "1": 1,
     "base": variables.$line-height-base,
-    "sm": variables.$line-height-small,
-    "lg": variables.$line-height-large
+    "small": variables.$line-height-small,
+    "large": variables.$line-height-large
 ) !default;
 
 //Vertical align
