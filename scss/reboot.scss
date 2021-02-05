@@ -41,6 +41,11 @@ p {
     margin-bottom: 1rem; //variables.$margin-bottom;
 }
 
+//Fix bold weight (in firefox)
+strong, b {
+    font-weight: variables.$font-weight-bold;
+}
+
 //Make images and videos responsive by default
 img, video {
     max-width: 100%;
