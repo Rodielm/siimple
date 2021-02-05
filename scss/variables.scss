@@ -62,13 +62,13 @@ $content-sizes: (
     "xlarge": 1280px
 ) !default;
 
-//Breakpoints variables
-$breakpoints: (
-    "sm": 544px,
-    "md": 768px,
-    "lg": 1024px,
-    "xl": 1280px
-) !default;
+////Breakpoints variables
+//$breakpoints: (
+//    "sm": 544px,
+//    "md": 768px,
+//    "lg": 1024px,
+//    "xl": 1280px
+//) !default;
 
 //Default font variables
 //WARNING: we are not importing fonts automatically --> use a <link> tag instead
@@ -88,6 +88,7 @@ $font-weight-bold: 700 !default;
 $font-size-base: 16px !default;
 $font-size-small: 0.875rem !default; //Small text size
 $font-size-large: 1.25rem !default; //Large text size
+$font-size-huge: 2rem !default; //Huge text size
 
 //List of available font sizes
 $font-sizes: (
@@ -122,8 +123,17 @@ $margin-top: 0px !default;
 $margin-bottom: 1rem !default;
 
 //Screen sizes
-$mobile: 600px !default;
-$desktop: 1024px !default;
+$tablet: 600px !default;
+$desktop: 1200px !default;
+$fullhd: 1800px !default;
+
+//Breakpoints variables
+$breakpoints: (
+    "mobile": ("min": 0px, "max": $tablet - 1px),
+    "tablet": ("min": $tablet, "max": null),
+    "desktop": ("min": $desktop, "max": null),
+    "fullhd": ("min": $fullhd, "max": null)
+) !default;
 
 //Default columns values
 //$column-count: 12 !default;

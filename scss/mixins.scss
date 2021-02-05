@@ -76,6 +76,26 @@
     }
 }
 
+//Define breakpoint
+@mixin breakpoint ($name, $mode: "only") {
+    $min: functions.get-breakpoint-min($name); //Get breakpoint min value
+    $max: functions.get-breakpoint-max($name); //Get breakpoint max value
+    //Check for min and max values
+    @if $min != null and $max != null {
+        @media screen and (min-width: #{$min}) and (max-width: #{$max}) {
+            @content;
+        }
+    }
+    //Check for only min value provided --> use min-width
+    @else if $max == null {
+        @media screen and (min-width: #{$min}) { @content; }
+    }
+    //Check for only max value provided --> use max-width
+    @else if $min == null {
+        @media screen and (max-width: #{$max}) { @content; }
+    }
+}
+
 //Define a global css variable
 @mixin define-variable ($name, $value) {
     --#{variables.$variable-prefix}#{$name}: #{$value};
@@ -105,9 +125,8 @@
     }
     //Check for responsive
     @if list.index($variants, "responsive") {
-        @each $name,$size in variables.$breakpoints {
-            //@media screen and (max-width: #{$size}) {
-            @media screen and (min-width: #{$size}) {
+        @each $name in utils.keys(variables.$breakpoints) {
+            @include breakpoint($name, "only") {
                 @content("#{$name}\\:#{$prefix}", "");
             }
         }
@@ -120,18 +139,18 @@
         $name: utils.get($map, "name");
         $properties: utils.get($map, "properties");
         $variants: utils.get($map, "variants");
+        $is-important: utils.get($map, "important") == true;
         //Build for each variant provided
         @include define-utility($prefix, $variants...) using ($p, $s) {
             @each $key,$value in utils.get($map, "values") {
                 .#{$p}#{$name}-#{$key}#{$s} { 
                     //NOTE: we will assign the same value to all properties provided
                     @each $property in $properties {
-                        @include define-property($property, $value, false); 
+                        @include define-property($property, $value, $is-important); 
                     }
                 }
             }
         }
     }
 }
-
 

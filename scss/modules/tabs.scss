@@ -61,7 +61,8 @@ $tabs-item-margin-right: 10px !default;
         }
     }
     //Tab style for mobile devices
-    @media screen and (max-width: variables.$mobile) {
+    //@media screen and (max-width: variables.$mobile) {
+    @include mixins.breakpoint("mobile") {
         flex-direction: column;
     }
 }

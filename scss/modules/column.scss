@@ -1,5 +1,7 @@
 @use "../variables.scss" as variables;
 @use "../functions.scss" as functions;
+@use "../mixins.scss" as mixins;
+@use "../utils.scss" as utils;
 
 $column-padding: 10px !default;
 //$column-sizes: siimple.$columns;
@@ -12,19 +14,16 @@ $column-padding: 10px !default;
     //Grid default column sizes
     @each $name, $width in variables.$columns {
         &.is-#{$name} {
-            //width: calc(#{$width} - 2 * #{$column-padding});
             width: #{$width};
             flex: none; //Disable flex grow
         }
     }
 }
 //Grid columns for each breakpoint
-@each $breakpoint, $screen in variables.$breakpoints {
-    //@media (max-width: $screen) {
-    @media (min-width: $screen) {
+@each $breakpoint in utils.keys(variables.$breakpoints) {
+    @include mixins.breakpoint($breakpoint) {
         @each $name, $width in variables.$columns {
             .#{variables.$prefix}column.#{$breakpoint}\:is-#{$name} {
-                //width: calc(#{$width} - 2 * #{$column-padding});
                 width: #{$width};
                 flex: none; //Disable flex grow
             }
