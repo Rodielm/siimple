@@ -47,16 +47,7 @@
 @use "./modules/title.scss";
 @use "./modules/text.scss";
 
-//7: import experiments
-@use "./experiments/dropdown.scss";
-@use "./experiments/media.scss";
-@use "./experiments/modal.scss";
-@use "./experiments/panel.scss";
-@use "./experiments/progress.scss";
-//@use "./experiments/steps.scss";
-@use "./experiments/tooltip.scss";
-
-//8: define layout elements size modifiers
+//7: define layout elements size modifiers
 @each $size in utils.keys(variables.$content-sizes) {
     .#{variables.$prefix}content.is-#{$size},
     .#{variables.$prefix}footer.is-#{$size},
