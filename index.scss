@@ -18,6 +18,7 @@
 @forward "./scss/plugins/colors/index.scss" as colors-*;
 @forward "./scss/plugins/icons/index.scss" as icons-*;
 @forward "./scss/plugins/helpers/index.scss" as helpers-*;
+//@forward "./scss/plugins/experiments/index.scss" as experiments-*;
 
 //Forward base styles
 //@forward "./scss/root.scss";
@@ -28,4 +29,5 @@
 @use "./scss/plugins/colors/bundle.scss" as bundle-colors;
 @use "./scss/plugins/icons/bundle.scss" as bundle-icons;
 @use "./scss/plugins/helpers/bundle.scss" as bundle-helpers;
+@use "./scss/plugins/experiments/bundle.scss" as bundle-experiments;
 
