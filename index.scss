@@ -26,8 +26,8 @@
 @forward "./scss/bundle.scss";
 
 //Forward plugins bundles
-@use "./scss/plugins/colors/bundle.scss" as bundle-colors;
+@use "./scss/plugins/experiments/bundle.scss" as bundle-experiments;
 @use "./scss/plugins/icons/bundle.scss" as bundle-icons;
 @use "./scss/plugins/helpers/bundle.scss" as bundle-helpers;
-@use "./scss/plugins/experiments/bundle.scss" as bundle-experiments;
+@use "./scss/plugins/colors/bundle.scss" as bundle-colors;
 
