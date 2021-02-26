@@ -3,6 +3,7 @@
 @use "../mixins.scss" as mixins;
 
 $btn-font-size: variables.$font-size-base !default;
+$btn-font-family: inherit !default; 
 $btn-line-height: variables.$line-height-base !default;
 
 $btn-padding-left: 15px !default;
@@ -21,6 +22,7 @@ $btn-padding-bottom: 8px !default;
     text-align: center;
     text-decoration: none;
     font-size: $btn-font-size;
+    font-family: $btn-font-family;
     //font-weight: bold;
     padding-left: $btn-padding-left;
     padding-right: $btn-padding-right;
