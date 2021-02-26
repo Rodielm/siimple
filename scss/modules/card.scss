@@ -1,8 +1,8 @@
 @use "../variables.scss" as variables;
 @use "../functions.scss" as functions;
 
-$card-padding: 16px !default;
-$card-padding-small: 8px !default;
+$card-padding: 24px !default;
+$card-padding-small: 16px !default;
 $card-padding-large: 32px !default;
 
 //Card element class
@@ -109,11 +109,17 @@ $card-padding-large: 32px !default;
         border-top-color: functions.get-color("white");
         border-right-color: functions.get-color("white");
     }
-    ////Small sized card --> change card padding
-    //&.is-small &-content,
-    //&.is-large &-link {
-    //    padding: $card-padding-small;
-    //}
+    //Small sized card --> change card padding
+    &.is-small &-content,
+    &.is-small &-link {
+        padding: $card-padding-small;
+    }
+    &.is-small &-link::before {
+        right: $card-padding-small;
+    }
+    &.is-small:hover &-link::before {
+        right: calc(#{$card-padding-small} - 5px) !important;
+    }
     //Large sized card --> change card padding
     &.is-large &-content,
     &.is-large &-link {
@@ -123,7 +129,6 @@ $card-padding-large: 32px !default;
         right: $card-padding-large;
     }
     &.is-large:hover &-link::before {
-    //&.is-large &-link:hover &-link::before {
         right: calc(#{$card-padding-large} - 5px) !important;
     }
 }
