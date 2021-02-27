@@ -236,7 +236,7 @@ $navbar-brand-color: variables.$body-color !default;
     //@each $color in variables.$colors-modifiers {
     @each $color in variables.$colors-theme {
         &.is-#{$color} {
-            background-color: functions.get-color($color);
+            //background-color: functions.get-color($color);
             color: functions.get-color-invert($color);
         }
         //Links and brand colors
