@@ -3,18 +3,23 @@
 @use "../mixins.scss" as mixins;
 @use "../utils.scss" as utils;
 
-$navbar-height: 40px !default;
-$navbar-padding: 24px !default;
+$navbar-height: 2.5rem !default;
+$navbar-padding: 1.5rem !default;
 $navbar-background: functions.get-color("white") !default;
 $navbar-breakpoint-desktop: variables.$desktop !default;
 $navbar-breakpoint-mobile: variables.$desktop - 1px !default;
 
-$navbar-item-padding: 10px !default;
-$navbar-item-margin: 10px !default;
+$navbar-item-height: 1rem !default;
+$navbar-item-padding: 0.5rem !default;
+$navbar-item-margin: 0.5rem !default;
 $navbar-item-font-weight: variables.$font-weight-normal !default;
 $navbar-item-color: variables.$body-color !default;
 
-$navbar-brand-font-size: 22px !default;
+$navbar-brand-line-height: 1.5rem !default;
+$navbar-brand-font-size: 1.5rem !default;
+$navbar-brand-padding: 0.5rem !default;
+$navbar-brand-margin-left: 0rem !default;
+$navbar-brand-margin-right: 1.25rem !default;
 $navbar-brand-color: variables.$body-color !default;
 
 //Navbar class
@@ -27,7 +32,7 @@ $navbar-brand-color: variables.$body-color !default;
     z-index: 3;
     //width: 100%;
     //max-width: calc(100% - 2 * #{$siimple-navbar-padding});
-    min-height: $navbar-height; 
+    min-height: #{$navbar-height + 2 * $navbar-padding}; 
     //font-family: $siimple-default-text-font;
     //margin: $siimple-navbar-margin;
     padding-top: $navbar-padding;
@@ -42,8 +47,8 @@ $navbar-brand-color: variables.$body-color !default;
     &-item {
         display: block;
         //height: 34px;
-        height: $navbar-height;
-        line-height: $navbar-height;
+        //height: $navbar-height;
+        //line-height: $navbar-height;
         //padding: 10px;
         //vertical-align: top;
         text-decoration: none;
@@ -53,13 +58,17 @@ $navbar-brand-color: variables.$body-color !default;
     &-brand {
         //font-weight: bold;
         font-size: $navbar-brand-font-size;
-        margin-right: 10px;
+        line-height: $navbar-brand-line-height;
+        margin-right: $navbar-brand-margin-right;
         color: $navbar-brand-color;
         //transition: all 0.3s;
+        padding-top: $navbar-brand-padding;
+        padding-bottom: $navbar-brand-padding;
     }
     //Navbar item
     &-item {
         display: block;
+        min-height: $navbar-item-height;
         //text-align: center;
         //font-weight: bold;
         //font-size: siimple.$text-size;
@@ -67,6 +76,7 @@ $navbar-brand-color: variables.$body-color !default;
         //transition: opacity 0.3s;
         opacity: 0.6;
         color: $navbar-item-color; //Default text color
+        padding: $navbar-item-padding;
         //cursor: pointer;
         //vertical-align: middle;
         &:hover {
@@ -94,11 +104,11 @@ $navbar-brand-color: variables.$body-color !default;
             justify-content: flex-end; //Right aligned
         }
         //Navigation item
-        &-item {
-            padding-left: $navbar-item-padding;
-            padding-right: $navbar-item-padding;
-            //margin-right: $navbar-item-margin-right;
-        }
+        //&-item {
+        //    padding-left: $navbar-item-padding;
+        //    padding-right: $navbar-item-padding;
+        //    //margin-right: $navbar-item-margin-right;
+        //}
         //Next item of the navbar content with no the item class
         &-item + *:not(#{&}-item) {
             margin-left: $navbar-item-margin;
@@ -124,29 +134,37 @@ $navbar-brand-color: variables.$body-color !default;
         }
         //Menu items
         &-item {
-            padding-top: $navbar-item-padding;
+            //padding-top: $navbar-item-padding;
             //padding-bottom: $navbar-item-padding;
-        }
-        //Next item of the navbar content with no the item class
-        &-item + *:not(#{&}-item) {
             margin-top: $navbar-item-margin;
+            margin-bottom: $navbar-item-margin;
         }
-        //Previous item of the navbar content with no the item class
-        *:not(#{&}-item) + &-item {
-            margin-top: $navbar-item-margin;
-        }
+        ////Next item of the navbar content with no the item class
+        //&-item + *:not(#{&}-item) {
+        //    margin-top: $navbar-item-margin;
+        //}
+        ////Previous item of the navbar content with no the item class
+        //*:not(#{&}-item) + &-item {
+        //    margin-top: $navbar-item-margin;
+        //}
         //Navbar toggle
         &-toggle {
             display: block;
             position: relative;
-            width: 26px;
-            height: 30px;
+            width: 56px;
+            height: 40px;
             //outline: 0;
             cursor: pointer;
             //Disable apperance for checkbox toggles
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
+            margin: 0px;
+            padding: 0px;
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+            border-radius: variables.$border-radius-base;
+            border: 2px solid functions.get-color("dark");
         }
         //Toggle icon
         &-toggle::before {
@@ -154,17 +172,17 @@ $navbar-brand-color: variables.$body-color !default;
             position: absolute;
             border-top: 4px solid functions.get-color("dark");
             border-bottom: 4px solid functions.get-color("dark");
-            width: 100%;
-            height: 16px;
-            top: 3px;
+            width: 28px;
+            height: 20px;
+            top: 8px;
         }
         &-toggle::after {
             content: "";
             position: absolute;
-            width: 100%;
             height: 4px;
             background-color: functions.get-color("dark");
-            top: 13px;
+            width: 28px;
+            top: 16px;
         }
         //Toggle focus --> display navbar content
         &-toggle:not(input):focus + &-content,
@@ -215,7 +233,8 @@ $navbar-brand-color: variables.$body-color !default;
         bottom: 0;
     }
     //Colored navbar
-    @each $color in variables.$colors-modifiers {
+    //@each $color in variables.$colors-modifiers {
+    @each $color in variables.$colors-theme {
         &.is-#{$color} {
             background-color: functions.get-color($color);
             color: functions.get-color-invert($color);
@@ -226,6 +245,9 @@ $navbar-brand-color: variables.$body-color !default;
             color: functions.get-color-invert($color);
         }
         //Toggle icon color
+        &.is-#{$color} &-toggle {
+            border-color: functions.get-color-invert($color);
+        }
         &.is-#{$color} &-toggle::before {
             border-top-color: functions.get-color-invert($color);
             border-bottom-color: functions.get-color-invert($color);
