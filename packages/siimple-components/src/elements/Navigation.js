@@ -4,46 +4,48 @@ import {createHtmlElement} from "../utils/element.js";
 import {filterProps} from "../utils/props.js";
 
 //Nav wrapper
-export const Nav = function (props) {
-    let newProps = filterProps(props, ["vertical", "tabs", "pills", "align", "className"]);
+export const Navigation = function (props) {
+    let newProps = filterProps(props, ["vertical", "tabs", "pills", "align", "className", "filled"]);
     newProps.className = classNames(props.className, {
         "siimple-nav": true,
-        "siimple-nav--vertical": props.vertical,
-        "siimple-nav--pills": props.pills,
-        "siimple-nav--tabs": props.tabs,
-        "siimple-nav--center": props.align === "center",
-        "siimple-nav--right": props.align === "right"
+        "is-vertical": props.vertical,
+        "is-pills": props.pills,
+        "is-tabs": props.tabs,
+        "is-center": props.align === "center",
+        "is-right": props.align === "right",
+        "is-filled": props.filled
     });
     //Return the nav element
     return React.createElement("div", newProps, props.children);
 };
 
 //Nav default props
-Nav.defaultProps = {
+Navigation.defaultProps = {
     "tabs": false,
     "pills": false,
     "vertical": false,
-    "align": "left"
+    "align": "left",
+    "filled": false
 };
 
-//Nav item
-export const NavItem = function (props) {
+//Navigation item
+export const NavigationItem = function (props) {
     let newProps = filterProps(props, ["active", "className"]);
     newProps.className = classNames(props.className, {
         "siimple-nav-item": true,
-        "siimple-nav-item--active": props.active
+        "is-active": props.active
     });
     //Return the nav item element
     return React.createElement("div", newProps, props.children);
 };
 
 //Nav item default props
-NavItem.defaultProps = {
+NavigationItem.defaultProps = {
     "active": false
 };
 
 //Nav components
-export const NavGroup = createHtmlElement("div", "siimple-nav-group");
-export const NavDivider = createHtmlElement("div", "siimple-nav-divider");
+export const NavigationGroup = createHtmlElement("div", "siimple-nav-group");
+export const NavigationDivider = createHtmlElement("div", "siimple-nav-divider");
 
 
