@@ -4,26 +4,23 @@ import {filterProps} from "../utils/props.js";
 
 //Grid column class
 export const Column = function (props) {
-    let newProps = filterProps(props, ["className", "size", "xlarge", "large", "medium", "small", "xsmall"]);
+    let newProps = filterProps(props, ["className", "size", "mobile", "tablet", "desktop", "fullhd"]);
     let classList = ["siimple-column"];
     //Check the column size
     if (typeof props.size === "number" || typeof props.size === "string") {
-        classList.push("siimple-column--" + props.size);
+        classList.push("is-" + props.size);
     }
-    if (typeof props.xlarge === "number" || typeof props.xlarge === "string") {
-        classList.push("siimple-column--xl-" + props.xlarge);
+    if (typeof props.mobile === "number" || typeof props.mobile === "string") {
+        classList.push("mobile:is-" + props.mobile);
     }
-    if (typeof props.large === "number" || typeof props.large === "string") {
-        classList.push("siimple-column--lg-" + props.large);
+    if (typeof props.tablet === "number" || typeof props.tablet === "string") {
+        classList.push("tablet:is-" + props.tablet);
     }
-    if (typeof props.medium === "number" || typeof props.medium === "string") {
-        classList.push("siimple-column--md-" + props.medium);
+    if (typeof props.desktop === "number" || typeof props.desktop === "string") {
+        classList.push("desktop:is-" + props.desktop);
     }
-    if (typeof props.small === "number" || typeof props.small === "string") {
-        classList.push("siimple-column--sm-" + props.medium);
-    }
-    if (typeof props.xsmall === "number" || typeof props.xsmall === "string") {
-        classList.push("siimple-column--xs-" + props.xsmall);
+    if (typeof props.fullhd === "number" || typeof props.fullhd === "string") {
+        classList.push("fullhd:is-" + props.desktop);
     }
     //Join all class names
     newProps.className = classNames(classList, props.className);
@@ -34,10 +31,9 @@ export const Column = function (props) {
 //Column default props
 Column.defaultProps = {
     "size": null, 
-    "xlarge": null,
-    "large": null, 
-    "medium": null, 
-    "small": null,
-    "xsmall": null
+    "mobile": null,
+    "tablet": null, 
+    "desktop": null, 
+    "fullhd": null
 };
 
