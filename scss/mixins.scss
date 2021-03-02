@@ -63,16 +63,17 @@
 }
 
 //Sizing mixin
-@mixin content-size ($size: 0px) {
+@mixin content-size ($size: 0px, $gap: variables.$content-gap) {
     //Check for string size
     @if utils.is-string($size) == true {
         $size: functions.get-content-size($size);
     }
+    $padding-size: ($size - 2 * $gap) / 2; //Padding size
     //Apply the provided size only in screen widts > $size
     @media screen and (min-width: $size) {
         //width: $size - 2 * variables.$content-gap;
-        padding-left: calc(50% - #{$size - 2 * variables.$content-gap} / 2);
-        padding-right: calc(50% - #{$size - 2 * variables.$content-gap} / 2);
+        padding-left: calc(50% - #{$padding-size});
+        padding-right: calc(50% - #{$padding-size});
     }
 }
 
