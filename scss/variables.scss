@@ -54,21 +54,14 @@ $colors-status: ("warning", "error", "success") !default;
 $colors-modifiers: ("primary", "secondary", "success", "warning", "error", "dark", "light") !default;
 
 //Default content sizes variables
-$content-gap: 20px !default; //Gap for breakpoints
+$content-gap: 24px !default; //Gap for breakpoints
 $content-sizes: (
-    "small": 600px,
-    "medium": 768px,
-    "large": 1024px,
-    "xlarge": 1280px
+    "small": 608px,   //--> 560px
+    "medium": 768px,  //--> 720px
+    "large": 1008px,  //--> 960px
+    "xlarge": 1188px, //--> 1140px
+    "huge": 1328px    //--> 1280px
 ) !default;
-
-////Breakpoints variables
-//$breakpoints: (
-//    "sm": 544px,
-//    "md": 768px,
-//    "lg": 1024px,
-//    "xl": 1280px
-//) !default;
 
 //Default font variables
 //WARNING: we are not importing fonts automatically --> use a <link> tag instead
