@@ -1,0 +1,154 @@
+@use "../variables.scss" as variables;
+@use "../functions.scss" as functions;
+@use "../mixins.scss" as mixins;
+
+//$navigation-item-height: 24px !default;
+$navigation-item-color: functions.get-color-lighter("dark") !default;
+$navigation-item-padding: 0.5rem !default;
+
+$navigation-divider-margin-top: 0.375rem !default;
+$navigation-divider-margin-bottom: 0.375rem !default;
+$navigation-divider-height: 0.125rem !default;
+$navigation-divider-background: functions.get-color-darker("light", 5%) !default;
+
+//$navigation-group-height: 25px !default;
+$navigation-group-font-size: 1rem !default;
+$navigation-group-margin-bottom: 0.5rem !default;
+$navigation-group-color: rgba(functions.get-color-lighter("dark", 30%), 0.7) !default;
+
+$navigation-tabs-background: functions.get-color("light") !default;
+$navigation-tabs-padding: 0.5rem !default;
+
+//$navigation-tabs-item-height: 40px !default;
+$navigation-tabs-item-padding: 0.5rem !default;
+$navigation-tabs-item-margin-left: 0.75rem !default;
+$navigation-tabs-item-margin-right: 0.75rem !default;
+
+
+//Nav class
+.#{variables.$prefix}nav {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    overflow-x: auto;
+    //width: 100%;
+    //margin-top: 0px;
+    margin-bottom: variables.$margin-bottom;
+    border-radius: variables.$border-radius-base;
+    @include mixins.user-select(none);
+    //padding: 0px;
+    //Navigation group (hidden in horizontal nav)
+    &-group {
+        display: none;
+        width: 100%;
+        //height: 25px;
+        //line-height: 24px;
+        //transition: color 0.3s;
+        font-size: $navigation-group-font-size;
+        font-weight: variables.$font-weight-bold;
+        text-decoration: none !important;
+        color: $navigation-group-color;
+        margin-bottom: $navigation-group-margin-bottom;
+        //Menu group not first margin top
+        &:not(:first-child) {
+            margin-top: 10px;
+        }
+        ////Menu group hover
+        //&:hover {
+        //    text-decoration: none !important;
+        //}
+    }
+    //Navigation divider (hidden by default)
+    &-divider {
+        display: none;
+        height: $navigation-divider-height;
+        margin-top: $navigation-divider-margin-top;
+        margin-bottom: $navigation-divider-margin-bottom;
+        background-color: $navigation-divider-background;
+    }
+    //Navigation item
+    &-item {
+        display: block;
+        //min-height: $menu-item-height;
+        //line-height: 24px;
+        //border: 0px;
+        border-radius: variables.$border-radius-base;
+        font-weight: variables.$font-weight-bold;
+        color: $navigation-item-color;
+        text-decoration: none !important;
+        padding: $navigation-item-padding;
+        //opacity: 1.0;
+        //transition: all ease 0.3s;
+        cursor: pointer;
+        //Hover styles
+        &:not(.is-active):hover {
+            transition: all ease 0.3s;
+            //text-decoration: none !important;
+            color: functions.get-color("primary");
+        }
+        //Active item
+        &.is-active {
+            //background-color: functions.get-color("light");
+            //color: functions.get-color("dark") !important;
+            color: functions.get-color("primary");
+        }
+    }
+    //Tabs style
+    &.is-tabs {
+        //display: flex;
+        background-color: $navigation-tabs-background; 
+        padding: $navigation-tabs-padding;
+        //position: relative;
+        //width: 100%;
+        //height: $tabs-height;
+        //font-size: siimple.$text-size;
+        //Tab style for mobile devices
+        //@media screen and (max-width: variables.$mobile) {
+        @include mixins.breakpoint("mobile") {
+            flex-direction: column;
+        }
+    }
+    //Tabs item
+    &.is-tabs &-item:not(:last-child) {
+        margin-right: $navigation-tabs-item-margin-right;
+        //Disable margin right on mobile devices
+        @include mixins.breakpoint("mobile") {
+            margin-right: 0px !important;
+        }
+    }
+    &.is-tabs &-item:not(.is-active):hover {
+        background-color: rgba(functions.get-color("white"), 0.4);
+    }
+    &.is-tabs #{&}-item.is-active {
+        background-color: functions.get-color("white");
+    }
+    //Pills style
+    &.is-pills #{&}-item.is-active {
+        background-color: functions.get-color("primary");
+        color: functions.get-color("white") !important;
+    }
+    //Extend the full width
+    &.is-filled &-item,
+    &.is-tabs &-item {
+        flex-grow: 1 !important;
+        text-align: center !important;
+    }
+    //Vertical navigation
+    &.is-vertical {
+        flex-direction: column;
+        margin-right: 0px !important;
+    }
+    //Vertical nav --> display group title and divider
+    &.is-vertical &-group, 
+    &.is-vertical &-divider {
+        display: block !important;
+    }
+    //Align nav items
+    &.is-centered {
+        justify-content: center;
+    }
+    &.is-right {
+        justify-content: flex-end;
+    }
+}
+
