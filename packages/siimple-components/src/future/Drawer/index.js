@@ -12,8 +12,7 @@ export const Drawer = function (props) {
     let drawerProps = {
         "className": classNames(props.className, {
             "siimple__drawer": true,
-            "siimple__drawer--visible": props.visible === true,
-            "siimple__drawer--rounded": props.rounded === true
+            "siimple__drawer--visible": props.visible === true
         }),
         "style": props.style
     };
@@ -23,7 +22,6 @@ export const Drawer = function (props) {
 
 //Drawer default props
 Drawer.defaultProps = {
-    "rounded": false,
     "visible": true
 };
 

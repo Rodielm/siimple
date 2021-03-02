@@ -1,4 +1,4 @@
-@use "siimple-lib" as siimple;
+@use "siimple/lib" as siimple;
 
 //Scrim styles
 .siimple__scrim {
@@ -13,6 +13,6 @@
     z-index: 400;
     justify-content: center;
     align-items: center;
-    background-color: rgba(siimple.color-darker("dark"), 0.5);
+    background-color: rgba(siimple.get-color-darker("dark"), 0.5);
 }
 

@@ -1,4 +1,4 @@
-@use "siimple-lib" as siimple;
+@use "siimple/lib" as siimple;
 
 //Siimple group style
 .siimple__group {
@@ -11,16 +11,16 @@
         align-items: center;
         padding: 15px;
         width: calc(100% - 20px);
-        border-radius: siimple.$border-radius;
+        border-radius: siimple.$border-radius-base;
         //margin-bottom: 11px;
         position: relative;
         border: 2px solid transparent;
         cursor: pointer;
         transition: background-color 0.3s;
-        background-color: siimple.color("white");
+        background-color: siimple.get-color("white");
         //Group on hover
         &--hover:hover {
-            background-color: siimple.color("light");
+            background-color: siimple.get-color("light");
             //cursor: pointer;
         }
         //Not last child
@@ -37,14 +37,14 @@
         //        position: absolute;
         //        height: 1px;
         //        width: 100%;
-        //        background-color: siimple.color("light");
+        //        background-color: siimple.get-color("light");
         //        bottom: -8px;
         //        left: 0px;
         //    }
         //}
         ////Daashed row
         //&--dashed {
-        //    border: 2px dashed siimple.color("light");
+        //    border: 2px dashed siimple.get-color("light");
         //}
     }
     //Group column
@@ -78,7 +78,7 @@
         transition: color 0.3s;
     }
     &-row:hover &-title {
-        color: siimple.color("primary");
+        color: siimple.get-color("primary");
     }
     //Group text
     &-text {
@@ -92,7 +92,7 @@
         //margin-top: 3px;
         line-height: 20px;
         font-size: 14px;
-        color: siimple.color-lighter("dark");
+        color: siimple.get-color-lighter("dark");
     }
     //Group icon and add elements
     &-icon {
@@ -102,12 +102,12 @@
         line-height: 40px;
         text-align: center;
         font-size: 24px;
-        color: siimple.color("white");
+        color: siimple.get-color("white");
         //border-radius: 100px;
-        background-color: siimple.color("primary"); //Default icon background color
+        background-color: siimple.get-color("primary"); //Default icon background color
         //Square icon
         &--square {
-            border-radius: siimple.$border-radius;
+            border-radius: siimple.$border-radius-base;
         }
         //Circle icon
         &--circle {
@@ -122,20 +122,20 @@
     &-add {
         transition: all 0.3s;
         opacity: 0.5;
-        color: siimple.color("dark");
+        color: siimple.get-color("dark");
         font-size: 28px;
-        //background-color: siimple.color-lighter("light");
+        //background-color: siimple.get-color-lighter("light");
     }
     //Row hover --> change add group
     &-row:hover &-add {
-        //color: siimple.color("dark");
-        //background-color: siimple.color("white");
+        //color: siimple.get-color("dark");
+        //background-color: siimple.get-color("white");
         opacity: 1.0;
     }
     //Group action icon
     &-action {
-        color: siimple.color("dark");
-        //color: siimple.color-lighter("dark");
+        color: siimple.get-color("dark");
+        //color: siimple.get-color-lighter("dark");
         transition: opacity 0.3s;
         font-size: 22px;
         height: 24px;
@@ -145,7 +145,7 @@
         opacity: 0.4;
         //Action icon hover
         &:hover {
-            //color: siimple.color("dark");
+            //color: siimple.get-color("dark");
             opacity: 1.0;
         }
         //Action not first child
@@ -166,8 +166,8 @@
         //Label colors
         @each $color in siimple.utils-keys(siimple.$colors) {
             &--#{$color} {
-                background-color: rgba(siimple.color-lighter($color), 0.5);
-                color: siimple.color-darker($color);
+                background-color: rgba(siimple.get-color-lighter($color), 0.5);
+                color: siimple.get-color-darker($color);
             }
         }
     }

@@ -1,4 +1,4 @@
-@use "siimple-lib" as siimple;
+@use "siimple/lib" as siimple;
 
 //Thumb mixin
 @mixin range-thumb () {
@@ -7,7 +7,7 @@
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background: siimple.color("primary");
+    background: siimple.get-color("primary");
     cursor: pointer;
 }
 
@@ -16,7 +16,7 @@
     -webkit-appearance: none;
     //width: 100%;
     height: 12px;
-    background: siimple.color-lighter("light");
+    background: siimple.get-color-lighter("light");
     outline: none;
     //opacity: 0.7;
     border-radius: 5px;
@@ -40,7 +40,7 @@
         &::-webkit-slider-thumb,
         &::-moz-range-thumb,
         &::-ms-thumb {
-            background: siimple.color("dark") !important;
+            background: siimple.get-color("dark") !important;
         }
     }
     //Thumb style

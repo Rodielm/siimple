@@ -1,7 +1,7 @@
-@use "siimple-lib" as siimple;
+@use "siimple/lib" as siimple;
 
 //Drawer variables
-$drawer-border-radius: 2 * siimple.$border-radius;
+//$drawer-border-radius: 2 * siimple.$border-radius;
 
 //Drawer style
 .siimple__drawer {
@@ -15,7 +15,7 @@ $drawer-border-radius: 2 * siimple.$border-radius;
         top: 0px;
         left: 0px;
         z-index: 100;
-        background-color: rgba(siimple.color-darker("dark"), 0.4);
+        background-color: rgba(siimple.get-color-darker("dark"), 0.4);
         overflow-x: hidden;
         overflow-y: hidden;
         //transition: visibility 0.3s;
@@ -31,7 +31,7 @@ $drawer-border-radius: 2 * siimple.$border-radius;
         //display: none;
         //width: 400px; //Default width
         //height: 100%;
-        background-color: siimple.color("white");
+        background-color: siimple.get-color("white");
         border-radius: 0px;
         position: fixed;
         //top: 0px;
@@ -78,23 +78,6 @@ $drawer-border-radius: 2 * siimple.$border-radius;
     }
     &--visible &-content--bottom {
         bottom: 0px;
-    }
-    //Rounded drawer
-    &--rounded &-content--right {
-        border-top-left-radius: $drawer-border-radius;
-        border-bottom-left-radius: $drawer-border-radius;
-    }
-    &--rounded &-content--left {
-        border-top-right-radius: $drawer-border-radius;
-        border-bottom-right-radius: $drawer-border-radius;
-    }
-    &--rounded &-content--top {
-        border-bottom-left-radius: $drawer-border-radius;
-        border-bottom-right-radius: $drawer-border-radius;
-    }
-    &--rounded &-content--bottom {
-        border-top-left-radius: $drawer-border-radius;
-        border-top-right-radius: $drawer-border-radius;
     }
 }
 

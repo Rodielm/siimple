@@ -1,4 +1,4 @@
-@use "siimple-lib" as siimple;
+@use "siimple/lib" as siimple;
 
 //SplitPanel styles
 .siimple__splitpanel {
@@ -29,7 +29,7 @@
     //SplitPanel separator
     &-separator {
         display: block;
-        background-color: siimple.color("light");
+        background-color: siimple.get-color("light");
         //Vertical separator
         &--vertical {
             width: 5px;

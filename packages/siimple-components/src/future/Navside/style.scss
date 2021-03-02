@@ -1,4 +1,4 @@
-@use "siimple-lib" as siimple;
+@use "siimple/lib" as siimple;
 
 //navside variables
 $navside-prefix: "siimple__navside";
@@ -10,10 +10,10 @@ $navside-height: 100vh !default;
 .#{$navside-prefix} {
     display: flex;
     flex-direction: column;
-    width: calc(#{$navside-width} - 2 * #{$navside-padding});
-    height: calc(#{$navside-height} - 2 * #{$navside-padding});
+    width: $navside-width; //calc(#{$navside-width} - 2 * #{$navside-padding});
+    height: $navside-height; //calc(#{$navside-height} - 2 * #{$navside-padding});
     padding: $navside-padding;
-    background-color: siimple.$white;
+    background-color: siimple.get-color("white");
     position: sticky;
     top: 0px;
     overflow-x: hidden;

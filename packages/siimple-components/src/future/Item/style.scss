@@ -1,4 +1,4 @@
-@use "siimple-lib" as siimple;
+@use "siimple/lib" as siimple;
 
 //Item style
 .siimple__item {
@@ -33,7 +33,7 @@
         //border-radius: 5px;
         //Square icon
         &--square {
-            border-radius: siimple.$border-radius;
+            border-radius: siimple.$border-radius-base;
         }
         //Circle icon
         &--circle {
