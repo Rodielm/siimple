@@ -18,7 +18,7 @@ export function FakeRadio (props) {
     let newProps = filterProps(props, ["active", "className"]);
     newProps.className = classNames(props.className, {
         "siimple-radio": true,
-        "siimple-radio--active": props.active
+        "is-active": props.active
     });
     //Return the fake radio element
     return React.createElement("div", newProps);

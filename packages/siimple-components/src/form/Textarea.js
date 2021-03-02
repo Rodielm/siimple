@@ -4,11 +4,11 @@ import {filterProps} from "../utils/props.js";
 
 //Textarea component 
 export const Textarea = React.forwardRef(function (props, ref) {
-    let textareaProps = filterProps(props, ["fluid", "className", "ref"]); //Filter props
+    let textareaProps = filterProps(props, ["full", "fluid", "className", "ref"]); //Filter props
     //Generate the textare className
     textareaProps.className = classNames(props.className, {
         "siimple-textarea": true,
-        "siimple-textarea--fluid": props.fluid === true
+        "is-full": props.full || props.fluid === true
     });
     //Save the textarea reference
     textareaProps.ref = ref;
@@ -18,6 +18,7 @@ export const Textarea = React.forwardRef(function (props, ref) {
 
 //Textarea default props
 Textarea.defaultProps = {
-    "fluid": false
+    "fluid": false, //DEPRECATED
+    "full": false
 };
 

@@ -4,10 +4,10 @@ import {filterProps} from "../utils/props.js";
 
 //Input component
 export const Input = React.forwardRef(function (props, ref) {
-    let inputProps = filterProps(props, ["fluid", "className", "ref"]); //Filter props
+    let inputProps = filterProps(props, ["fluid", "full", "className", "ref"]); //Filter props
     inputProps.className = classNames(props.className, {
         "siimple-input": true,
-        "siimple-input--fluid": props.fluid === true
+        "is-full": props.full === true || props.fluid === true
     });
     //Save the input reference
     inputProps.ref = ref;
@@ -17,6 +17,7 @@ export const Input = React.forwardRef(function (props, ref) {
 
 //Input default props
 Input.defaultProps = {
-    "fluid": false
+    "fluid": false, //TODO: DEPRECATED
+    "full": false
 };
 

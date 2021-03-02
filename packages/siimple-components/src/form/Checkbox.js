@@ -18,7 +18,7 @@ export function FakeCheckbox (props) {
     let newProps = filterProps(props, ["active", "className"]);
     newProps.className = classNames(props.className, {
         "siimple-checkbox": true,
-        "siimple-checkbox--active": props.active
+        "is-active": props.active
     });
     //Return the fake checkbox element
     return React.createElement("div", newProps);

@@ -18,7 +18,7 @@ export function FakeSwitch (props) {
     let newProps = filterProps(props, ["active", "className"]);
     newProps.className = classNames(props.className, {
         "siimple-switch": true,
-        "siimple-switch--active": props.active
+        "is-active": props.active
     });
     //Return the fake switch element
     return React.createElement("div", newProps);

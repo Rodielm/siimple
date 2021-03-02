@@ -4,11 +4,11 @@ import {filterProps} from "../utils/props.js";
 
 //Select component
 export const Select = React.forwardRef(function (props, ref) {
-    let selectProps = filterProps(props, ["fluid", "className", "ref"]); //Filter props
+    let selectProps = filterProps(props, ["full", "fluid", "className", "ref"]); //Filter props
     //Save the className
     selectProps.className = classNames(props.className, {
         "siimple-select": true,
-        "siimple-select--fluid": props.fluid === true
+        "is-full": props.full || props.fluid === true
     });
     //Save the select reference
     selectProps.ref = ref;
@@ -18,6 +18,7 @@ export const Select = React.forwardRef(function (props, ref) {
 
 //Select default props
 Select.defaultProps = {
-    "fluid": false
+    "fluid": false, //DEPRECATED
+    "full": false
 };
 
