@@ -19,15 +19,13 @@ export const Progress = function (props) {
     let classList = ["siimple-progress"];
     //Check the color property
     if (typeof props.color === "string") {
-        classList.push("siimple-progress--" + props.color.toLowerCase().trim());
+        classList.push("is-" + props.color.toLowerCase().trim());
     }
     //Check the striped property
     if (typeof props.striped === "boolean" && props.striped === true) {
-        //Check the velocity value
+        classList.push("is-striped");
         if (typeof props.velocity === "string" && props.velocity !== "") {
-            classList.push("siimple-progress--striped-" + props.velocity.toLowerCase().trim());
-        } else {
-            classList.push("siimple-progress--striped");
+            classList.push("is-" + props.velocity.toLowerCase().trim());
         }
     }
     //Merge classnames
