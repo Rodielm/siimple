@@ -5,17 +5,19 @@ import {filterProps} from "../utils/props.js";
 
 //Card base component
 export const Card = function (props) {
-    let newProps = filterProps(props, ["className", "theme"]);
+    let newProps = filterProps(props, ["className", "theme", "size"]);
     newProps.className = classNames(props.className, {
         "siimple-card": true,
-        ["siimple-card--" + props.theme]: props.theme === "light" || props.theme === "dark"
+        ["is-" + props.theme]: props.theme === "light" || props.theme === "dark",
+        ["is-" + props.size]: props.size === "small" || props.size === "large"
     });
     //Return card wrapper
     return React.createElement("div", newProps, props.children);
 };
 
 Card.defaultProps = {
-    "theme": ""
+    "theme": "",
+    "size": ""
 };
 
 //Other card components

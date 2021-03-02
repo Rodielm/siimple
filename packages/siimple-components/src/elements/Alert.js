@@ -11,7 +11,7 @@ export const Alert = function (props) {
     let classList = ["siimple-alert"];
     //Check the alert color property
     if (typeof props.color === "string") {
-        classList.push("siimple-alert--" + props.color.toLowerCase().trim());
+        classList.push("is-" + props.color.toLowerCase().trim());
     }
     //Append the provided class list 
     newProps.className = classNames(classList, props.className);

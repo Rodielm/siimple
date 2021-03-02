@@ -9,11 +9,11 @@ export const Tag = function (props) {
     let classList = ["siimple-tag"];
     //Check the color attribute
     if (typeof props.color === "string") {
-        classList.push("siimple-tag--" + props.color.toLowerCase().trim());
+        classList.push("is-" + props.color.toLowerCase().trim());
     }
     //Check the rounded attribute
     if (typeof props.rounded === "boolean" && props.rounded === true) {
-        classList.push("siimple-tag--rounded");
+        classList.push("is-rounded");
     }
     //Generate the tag classname
     newProps.className = classNames(classList, props.className);

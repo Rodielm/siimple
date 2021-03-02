@@ -11,7 +11,7 @@ export const BreadcrumbItem = function (props) {
     let newProps = filterProps(props, ["active", "className"]);
     newProps.className = classNames(props.className, {
         "siimple-breadcrumb-item": true,
-        "siimple-breadcrumb-item--active": props.active === true
+        "is-active": props.active === true
     });
     //Return the breadcrumb item
     return React.createElement("div", newProps, props.children);

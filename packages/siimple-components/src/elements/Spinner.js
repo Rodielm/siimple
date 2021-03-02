@@ -8,8 +8,8 @@ export const Spinner = function (props) {
     //Initialize the spinner class-list
     let classList = ["siimple-spinner"];
     //Check the color attribute
-    if(typeof props.color === "string") {
-        classList.push("siimple-spinner--" + props.color);
+    if (typeof props.color === "string") {
+        classList.push("is-" + props.color);
     }
     newProps.className = classNames(classList, props.className);
     //Return the spinner element

@@ -5,13 +5,15 @@ import {filterProps} from "../utils/props.js";
 
 //Export main table component
 export const Table = function (props) {
-    let newProps = filterProps(props, ["className", "striped", "border", "hover"]);
+    let newProps = filterProps(props, ["className", "striped", "bordered", "hoverable", "divided", "small", "large"]);
     newProps.className = classNames(props.className, {
         "siimple-table": true,
-        "siimple-table--striped": props.striped === true,
-        "siimple-table--border": props.border === true,
-        "siimple-table--hover": props.hover === true,
-        "siimple-table--divider": props.divider === true
+        "is-striped": props.striped === true,
+        "is-bordered": props.bordered === true,
+        "is-hoverable": props.hoverable === true,
+        "is-divided": props.divided === true,
+        "is-small": props.small === true,
+        "is-large": props.large === true
     });
     //Return the table wrapper element
     return React.createElement("div", newProps, props.children);
@@ -20,9 +22,11 @@ export const Table = function (props) {
 //Table default properties
 Table.defaultProps = {
     "striped": false, 
-    "border": false, 
-    "hover": false,
-    "divider": true
+    "bordered": false, 
+    "hoverable": false,
+    "divided": false,
+    "small": false,
+    "large": false
 };
 
 //Export table header component
@@ -36,11 +40,11 @@ export const TableCell = function (props) {
     let classList = ["siimple-table-cell"];
     //Check the sortable option
     if (typeof props.sortable === "boolean" && props.sortable === true) {
-        classList.push("siimple-table-cell--sortable");
+        classList.push("is-sortable");
     }
     //Check the sort order
     if (typeof props.order === "string") {
-        classList.push("siimple-table-cell--" + props.order);
+        classList.push("is-" + props.order);
     }
     //Merge classlist
     newProps.className = classNames(classList, props.className);
