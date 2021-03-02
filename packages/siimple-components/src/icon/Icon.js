@@ -8,11 +8,11 @@ export const Icon = function (props) {
     Object.assign(newProps, {
         "className": classNames(props.className, {
             "siimple-icon": true,
-            ["siimple-icon-" + props.icon]: props.icon !== ""
+            ["is-" + props.icon]: props.icon !== ""
         }),
         "style": Object.assign({
-            "fontSize": props.size,
-            "lineHeight": "normal"
+            //"lineHeight": "normal",
+            "fontSize": props.size
         }, props.style)
     });
     //Return the icon
@@ -23,7 +23,7 @@ export const Icon = function (props) {
 Icon.defaultProps = {
     "icon": "",
     "className": null,
-    "iconTag": "span",
+    "iconTag": "i",
     "size": null
 };
 

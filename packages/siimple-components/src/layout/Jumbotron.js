@@ -10,15 +10,15 @@ export const Jumbotron = function (props) {
     let classList = ["siimple-jumbotron"];
     //Check the jumbotron color
     if (typeof props.color === "string") {
-        classList.push("siimple-jumbotron--" + props.color.toLowerCase());
+        classList.push("is-" + props.color.toLowerCase());
     }
     //Check the jumbotron size property
     if (typeof props.size === "string") {
-        classList.push("siimple-jumbotron--" + props.size.toLowerCase());
+        classList.push("is-" + props.size.toLowerCase());
     }
     //Check the jumbotron fullheight
     if (props.fullheight === true) {
-        classList.push("siimple-jumbotron--fullheight");
+        classList.push("is-fullheight");
     }
     //Generate the jumbotron classname
     newProps.className = classNames(classList, props.className);

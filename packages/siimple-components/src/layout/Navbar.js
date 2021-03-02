@@ -11,19 +11,19 @@ export const Navbar = function (props) {
     let classList = ["siimple-navbar"];
     //Add navbar color
     if (typeof props.color === "string" && props.color !== "") {
-        classList.push("siimple-navbar--" + props.color);
+        classList.push("is-" + props.color);
     }
     //Add navbar size
     if (typeof props.size === "string" && props.size !== "") {
-        classList.push("siimple-navbar--" + props.size);
+        classList.push("is-" + props.size);
     }
     //Check if navbar is fixed top
     if (props.fixedTop === true) {
-        classList.push("siimple-navbar--fixed-top");
+        classList.push("is-fixed-top");
     }
     //Check if navbar is fixed bottom
     if (props.fixedBottom === true) {
-        classList.push("siimple-navbar--fixed-bottom");
+        classList.push("is-fixed-bottom");
     }
     //Generate classnames
     newProps.className = classNames(props.classNames, classList);
@@ -33,7 +33,7 @@ export const Navbar = function (props) {
 
 Navbar.defaultProps = {
     "color": "", 
-    "size": "fluid",
+    "size": "",
     "fixedTop": false,
     "fixedBottom": false
 };

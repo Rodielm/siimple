@@ -10,7 +10,7 @@ export const Footer = function (props) {
     let classList = ["siimple-footer"];
     //Check the content size
     if (typeof props.size === "string") {
-        classList.push("siimple-footer--" + props.size.toLowerCase());
+        classList.push("is-" + props.size.toLowerCase());
     }
     //Generate the footer classname
     newProps.className = classNames(classList, props.className);

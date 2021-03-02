@@ -9,7 +9,7 @@ export const Content = function (props) {
     let classList = ["siimple-content"];
     //Check the content size
     if (typeof props.size === "string") {
-        classList.push("siimple-content--" + props.size.toLowerCase());
+        classList.push("is-" + props.size.toLowerCase());
     }
     //Generate the content className
     newProps.className = classNames(classList, props.className);
