@@ -1,7 +1,0 @@
-.npmignore
-*.swp
-*.DS_Store
-src
-test
-rollup.config.js
-
