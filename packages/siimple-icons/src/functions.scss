@@ -1,0 +1,15 @@
+@use "sass:string";
+@use "siimple-lib" as lib;
+@use "./icons.scss" as icons;
+
+//Get an icon
+@function get-icon ($name) {
+    @return lib.get(icons.$list, "#{$name}");
+}
+
+//Use an icon by name
+@function use-icon($name) {
+    $icon-str: string.unquote(string.insert(get-icon($name), "\\", 1));
+    @return string.unquote("\"") + $icon-str + string.unquote("\"");
+}
+
