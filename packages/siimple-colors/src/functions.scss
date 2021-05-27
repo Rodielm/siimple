@@ -1,0 +1,9 @@
+@use "siimple-lib" as lib;
+@use "./colors.scss" as colors;
+
+//Get color by name
+@function get-color($name) {
+    @return lib.get(colors.$list, "#{$name}");
+}
+
+
