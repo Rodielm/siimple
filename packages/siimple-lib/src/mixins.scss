@@ -8,7 +8,7 @@
 //Mixin by @icetee (PR #5) and edited by @dyzajash (PR #11)
 @mixin user-select ($select: "none") {
     -webkit-user-select: string.unquote($select);
-    -khtml-user-select: string.unquote($select);
+    //-khtml-user-select: string.unquote($select);
     -moz-user-select: string.unquote($select);
     -ms-user-select: string.unquote($select);
     user-select: string.unquote($select);
@@ -99,7 +99,7 @@
 
 //Define a global css variable
 @mixin define-variable ($name, $value) {
-    --#{variables.$variable-prefix}#{$name}: #{$value};
+    --#{$name}: #{$value};
 }
 
 //Define a property
@@ -114,8 +114,8 @@
     }
 }
 
-//Define utility rule
-@mixin define-utility ($prefix, $variants...) {
+//Define variant rule
+@mixin define-variant ($prefix, $variants...) {
     //Check for default style
     @if list.index($variants, "base") {
         @content("#{$prefix}", "");
@@ -135,16 +135,29 @@
 }
 
 //Utility mixin
-@mixin utility ($prefix, $maps...) {
-    @each $map in $maps {
-        $name: utils.get($map, "name");
-        $properties: utils.get($map, "properties");
-        $variants: utils.get($map, "variants");
-        $is-important: utils.get($map, "important") == true;
-        //Build for each variant provided
-        @include define-utility($prefix, $variants...) using ($p, $s) {
-            @each $key,$value in utils.get($map, "values") {
-                .#{$p}#{$name}-#{$key}#{$s} { 
+@mixin utility ($prefix, $map) {
+    //$prefix: utils.get($map, "prefix");
+    $name: utils.get($map, "name");
+    $properties: utils.get($map, "properties");
+    $variants: utils.get($map, "variants");
+    $is-important: utils.get($map, "important", false) == true;
+    //Build for each variant provided
+    @include define-variant($prefix, $variants...) using ($p, $s) {
+        @each $key,$value in utils.get($map, "values") {
+            $class-name: if($key == "default", $name, "#{$name}-#{$key}");
+            //.#{$p}#{$name}-#{$key}#{$s} { 
+            .#{$p}#{utils.unquote($class-name)}#{$s} {
+                //Check if we have provided a list of values
+                @if utils.is-list($value) {
+                    @for $i from 1 through utils.length($value) {
+                        $current-value: utils.get($value, $i, null);
+                        $current-property: utils.get($properties, $i, null);
+                        @if $current-value != null and $current-value != null {
+                            @include define-property($current-property, $current-value, $is-important); 
+                        }
+                    }
+                }
+                @else {
                     //NOTE: we will assign the same value to all properties provided
                     @each $property in $properties {
                         @include define-property($property, $value, $is-important); 
@@ -154,4 +167,5 @@
         }
     }
 }
+
 

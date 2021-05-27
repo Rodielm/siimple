@@ -1,0 +1,37 @@
+@use "./utils.scss" as utils;
+
+//Modules configuration
+$include-modules: utils.create-empty-list() !default;
+$exclude-modules: utils.create-empty-list() !default;
+$extend: utils.create-empty-map() !default;
+$prefix: utils.create-empty-map() !default;
+
+//Get options for the specified mofule
+@function get-module-options ($name) {
+    $options: utils.get($extend, $name, null);
+    @if utils.is-map($options) == true {
+        @return $options;
+    }
+    //Default --> return an empty map
+    @return utils.create-empty-map();
+}
+
+//Get module prefix
+@function get-module-prefix ($name) {
+    @return "";
+}
+
+//Check if the specified module is enabled
+@function is-module-enabled ($name) {
+    //Check if this module is in the list of included modules
+    @if utils.length($include-modules) > 0 {
+        @return utils.contains($include-modules, $name);
+    }
+    //Check if this module is in the list of excluded modules
+    @if utils.length($exclude-modules) > 0 {
+        @return utils.contains($exclude-modules, $name) == false;
+    }
+    //Other --> include this module
+    @return true;
+}
+

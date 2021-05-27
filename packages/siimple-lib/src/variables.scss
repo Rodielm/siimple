@@ -1,10 +1,6 @@
-@use "./utils.scss" as utils;
-
-//Default class prefix
-$prefix: "siimple-" !default;
-$variable-prefix: "siimple-" !default;
-$state-prefix: "is-" !default;
-$helper-prefix: "has-" !default;
+//Prefixes used in siimple
+$prefix: "siimple-" !default; //Prefix for components
+$prefix-helper: "has-" !default; //Prefix for helpers
 
 //Darker/lighter color amount
 $darker-amount: 20% !default;
@@ -23,15 +19,15 @@ $white: #ffffff !default;
 $black: #000000 !default;
 
 //Code colors (only for internal use)
-$code-colors: (
-    "blue": #9be0fd,
-    "green": #b4f4a4,
-    "red": #ff9999,
-    "yellow": #ffe999,
-    "purple": #d199ff,
-    "black": #2d3648,
-    "white": #ffffff
-) !default;
+//$code-colors: (
+//    "blue": #9be0fd,
+//    "green": #b4f4a4,
+//    "red": #ff9999,
+//    "yellow": #ffe999,
+//    "purple": #d199ff,
+//    "black": #2d3648,
+//    "white": #ffffff
+//) !default;
 
 //Colors
 $colors: (
@@ -79,6 +75,7 @@ $font-weight-bold: 700 !default;
 
 //Font size values
 $font-size-base: 16px !default;
+$font-size-tiny: 0.75rem !default;
 $font-size-small: 0.875rem !default; //Small text size
 $font-size-large: 1.25rem !default; //Large text size
 $font-size-huge: 2rem !default; //Huge text size
@@ -102,11 +99,12 @@ $line-height-large: 1.75 !default;
 $body-font-family: $font-family-sans !default;
 $body-font-weight: $font-weight-normal !default;
 $body-font-size: $font-size-base !default;
-$body-color: utils.get($colors, "dark") !default;
+$body-color: $dark !default; //utils.get($colors, "dark") !default;
 $body-line-height: $line-height-base !default;
 $body-background: $white !default;
 
-//Dorder values
+//Radius values
+//TODO: rename as radius and deprecate border-radius
 $border-radius-base: 0.5rem !default;
 $border-radius-small: 0.25rem !default;
 $border-radius-large: 1rem !default;
@@ -144,6 +142,26 @@ $columns: (
     "10": "83.33%",
     "11": "91.66%", 
     "12": "99.99%"
+) !default;
+
+//Sizes mapping
+$sizes: (
+    "0": 0px,
+    "1": 0.25rem,
+    "2": 0.5rem,
+    "3": 0.75rem,
+    "4": 1rem,
+    "6": 1.5rem,
+    "8": 2rem,
+    "10": 2.5rem,
+    "12": 3rem,
+    "20": 5rem,
+    "24": 6rem,
+    "32": 8rem,
+    "40": 10rem,
+    "64": 16rem,
+    "80": 20rem,
+    "120": 30rem,
 ) !default;
 
 

@@ -6,13 +6,13 @@
 
 //Alias for lighten($color, $amount)
 //https://sass-lang.com/documentation/modules/color#lighten
-@function lighten ($color, $amount) {
+@function lighten-color ($color, $amount) {
    @return color.adjust($color, $lightness: $amount); 
 }
 
 //Alias for darken ($color, $amount)
 //https://sass-lang.com/documentation/modules/color#darken 
-@function darken ($color, $amount) {
+@function darken-color ($color, $amount) {
     @return color.adjust($color, $lightness: -$amount);
 }
 
@@ -60,15 +60,43 @@
     @return meta.type-of($value) == "list";
 }
 
+//Check if the provided value is a number
+@function is-number ($value) {
+    @return meta.type-of($value) == "number";
+}
+
+//Create a new map
+@function create-empty-map () {
+    @return map.remove(("default": null), "default");
+}
+
+//Create an empty list
+@function create-empty-list () {
+    @return ();
+}
+
 //Alias for map.get
-@function get ($items, $key) {
+@function get ($items, $key, $default-value: null) {
     //Check for map --> return the value using map.get
     @if is-map($items) == true {
-        @return map.get($items, $key);
+        @if map.has-key($items, $key) == true {
+            @return map.get($items, $key);
+        }
+        //Key not found --> return the default value
+        @return $default-value;
     }
     //Check for list --> return the value using nth
     @if is-list($items) == true {
-        @return list.nth($items, $key);
+        //Check for empty list
+        @if list.length($items) == 0 or is-number($key) == false {
+            @return $default-value;
+        }
+        //Check if index exists
+        @if 0 < $key and $key <= list.length($items) {
+            @return list.nth($items, $key);
+        }
+        //Other case --> return the default value
+        @return $default-value;
     }
     //Other type --> error
     @error "'get' method only accepts a list or a map";
@@ -116,6 +144,35 @@
     @return 1;
 } 
 
+//Check if an element is included in the list or map
+@function contains ($items, $key) {
+    //Check for map --> use map.exists
+    @if is-map($items) {
+        @return map.has-key($items, $key);
+    }
+    //Check for list --> use list.index
+    @if is-list($items) {
+        @return list.index($items, $key) != null;
+    }
+    //Other value --> return false
+    @return false;
+}
+
+//Alias for map.merge or list.merge
+@function merge ($source, $target) {
+    //Check for empty target --> return the source instead
+    @if length($target) == 0 {
+        @return $source;
+    }
+    //Check if both are maps
+    @if is-map($source) and is-map($target) {
+        @return map.merge($source, $target);
+    }
+    //TODO: implement list.merge for list types
+    //Other --> throw error
+    @error "Invalid values provided to lib.merge";
+}
+
 //String replace
 @function replace($str, $search, $replace: "") {
     $index: string.index($str, $search);
@@ -136,4 +193,12 @@
     //If is not string --> return the value
     @return $str;
 }
+
+//Alias for if function (if exists)
+//@function if($condition, $true-value, $false-value) {
+//    @if $condition == true {
+//        @return $true-value;
+//    }
+//    @return $false-value;
+//}
 

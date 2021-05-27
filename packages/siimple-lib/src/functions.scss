@@ -1,10 +1,7 @@
-//@use "./theme.scss" as theme;
 @use "./variables.scss" as variables;
 @use "./utils.scss" as utils;
-@use "./plugins/colors/index.scss" as colors;
-@use "./plugins/icons/index.scss" as icons;
-@use "sass:string" as string;
-@use "sass:map" as map;
+@use "sass:string";
+@use "sass:map";
 
 //Deprecate function --> displays a warning message when a feature has been deprecated
 //@function deprecate ($feature, $dversion, $rversion) {
@@ -17,29 +14,29 @@
     @if map.has-key(variables.$colors, "#{$color}") {
         @return utils.get(variables.$colors, "#{$color}");
     }
-    //Check for color from colors list
-    @if map.has-key(colors.$list, "#{$color}") {
-        @return utils.get(colors.$list, "#{$color}");
-    }
+    ////Check for color from colors list
+    //@if map.has-key(colors.$list, "#{$color}") {
+    //    @return utils.get(colors.$list, "#{$color}");
+    //}
     //Fallback --> return black color
     @warn "Unknown color '#{$color}' provided to siimple.get-color";
     @return variables.$black;
 }
 
 //Deprecated color function
-@function color ($color: "dark") {
-    @warn "'siimple.color' has been deprecated. Plase use 'siimple.get-color' instead";
-    @return get-color($color);
-}
+//@function color ($color: "dark") {
+//    @warn "'siimple.color' has been deprecated. Plase use 'siimple.get-color' instead";
+//    @return get-color($color);
+//}
 
 //Make a color darker
 @function get-color-darker ($color: "dark", $amount: 20%) {
-    @return utils.darken(get-color($color), $amount);
+    @return utils.darken-color(get-color($color), $amount);
 }
 
 //Make a color lighter
 @function get-color-lighter ($color: "dark", $amount: 20%) {
-    @return utils.lighten(get-color($color), $amount);
+    @return utils.lighten-color(get-color($color), $amount);
 }
 
 //Invert a color
@@ -83,37 +80,26 @@
 //Get a gray color
 //DEPRECATED: use light or dark instead
 //Usage: gray("1") or gray("gray1")
-@function gray ($name) {
-    //$name: "gray" + utils.utils-replace($name, "gray", "");
-    //@return utils.utils-get(lists.$grays, $name);
-    @warn "'siimple.gray' has been deprecated";
-    @return variables.$black;
-}
+//@function gray ($name) {
+//    //$name: "gray" + utils.utils-replace($name, "gray", "");
+//    //@return utils.utils-get(lists.$grays, $name);
+//    @warn "'siimple.gray' has been deprecated";
+//    @return variables.$black;
+//}
 
 //Get a light color from lights list
-@function light ($name) {
-    //$name: "light" + utils.utils-replace($name, "light", "");
-    //@return utils.utils-get(lists.$lights, $name);
-    @warn "'siimple.light' has been deprecated";
-    @return get-color("light");
-}
+//@function light ($name) {
+//    //$name: "light" + utils.utils-replace($name, "light", "");
+//    //@return utils.utils-get(lists.$lights, $name);
+//    @warn "'siimple.light' has been deprecated";
+//    @return get-color("light");
+//}
 
 //Get a dark color from darks list
-@function dark ($name) {
-    //$name: "dark" + utils.utils-replace($name, "dark", "");
-    //@return utils.utils-get(lists.$darks, $name);
-    @warn "'siimple.dark' has been deprecated";
-    @return get-color("dark");
-}
-
-//Get an icon
-@function get-icon ($name) {
-    @return utils.get(icons.$list, "#{$name}");
-}
-
-//Use an icon by name
-@function use-icon($name) {
-    $icon-str: string.unquote(string.insert(get-icon($name), "\\", 1));
-    @return string.unquote("\"") + $icon-str + string.unquote("\"");
-}
+//@function dark ($name) {
+//    //$name: "dark" + utils.utils-replace($name, "dark", "");
+//    //@return utils.utils-get(lists.$darks, $name);
+//    @warn "'siimple.dark' has been deprecated";
+//    @return get-color("dark");
+//}
 
