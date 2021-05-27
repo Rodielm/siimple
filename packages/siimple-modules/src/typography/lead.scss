@@ -1,0 +1,28 @@
+@use "siimple-lib" as lib;
+
+//Lead variables
+$lead-font-size: lib.$font-size-large !default;
+$lead-font-weight: lib.$font-weight-bold !default;
+$lead-color: lib.get-color-lighter("dark") !default;
+//$lead-line-height: siimple.$line-height !default;
+
+//lead loader
+@mixin load-typography-lead ($options: (), $prefix: lib.$prefix, $name: "lead") {
+    .#{$prefix}#{$name} {
+        @include lead($options);
+    }
+}
+
+//Paragraph lead class
+//.#{lib.$prefix}lead {
+@mixin lead ($options: ()) {
+    display: block;
+    font-size: $lead-font-size;
+    //line-height: $lead-line-height;
+    font-weight: $lead-font-weight;
+    color: $lead-color;
+    margin-top: 0px;
+    margin-bottom: lib.$margin-bottom;
+}
+
+

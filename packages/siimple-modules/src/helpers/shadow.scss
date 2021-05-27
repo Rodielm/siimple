@@ -1,0 +1,18 @@
+@use "siimple-lib" as lib;
+
+//Register shadow utils
+@mixin load-helpers-shadow ($options: (), $prefix: lib.$prefix-helper) {
+    @include lib.utility($prefix, (
+        "name": "shadow",
+        "variants": ("base"),
+        "properties": ("box-shadow"),
+        "values": (
+            "none": none
+        )
+    ));
+    //Default shadow style
+    .#{$prefix}-shadow {
+        @include lib.shadow(); 
+    }
+}
+

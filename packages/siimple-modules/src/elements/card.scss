@@ -1,0 +1,145 @@
+@use "siimple-lib" as lib;
+
+//Card module loader
+@mixin load-elements-card ($options: (), $prefix: lib.$prefix, $name: "card") {
+    .#{$prefix}#{$name} {
+        @include card($options);
+    }
+}
+
+//Card element class
+//.#{lib.$prefix}card {
+@mixin card ($options: ()) {
+    $card-padding: lib.get($options, "padding", 1.5rem);
+    $card-padding-small: lib.get($options, "small.padding", 1rem);
+    $card-padding-large: lib.get($options, "large.padding", 2rem);
+    display: block;
+    width: 100%;
+    margin-bottom: lib.$margin-bottom;
+    border-radius: lib.$border-radius-base;
+    text-decoration: none !important;
+    background-color: lib.get-color("white"); //Default using white color
+    color: lib.get-color("dark");
+    //Common styles
+    &-image,
+    &-content, 
+    &-link {
+        display: block;
+         //First child of the card --> add border top radius
+        &:first-child {
+            border-top-left-radius: lib.$border-radius-base;
+            border-top-right-radius: lib.$border-radius-base;
+        }
+        //Last child of the card --> add border bottom radius
+        &:last-child {
+            border-bottom-left-radius: lib.$border-radius-base;
+            border-bottom-right-radius: lib.$border-radius-base;
+        }
+    }
+    //Card image
+    &-image {
+        background-color: lib.get-color-lighter("dark");
+        //font-weight: bold;
+    }
+    //Card content
+    &-content {
+        //display: block;
+        //padding-top: $card-padding;
+        //padding-left: $card-padding;
+        //padding-right: $card-padding;
+        padding: $card-padding;
+        //Not last card content child
+        &:not(:last-child) {
+            padding-bottom: 0px !important;
+        }
+    }
+    //Card link 
+    &-link {
+        position: relative;
+        //font-weight: bold;
+        //font-size: 15px;
+        padding: $card-padding;
+        color: lib.get-color("dark"); //lib.$text-color;
+        cursor: pointer;
+        //transition: opacity 0.3s;
+        opacity: 0.5;
+        text-decoration: none;
+        //Card link arrow
+        &::before {
+            display: block;
+            content: "";
+            width: 11px;
+            height: 11px;
+            border-top: 4px solid lib.get-color("dark"); 
+            border-right: 4px solid lib.get-color("dark");
+            //transform: rotate(45deg) translate(-100%, 50%);
+            transform: translateX(-2px) translateY(-50%) rotate(45deg);
+            border-radius: 2px;
+            position: absolute;
+            top: 50%;
+            right: $card-padding;
+            transition: right 0.3s;
+        }
+    }
+    //Card hover --> active link
+    &:hover &-link,
+    &-link:hover {
+        transition: opacity 0.3s;
+        opacity: 1.0;
+    }
+    &:hover &-link::before {
+    //&-link:hover &-link::before {
+        right: calc(#{$card-padding} - 3px);
+    }
+    //Light card --> default style
+    &.is-light {
+        background-color: lib.get-color("light");
+        //color: lib.get-color("dark");
+    }
+    &.is-light &-link {
+        color: lib.get-color("dark");
+    }
+    &.is-light &-link::before {
+        border-top-color: lib.get-color("dark");
+        border-right-color: lib.get-color("dark");
+    }
+    //Dark card
+    &.is-dark {
+        background-color: lib.get-color("dark");
+        color: lib.get-color("white");
+    }
+    &.is-dark &-link {
+        color: lib.get-color("white");
+    }
+    &.is-dark &-link::before {
+        border-top-color: lib.get-color("white");
+        border-right-color: lib.get-color("white");
+    }
+    //Small sized card
+    @if lib.get($options, "small.enabled", true) {
+        &.is-small &-content,
+        &.is-small &-link {
+            padding: $card-padding-small;
+        }
+        &.is-small &-link::before {
+            right: $card-padding-small;
+        }
+        &.is-small:hover &-link::before {
+            right: calc(#{$card-padding-small} - 5px) !important;
+        }
+    }
+    //Large sized card
+    @if lib.get($options, "large.enabled", true) {
+        &.is-large &-content,
+        &.is-large &-link {
+            padding: $card-padding-large;
+        }
+        &.is-large &-link::before {
+            right: $card-padding-large;
+        }
+        &.is-large:hover &-link::before {
+            right: calc(#{$card-padding-large} - 5px) !important;
+        }
+    }
+}
+

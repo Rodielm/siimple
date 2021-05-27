@@ -1,0 +1,88 @@
+@use "siimple-lib" as lib;
+
+//Alert module loader
+@mixin load-elements-alert ($options: (), $prefix: lib.$prefix, $name: "alert") {
+    .#{$prefix}#{$name} {
+        @include alert($options);
+    }
+}
+
+//Alert class
+//.#{lib.$prefix}alert {
+@mixin alert ($options: ()) {
+    display: block;
+    //width: calc(100% - #{$alert-padding-left} - #{$alert-padding-right});
+    //color: $siimple-navy;
+    //line-height: lib.$line-height;
+    //font-size: lib.$text-size;
+    position: relative;
+    border-radius: lib.$border-radius-base;
+    //Default background and text color
+    background-color: lib.get-color-lighter("light", 2%);
+    //color: siimple.color("dark");
+    padding-top: lib.get($options, "padding.top", 1.25rem);
+    padding-bottom: lib.get($options, "padding.bottom", 1.25rem);
+    padding-left: lib.get($options, "padding.left", 1.5rem);
+    padding-right: lib.get($options, "padding.right", 2rem);
+    //margin-top: $alert-margin-top;
+    margin-bottom: lib.$margin-bottom;
+    //Alert title
+    &-title {
+        color: currentColor;
+        font-size: lib.get($options, "title.font.size", lib.$font-size-large);
+        font-weight: lib.get($options, "title.font.weight", lib.$font-weight-bold);
+        margin-bottom: lib.get($options, "title.margin.bottom", 5px);
+        //line-height: 30px;
+    }
+    //Alert close button
+    &-close {
+        display: block;
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        opacity: 0.6;
+        transition: opacity 0.3s;
+        &:hover {
+            opacity: 1.0;
+        }
+        &::before,
+        &::after {
+            content: "";
+            width: 16px;
+            height: 3px;
+            //background-color: lib.get-color("dark");
+            background-color: currentColor;
+            position: absolute;
+            border-radius: 1px;
+            top: 6px;
+        }
+        &::before {
+            transform: rotate(45deg);
+        }
+        &::after {
+            transform: rotate(-45deg);
+        }
+    }
+    //Alert link
+    &-link {
+        color: currentColor !important;
+        font-weight: lib.$font-weight-bold;
+        text-decoration: underline;
+    }
+    //Alert colors 
+    @each $color in lib.$colors-modifiers {
+        &.is-#{$color} {
+            background-color: lib.get-color-lighter($color, 40%);
+            color: lib.get-color-darker($color);
+        }
+        //Close icon color
+        //&.is-#{$color} &-close::before,
+        //&.is-#{$color} &-close::after {
+        //    background-color: lib.get-color-darker($color);
+        //}
+    }
+}
+

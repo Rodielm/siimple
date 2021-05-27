@@ -1,0 +1,137 @@
+@use "siimple-lib" as lib;
+
+//Navigation module loader
+@mixin load-elements-navigation ($options: (), $prefix: lib.$prefix, $name: "navigation") {
+    .#{$prefix}#{$name} {
+        @include navigation($options);
+    }
+}
+
+//Nav class
+//.#{lib.$prefix}nav {
+@mixin navigation ($options: ()) {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    overflow-x: auto;
+    //width: 100%;
+    //margin-top: 0px;
+    margin-bottom: lib.$margin-bottom;
+    border-radius: lib.$border-radius-base;
+    @include lib.user-select(none);
+    //padding: 0px;
+    //Navigation group (hidden in horizontal nav)
+    &-group {
+        display: none;
+        width: 100%;
+        //height: 25px;
+        //line-height: 24px;
+        //transition: color 0.3s;
+        font-size: lib.get($options, "group.font.size", 1rem);
+        font-weight: lib.get($options, "group.font.weight", lib.$font-weight-bold);
+        text-decoration: none !important;
+        color: lib.get($options, "group.color", rgba(lib.get-color-lighter("dark", 30%), 0.7));
+        margin-bottom: lib.get($options, "group.margin.bottom", 0.5rem);
+        //Menu group not first margin top
+        &:not(:first-child) {
+            margin-top: lib.get($options, "group.margin.top", 10px);
+        }
+        ////Menu group hover
+        //&:hover {
+        //    text-decoration: none !important;
+        //}
+    }
+    //Navigation divider (hidden by default)
+    &-divider {
+        display: none;
+        height: lib.get($options, "divider.height", 0.125rem);
+        margin-top: lib.get($options, "divider.margin.top", 0.375rem);
+        margin-bottom: lib.get($options, "divider.margin.bottom", 0.375rem);
+        background-color: lib.get($options, "divider.background", lib.get-color-darker("light", 5%));
+    }
+    //Navigation item
+    &-item {
+        display: block;
+        //min-height: $menu-item-height;
+        //line-height: 24px;
+        //border: 0px;
+        border-radius: lib.$border-radius-base;
+        font-weight: lib.$font-weight-bold;
+        color: lib.get($options, "item.color", lib.get-color-lighter("dark"));
+        text-decoration: none !important;
+        padding: lib.get($options, "item.padding", 0.5rem);
+        //opacity: 1.0;
+        //transition: all ease 0.3s;
+        cursor: pointer;
+        //Hover styles
+        &:not(.is-active):hover {
+            transition: all ease 0.3s;
+            //text-decoration: none !important;
+            color: lib.get-color("primary");
+        }
+        //Active item
+        &.is-active {
+            //background-color: lib.get-color("light");
+            //color: lib.get-color("dark") !important;
+            color: lib.get-color("primary");
+        }
+    }
+    //Tabs style
+    &.is-tabs {
+        //display: flex;
+        background-color: lib.get($options, "tabs.background", lib.get-color("light")); 
+        padding: lib.get($options, "tabs.padding", 0.5rem);
+        //position: relative;
+        //width: 100%;
+        //height: $tabs-height;
+        //font-size: siimple.$text-size;
+        //Tab style for mobile devices
+        //@media screen and (max-width: lib.$mobile) {
+        @include lib.breakpoint("mobile") {
+            flex-direction: column;
+        }
+    }
+    //Tabs item
+    &.is-tabs &-item:not(:last-child) {
+        margin-right: lib.get($options, "tabs.item.margin.right", 0.75rem);
+        //Disable margin right on mobile devices
+        @include lib.breakpoint("mobile") {
+            margin-right: 0px !important;
+        }
+    }
+    &.is-tabs &-item:not(.is-active):hover {
+        background-color: rgba(lib.get-color("white"), 0.4);
+    }
+    &.is-tabs #{&}-item.is-active {
+        background-color: lib.get-color("white");
+    }
+    //Pills style
+    &.is-pills #{&}-item.is-active {
+        background-color: lib.get-color("primary");
+        color: lib.get-color("white") !important;
+    }
+    //Extend the full width
+    &.is-filled &-item,
+    &.is-tabs &-item {
+        flex-grow: 1 !important;
+        text-align: center !important;
+    }
+    //Vertical navigation
+    &.is-vertical {
+        flex-direction: column;
+        margin-right: 0px !important;
+    }
+    //Vertical nav --> display group title and divider
+    &.is-vertical &-group, 
+    &.is-vertical &-divider {
+        display: block !important;
+    }
+    //Align nav items
+    &.is-centered {
+        justify-content: center;
+    }
+    &.is-right {
+        justify-content: flex-end;
+    }
+}
+

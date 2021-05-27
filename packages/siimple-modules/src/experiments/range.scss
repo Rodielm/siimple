@@ -1,0 +1,70 @@
+@use "siimple-lib" as lib;
+
+//range loader
+@mixin load-experiments-range ($options: (), $prefix: lib.$prefix, $name: "range") {
+    .#{$prefix}#{$name} {
+        @include range($options);
+    }
+}
+
+//Thumb mixin
+@mixin range-thumb ($thumb-size, $thumb-background) {
+    box-sizing: border-box;
+    border: none;
+    width: $thumb-size;
+    height: $thumb-size;
+    border-radius: 50%;
+    background: $thumb-background;
+    cursor: pointer;
+}
+
+//Range component style
+//.#{lib.$prefix}range {
+@mixin range ($options: ()) {
+    $thumb-size: lib.get($options, "thumb.size", 16px);
+    $thumb-background: lib.get($options, "thumb.background", lib.get-color("primary"));
+    -webkit-appearance: none;
+    width: 100%;
+    height: lib.get($options, "height", 12px);
+    background: lib.get($options, "background", lib.get-color("light"));
+    outline: none;
+    //opacity: 0.7;
+    border-radius: 5px;
+    margin-top: lib.get($options, "margin.top", 11px);
+    margin-bottom: lib.get($options, "margin.bottom", 11px);
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    //Range hover
+    //&:hover {
+    //    opacity: 1.0;
+    //}
+    //Full width range
+    //&.is-full {
+    //    width: 100%;
+    //}
+    //Range disabled
+    &.is-disabled {
+        opacity: 0.7 !important;
+        cursor: not-allowed !important;
+        //Thumb disbaled style
+        &::-webkit-slider-thumb,
+        &::-moz-range-thumb,
+        &::-ms-thumb {
+            background: lib.get-color("dark") !important;
+        }
+    }
+    //Thumb style
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        @include range-thumb($thumb-size, $thumb-background);
+    }
+    &::-moz-range-thumb {
+        @include range-thumb($thumb-size, $thumb-background);
+    }
+    &::-ms-thumb {
+        margin-top: 0px;
+        @include range-thumb($thumb-size, $thumb-background);
+    }
+}
+

@@ -1,0 +1,28 @@
+@use "siimple-lib" as lib;
+
+//Rule module loader
+@mixin load-elements-rule ($options: (), $prefix: lib.$prefix, $name: "rule") {
+    .#{$prefix}#{$name} {
+        @include rule($options);
+    }
+}
+
+//Rule class 
+//.#{lib.$prefix}rule {
+@mixin rule ($options: ()) {
+    display: block;
+    height: lib.get($options, "height", 2px);
+    background-color: lib.get($options, "background", lib.get-color("light"));
+    padding: 0px;
+    //margin-top: $rule-margin-top;
+    //margin-bottom: $rule-margin-bottom;
+    border: 0px;
+    //Rule first and last child
+    &:not(:first-child) {
+        margin-top: lib.get($options, "margin.top", 1rem);
+    }
+    &:not(:last-child) {
+        margin-bottom: lib.get($options, "margin.bottom", 1rem);
+    }
+}
+

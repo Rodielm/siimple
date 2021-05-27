@@ -1,0 +1,23 @@
+@use "sass:map";
+@use "siimple-lib" as lib;
+
+//Generate default opacity values
+@function default-opacity-values () {
+    $opacity-values: ();
+    @for $i from 0 through 20 {
+        $opacity-values: map.set($opacity-values, $i * 5, $i * 0.05);
+    }
+    //Return opacity values
+    @return $opacity-values;
+}
+
+//Register opacity utils
+@mixin load-helpers-opacity ($options: (), $prefix: lib.$prefix-helper) {
+    @include lib.utility($prefix, (
+        "name": "opacity",
+        "variants": ("base" "responsive"),
+        "properties": ("opacity"),
+        "values": default-opacity-values()
+    ));
+}
+

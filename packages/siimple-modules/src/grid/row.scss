@@ -1,0 +1,19 @@
+@use "siimple-lib" as lib;
+
+//row loader
+@mixin load-grid-row ($options: (), $prefix: lib.$prefix, $name: "row") {
+    .#{$prefix}#{$name} {
+        @include row($options);
+    }
+}
+
+//Row mixin
+@mixin row ($options: ()) {
+    display: flex;
+    flex-wrap: wrap;
+    //width: 100%;
+    margin-left: lib.get($options, "margin.left", -10px);
+    margin-right: lib.get($options, "margin.right", -10px);
+    //@include lib.clearfix();
+}
+

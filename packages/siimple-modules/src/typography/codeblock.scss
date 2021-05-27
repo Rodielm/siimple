@@ -1,0 +1,46 @@
+@use "siimple-lib" as lib;
+
+//code block variables
+$codeblock-font-size: 0.8rem !default;
+$codeblock-font-family: lib.$font-family-mono !default;
+//$pre-line-height: 1.5 !default;
+$codeblock-padding-left: 20px !default;
+$codeblock-padding-right: 20px !default;
+$codeblock-padding-top: 20px !default;
+$codeblock-padding-bottom: 20px !default;
+$codeblock-color: lib.get-color("dark") !default; //siimple.color("white");
+$codeblock-background: lib.get-color("light") !default; //siimple.color("dark");
+
+//codeblock loader
+@mixin load-typography-codeblock ($options: (), $prefix: lib.$prefix, $name: "codeblock") {
+    .#{$prefix}#{$name} {
+        @include codeblock($options);
+    }
+}
+
+//Codeblock class
+//.#{lib.$prefix}codeblock {
+@mixin codeblock ($options: ()) {
+    display: block;
+    overflow-x: auto;
+    //width: calc(100% - #{$codeblock-padding-left} - #{$codeblock-padding-right});
+    width: 100%;
+    color: $codeblock-color;
+    //line-height: $pre-line-height;
+    font-size: $codeblock-font-size;
+    font-family: $codeblock-font-family;
+    background-color: $codeblock-background;
+    border-radius: lib.$border-radius-base;
+    padding-top: $codeblock-padding-top;
+    padding-bottom: $codeblock-padding-bottom;
+    padding-left: $codeblock-padding-left;
+    padding-right: $codeblock-padding-right;
+    margin-bottom: lib.$margin-bottom;
+    margin-top: 0px;
+    //Pre dark mode
+    //&--dark {
+    //    background-color: siimple.color("dark") !important;
+    //    color: siimple.color("white");
+    //}
+}
+

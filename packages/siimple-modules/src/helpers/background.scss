@@ -1,0 +1,53 @@
+@use "siimple-lib" as lib;
+
+//Background color values
+//$helpers-background-color: lib.$colors !default;
+//$helpers-background-size: (
+//    "auto": auto,
+//    "cover": cover, 
+//    "contain": contain
+//) !default;
+//$helpers-background-position: (
+//    "center": "center"
+//) !default;
+//$helpers-background-repeat: (
+//    "repeat": repeat,
+//    "repeat-x": repeat-x,
+//    "repeat-y": repeat-y,
+//    "no-repeat": no-repeat
+//) !default;
+
+//Register background utils
+@mixin load-helpers-background ($options: (), $prefix: lib.$prefix-helper) {
+    //Background color
+    @include lib.utility($prefix, (
+        "name": "bg",
+        "variants": ("base" "hover"),
+        "properties": ("background-color"),
+        "values": lib.$colors
+    ));
+    //Background size
+    @include lib.utility($prefix, (
+        "name": "bg",
+        "variants": ("base"),
+        "properties": ("background-size"),
+        "values": (
+            "auto": auto,
+            "cover": cover, 
+            "contain": contain
+        ) 
+    ));
+    //Background repeat
+    @include lib.utility($prefix, (
+        "name": "bg",
+        "variants": ("base"),
+        "properties": ("background-repeat"),
+        "values": (
+            "repeat": repeat,
+            "repeat-x": repeat-x,
+            "repeat-y": repeat-y,
+            "no-repeat": no-repeat
+        )
+    ));
+}
+

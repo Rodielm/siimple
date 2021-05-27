@@ -1,0 +1,19 @@
+@use "siimple-lib" as lib;
+
+//Register display utils
+@mixin load-helpers-display ($options: (), $prefix: lib.$prefix-helper) {
+    @include lib.utility($prefix, (
+        "name": "d",
+        "variants": ("base" "responsive"),
+        "properties": ("display"),
+        "values": (
+            "none": "none",
+            "inline": "inline",
+            "block": "block",
+            "inline-block": "inline-block",
+            "flex": "flex",
+            "inline-flex": "inline-flex"
+        )
+    ));
+}
+

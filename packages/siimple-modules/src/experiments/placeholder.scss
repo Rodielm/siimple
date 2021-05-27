@@ -1,0 +1,56 @@
+@use "siimple-lib" as lib;
+
+//placeholder loader
+@mixin load-experiments-placeholder ($options: (), $prefix: lib.$prefix, $name: "placeholder") {
+    .#{$prefix}#{$name} {
+        @include placeholder($options);
+    }
+}
+
+//Placeholder component
+//.#{lib.$prefix}placeholder {
+@mixin placeholder ($options: ()) {
+    display: block;
+    color: lib.get-color-lighter("dark");
+    border-width: 0px;
+    padding: 1rem;
+    flex-basis: 100%;
+    opacity: 1.0;
+    border-radius: lib.$border-radius-base;
+    margin-bottom: lib.$margin-bottom;
+    transition: all 0.3s;
+    //Filled placeholder
+    &.is-filled {
+        background-color: lib.get-color("light");
+    }
+    //Hoverable or active
+    &.is-hoverable:hover,
+    &.is-active {
+        cursor: pointer;
+        background-color: rgba(lib.get-color("primary"), 0.1);
+        border-color: lib.get-color("primary") !important;
+        color: lib.get-color("primary") !important;
+    }
+    //Active only styles
+    //&--active {
+    //    background-color: rgba(siimple.get-color("primary"), 0.1);
+    //}
+    //Dashed border
+    &.is-dashed {
+        border: 2px dashed lib.get-color("light");
+    }
+    //Solid border
+    &.is-solid {
+        border: 2px solid lib.get-color("light");
+    }
+    //Group of placeholders
+    &-group {
+        margin-left: -6px;
+        margin-right: -6px;
+    }
+    &-group & {
+        margin-left: 6px;
+        margin-right: 6px;
+    }
+}
+

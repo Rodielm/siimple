@@ -1,0 +1,81 @@
+@use "siimple-lib" as lib;
+
+//radio loader
+@mixin load-form-radio ($options: (), $prefix: lib.$prefix, $name: "radio") {
+    .#{$prefix}#{$name} {
+        @include radio($options);
+    }
+}
+
+//Radio class
+//.#{lib.$prefix}radio {
+@mixin radio ($options: ()) {
+    $radio-width: lib.get($options, "width", 18px);
+    $radio-height: lib.get($options, "height", 18px);
+    $radio-circle: lib.get($options, "circle.width", 4px);
+    display: inline-block;
+    //Disable default appearance of the checkbox
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: $radio-width;
+    height: $radio-height;
+    position: relative;
+    vertical-align: top;
+    margin: lib.get($options, "margin", 6px);
+    cursor: pointer;
+    //Radio outer circle
+    &:before {
+        display: block;
+        width: $radio-width; //calc(#{$radio-width} - 2 * #{$radio-border});
+        height: $radio-height; //calc(#{$radio-height} - 2 * #{$radio-border});
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        border-radius: 100px;
+        border-width: 4px;
+        border-style: solid;
+        border-color: lib.get-color("light");
+        //transition: border-color 0.3s ease;
+        cursor: pointer;
+    }
+    //Radio inner circle
+    &:after {
+        position: absolute;
+        display: block;
+        content: "";
+        width: $radio-circle;
+        height: $radio-circle;
+        background-color: transparent;
+        border-radius: 100px;
+        top: calc(50% - #{$radio-circle} / 2);
+        left: calc(50% - #{$radio-circle} / 2);
+        //transition: all 0.3s ease;
+    }
+    &:hover:after {
+        background-color: lib.get-color("light");
+    }
+    //Checked -> change inner background
+    &:checked:after,
+    &.is-active:after {
+        background-color: lib.get-color("primary");
+    }
+    //Checked -> change outer circle
+    &:checked:before,
+    &.is-active:before {
+        border-color: lib.get-color("primary");
+    }
+    //Radio colors
+    //@each $color in lib.utils-keys(lib.$status-colors) {
+    //    &--#{$color}:checked:after,
+    //    &--#{$color}#{&}--active:after {
+    //        background-color: lib.get-color($color);
+    //    }
+    //    &--#{$color}:checked:before,
+    //    &--#{$color}#{&}--active:before {
+    //        border-color: lib.get-color($color);
+    //    }
+    //}
+}
+

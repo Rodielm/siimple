@@ -1,0 +1,39 @@
+@use "siimple-lib" as lib;
+
+//Column loader
+@mixin load-grid-column ($options: (), $prefix: lib.$prefix, $name: "column") {
+    .#{$prefix}#{$name} {
+        @include column($options);
+    }
+}
+
+//Column mixin
+@mixin column ($options: ()) {
+    $column-sizes: lib.$columns;
+    flex: 1; //Allow flex grow
+    padding: lib.get($options, "padding", 10px);
+    min-height: 0;
+    //Grid default column sizes
+    @each $name, $width in $column-sizes {
+        &.is-#{$name} {
+            width: #{$width};
+            flex: none; //Disable flex grow
+        }
+    }
+    //Grid columns for each breakpoint
+    @each $breakpoint in lib.keys(lib.$breakpoints) {
+        @include lib.breakpoint($breakpoint) {
+            @each $name, $width in $column-sizes {
+                &.#{$breakpoint}\:is-#{$name} {
+                    width: #{$width};
+                    flex: none; //Disable flex grow
+                }
+            }
+            //Hide grid column
+            &.#{$breakpoint}\:is-hidden {
+                display: none !important;
+            }
+        }
+    }
+}
+

@@ -1,0 +1,53 @@
+@use "siimple-lib" as lib;
+
+//List module loader
+@mixin load-elements-list ($options: (), $prefix: lib.$prefix, $name: "list") {
+    .#{$prefix}#{$name} {
+        @include list($options);
+    }
+}
+
+//List class
+//.#{lib.$prefix}list {
+@mixin list ($options: ()) {
+    display: block;
+    width: 100%;
+    margin-bottom: lib.$margin-bottom;
+    //color: lib.$text-color;
+    //font-size: lib.$text-size;
+    //line-height: lib.$line-height;
+    //List item 
+    &-item {
+        display: block;
+        padding: lib.get($options, "item.padding", 1rem);
+        background-color: lib.get-color("light");
+        //transition: all 0.3s ease;
+        text-decoration: none;
+        color: lib.get-color("dark");
+        //font-size: lib.$text-size;
+        //line-height: lib.$line-height;
+        //position: relative;
+    }
+    &-item:first-child {
+        border-top-left-radius: lib.$border-radius-base;
+        border-top-right-radius: lib.$border-radius-base;
+    }
+    &-item:last-child {
+        border-bottom-left-radius: lib.$border-radius-base;
+        border-bottom-right-radius: lib.$border-radius-base;
+    }
+    &-item:not(:last-child) {
+        margin-bottom: 2px;
+    }
+    &.is-hoverable &-item:not(#{&}-item--active):hover {
+        background-color: lib.get-color-darker("light", 10%);
+        transition: background-color 0.3s;
+        cursor: pointer;
+    }
+    //Active list item
+    &-item.is-active {
+        background-color: lib.get-color-lighter("primary");
+    }
+    //Dark list [TODO]
+}
+

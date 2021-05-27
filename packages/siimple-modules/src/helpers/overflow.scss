@@ -1,0 +1,31 @@
+@use "siimple-lib" as lib;
+
+//Overflow values
+$helpers-overflow: (
+    "auto": "auto",
+    "scroll": "scroll",
+    "hidden": "hidden"
+) !default;
+
+//Register overflow utils
+@mixin load-helpers-overflow ($options: (), $prefix: lib.$prefix-helper) {
+    @include lib.utility($prefix, (
+        "name": "overflow",
+        "varians": ("base"),
+        "properties": ("overflow"),
+        "values": $helpers-overflow
+    ));
+    @include lib.utility($prefix, (
+        "name": "overflow-x",
+        "variants": ("base"),
+        "properties": ("overflow-x"),
+        "values": $helpers-overflow
+    ));
+    @include lib.utility($prefix, (
+        "name": "overflow-y",
+        "variants": ("base"),
+        "properties": ("overflow-y"),
+        "values": $helpers-overflow
+    ));
+}
+

@@ -1,0 +1,20 @@
+@use "siimple-lib" as lib;
+
+//Small text variables
+$small-font-size: lib.$font-size-small !default;
+$small-color: lib.get-color-lighter("dark") !default;
+
+//small loader
+@mixin load-typography-small ($options: (), $prefix: lib.$prefix, $name: "small") {
+    .#{$prefix}#{$name} {
+        @include small($options);
+    }
+}
+
+//Small class
+//.#{lib.$prefix}small {
+@mixin small ($options: ()) {
+    font-size: $small-font-size;
+    color: $small-color;
+}
+

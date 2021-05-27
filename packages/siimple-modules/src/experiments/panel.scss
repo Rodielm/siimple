@@ -1,0 +1,110 @@
+@use "siimple-lib" as lib;
+
+//panel loader
+@mixin load-experiments-panel ($options: (), $prefix: lib.$prefix, $name: "panel") {
+    .#{$prefix}#{$name} {
+        @include panel($options);
+    }
+}
+
+//Panel style
+//.#{lib.$prefix}panel {
+@mixin panel ($options: ()) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    //height: 100%;
+    border-radius: lib.$border-radius-base;
+    //Panel header
+    &-header {
+        //display: flex;
+        //background-color: siimple.utils-lighten(siimple.color("dark"), 40%);
+        background-color: lib.get($options, "header.background", lib.get-color("light"));
+        padding: lib.get($options, "header.padding", 1rem);
+        min-height: 0;
+        //height: $header-height;
+        //Disable selection
+        @include lib.user-select("none");
+        font-weight: lib.get($options, "header.font.weight", lib.$font-weight-bold);
+        font-size: lib.get($options, "header.font.size", 1.25rem);
+    }
+    //Panel header tab
+    //&-header-tab {
+    //    flex-shrink: 0;
+    //    padding-top: 5px;
+    //    padding-bottom: 5px;
+    //    padding-left: 10px;
+    //    padding-right: 10px;
+    //    //background-color: siimple.color("white");
+    //    line-height: 24px;
+    //    font-size: 14px;
+    //    font-weight: bold;
+    //    border-radius: lib.$border-radius-base;
+    //    cursor: pointer;
+    //    opacity: 0.6;
+    //    //@include siimple.user-select("none");
+    //    //Not first tab
+    //    &:not(:first-child) {
+    //        margin-left: 5px;
+    //    }
+    //    //Tab hover
+    //    &:hover {
+    //        opacity: 1.0;
+    //    }
+    //    //Tab active
+    //    &.is-active {
+    //        background-color: lib.get-color("primary");
+    //        color: lib.get-color("white");
+    //        opacity: 1.0 !important;
+    //    }
+    //}
+    ////Panel header title
+    //&-header-title {
+    //    flex-shrink: 0;
+    //    padding-top: 5px;
+    //    padding-bottom: 5px;
+    //    line-height: 24px;
+    //    font-size: 16px;
+    //    font-weight: bold;
+    //    //@include siimple.user-select("none");
+    //}
+    //Panel body
+    &-body {
+        flex-grow: 1;
+        padding: lib.get($options, "body.padding", 1rem);
+        background-color: lib.get($options, "body.background", lib.get-color("white"));
+        //Terrible hack for preventing bugs
+        //https://github.com/philipwalton/flexbugs/issues/42#issuecomment-107128787
+        //height: 0px;
+        min-height: 0;
+    }
+    //Panel footer
+    &-footer {
+        display: flex;
+        padding: lib.get($options, "footer.padding", 1rem);
+        background-color: lib.get($options, "footer.background", lib.get-color("white"));
+        min-height: 0;
+    }
+    //First child --> add border radius top
+    &-header:first-child,
+    &-body:first-child,
+    &-footer:first-child {
+        border-top-left-radius:  lib.$border-radius-base;
+        border-top-right-radius: lib.$border-radius-base;
+    }
+    //Last child or his collapsed --> add border radius bottom
+    &.is-collapsed &-header,
+    &-header:last-child,
+    &-body:last-child,
+    &-footer:last-child {
+        border-bottom-left-radius:  lib.$border-radius-base;
+        border-bottom-right-radius: lib.$border-radius-base;
+    }
+    //Collapsed panel --> hide body and footer
+    &.is-collapsed &-body,
+    &.is-collapsed &-footer {
+        display: none;
+        //visibility: hidden;
+    }
+}
+

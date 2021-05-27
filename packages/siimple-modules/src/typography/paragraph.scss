@@ -1,0 +1,18 @@
+@use "siimple-lib" as lib;
+
+//paragraph loader
+@mixin load-typography-paragraph ($options: (), $prefix: lib.$prefix, $name: "paragraph") {
+    .#{$prefix}#{$name} {
+        @include paragraph($options);
+    }
+}
+
+//Paragraph class
+//.#{lib.$prefix}paragraph {
+@mixin paragraph ($options: ()) {
+    display: block;
+    margin-top: 0px;
+    margin-bottom: lib.$margin-bottom;
+}
+
+

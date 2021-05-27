@@ -1,0 +1,97 @@
+@use "siimple-lib" as lib;
+
+//progress loader
+@mixin load-experiments-progress ($options: (), $prefix: lib.$prefix, $name: "progress") {
+    .#{$prefix}#{$name} {
+        @include progress($options);
+    }
+}
+
+//Progress class
+//.#{lib.$prefix}progress {
+@mixin progress ($options: ()) {
+    $progress-height: lib.get($options, "height", 20px);
+    $progress-striped-background: lib.get($options, "striped.background", lib.get-color("white"));
+    $animation-name: lib.get($options, "striped.animation.name", "siimple-progress-animation");
+    $animation-duration: lib.get($options, "striped.animation.duration", 2.5s);
+    $animation-duration-slow: lib.get($options, "striped.animation.duration.slow", 4s);
+    $animation-duration-fast: lib.get($options, "striped.animation.duration.fast", 1s);
+    $small-height: lib.get($options, "small.height", 10px);
+    display: block;
+    width: 100%;
+    height: $progress-height;
+    padding: 0px !important;
+    margin-top: 0px;
+    margin-bottom: lib.$margin-bottom;
+    border-radius: lib.$border-radius-base;
+    background-color: lib.get($options, "background", lib.get-color("light")); 
+    overflow: hidden;
+    //Disable default appearance in webkit and gecko
+    -webkit-appearance: none;
+    -mz-appearance: none;
+    //Progress bar progress
+    & > span {
+        display: block;
+        height: 100%;
+        overflow: hidden;
+        transition: all 0.3s;
+        position: relative;
+        text-align: center;
+        line-height: $progress-height;
+        font-size: 12px;
+    }
+    //Striped progress bar
+    &.is-striped > span::after  {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        z-index: 1px;
+        background-size: 50px 50px;
+        background-image : linear-gradient(-45deg, 
+            rgba($progress-striped-background, 0.15) 25%, 
+            transparent 25%, 
+            transparent 50%, 
+            rgba($progress-striped-background, 0.15) 50%, 
+            rgba($progress-striped-background, 0.15) 75%, 
+            transparent 75%, 
+            transparent);
+    }
+    &.is-striped > span::after {
+        animation: lib.unquote($animation-name) $animation-duration linear infinite;
+    }
+    &.is-fast > span::after {
+        animation: lib.unquote($animation-name) $animation-duration-fast linear infinite;
+    }
+    &.is-slow > span::after {
+        animation: lib.unquote($animation-name) $animation-duration-slow linear infinite;
+    }
+    //Colored progress bar
+    @each $color in lib.$colors-modifiers {
+        &.is-#{$color} > span {
+            background-color: lib.get-color($color);
+            color: lib.get-color-invert($color);
+        }
+    }
+    //Small progress bar
+    &.is-small {
+        height: $small-height;
+        //Progress bar style: remove text displayed
+        & > span {
+            line-height: $small-height;
+            font-size: 0px;
+        }
+    }
+    //Progress animation
+    @keyframes #{lib.unquote($animation-name)} {
+        0% { 
+            background-position: 0 0; 
+        }
+        100% { 
+            background-position: 50px 50px; 
+        }
+    }
+}
+

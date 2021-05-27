@@ -1,0 +1,26 @@
+@use "siimple-lib" as lib;
+@use "siimple-colors" as colors;
+
+//Colors loader
+@mixin load-colors ($options: (), $prefix: lib.$prefix-helper) {
+    //Define colors
+    @include lib.utility($prefix, (
+        "name": "bg",
+        "variants": ("base" "hover"),
+        "properties": ("background-color"),
+        "values": colors.$list
+    ));
+    @include lib.utility($prefix, (
+        "name": "text",
+        "variants": ("base" "hover"),
+        "properties": ("color"),
+        "values": colors.$list
+    ));
+    //Register CSS color variables
+    :root {
+        @each $key,$value in colors.$list {
+            @include lib.define-variable($key, $value);
+        }
+    }
+}
+

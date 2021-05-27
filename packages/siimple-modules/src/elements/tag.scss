@@ -1,0 +1,50 @@
+@use "siimple-lib" as lib;
+
+//Tag module loader
+@mixin load-elements-tag ($options: (), $prefix: lib.$prefix, $name: "tag") {
+    .#{$prefix}#{$name} {
+        @include tag($options);
+    }
+}
+
+//Tag class
+//.#{lib.$prefix}tag {
+@mixin tag ($options: ()) {
+    display: inline-block;
+    font-size: lib.get($options, "font.size", 12px);
+    font-weight: lib.get($options, "font.weight", lib.$font-weight-bold);
+    text-decoration: none;
+    line-height: lib.get($options, "lh", 20px);
+    border-radius: lib.get($options, "radius", lib.$border-radius-small);
+    padding-left: 8px;
+    padding-right: 8px;
+    vertical-align: text-top;
+    //margin-right: 1px;
+    //margin-bottom: 8px;
+    //Rounded tag 
+    &.is-rounded {
+        border-radius: 15px;        
+    }
+    //Tag colors
+    @each $color in lib.$colors-modifiers {
+        &.is-#{$color} {
+            background-color: lib.get-color($color);
+            color: lib.get-color-invert($color);
+        }
+    }
+    //Grouped tag
+    &-group {
+        //font-size: 0px; //To remove spacing between tags
+        vertical-align: text-top;
+        display: inline-flex; //Important!!!
+    }
+    &-group > &:not(:first-child) {
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+    &-group > &:not(:last-child) {
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+}
+

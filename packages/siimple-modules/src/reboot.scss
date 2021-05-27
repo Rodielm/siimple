@@ -1,0 +1,64 @@
+@use "siimple-lib" as lib;
+
+//Load reboot styles
+@mixin load-reboot ($options: ()) {
+    //Reset box sizing of all elements
+    *, *:before, *:after {
+        box-sizing: inherit;
+    }
+    //Set default html style
+    html {
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+    //Set default body style
+    body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background-color: lib.$body-background;
+        color: lib.$body-color; 
+        font-family: lib.$body-font-family;
+        font-weight: lib.$body-font-weight;
+        font-size: lib.$body-font-size;
+        line-height: lib.$body-line-height;
+        font-smooth: antialiased;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        //text-rendering: optimizeSpeed;
+    }
+    //Reset margins on lists
+    ul, ol, dl {
+        margin-top: 0;
+        margin-bottom: 1rem; //lib.$margin-bottom;
+    }
+    //Reset margins on paragraphs
+    p {
+        margin-top: 0;
+        margin-bottom: 1rem; //lib.$margin-bottom;
+    }
+    //Fix bold weight (in firefox)
+    strong, b {
+        font-weight: lib.$font-weight-bold;
+    }
+    //Make images and videos responsive by default
+    img, video {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+    //Remove border from iframe
+    iframe {
+        border: 0;
+    }
+    //Reset table border
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    //td, th {
+    //    padding: 0;
+    //}
+}
+

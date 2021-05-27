@@ -1,0 +1,40 @@
+@use "siimple-lib" as lib;
+
+//field loader
+@mixin load-form-field ($options: (), $prefix: lib.$prefix, $name: "field") {
+    .#{$prefix}#{$name} {
+        @include field($options);
+    }
+}
+
+//Form field class
+//.#{lib.$prefix}field {
+@mixin field ($options: ()) {
+    display: block;
+    vertical-align: top;
+    margin-bottom: lib.$margin-bottom;
+    margin-top: 0px;
+    //Field label
+    &-label {
+        display: block;
+        vertical-align: top;
+        font-weight: lib.$font-weight-bold;
+        //font-weight: lib.get($options, "label.font.weight", lib.$font-weight-bold);
+        //font-size: $field-label-text-size;
+        //line-height: $field-label-line-height;
+        color: lib.get($options, "label.color", lib.$body-color);
+        margin-top: 0px;
+        margin-bottom: 5px;
+    }
+    &-helper {
+        display: block;
+        vertical-align: top;
+        font-weight: lib.get($options, "helper.font.weight", lib.$font-weight-normal);
+        font-size: lib.get($options, "helper.font.size", 13px);
+        line-height: lib.get($options, "helper.lh", 19px);
+        color: lib.get($options, "helper.color", lib.get-color-lighter("dark"));
+        margin-top: 5px;
+        margin-bottom: lib.$margin-bottom;
+    }
+}
+

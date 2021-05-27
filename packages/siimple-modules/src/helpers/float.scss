@@ -1,0 +1,21 @@
+@use "siimple-lib" as lib;
+
+//Register float utils
+@mixin load-helpers-float ($options: (), $prefix: lib.$prefix-helper) {
+    //Floating helpers
+    @include lib.utility($prefix, (
+        "name": "float",
+        "variants": ("base" "responsive"),
+        "properties": ("float"),
+        "values": (
+            "left": left,
+            "right": right,
+            "none": none
+        )
+    ));
+    //Clearfix helper
+    .#{$prefix}-clearfix {
+        @include lib.clearfix();
+    }
+}
+

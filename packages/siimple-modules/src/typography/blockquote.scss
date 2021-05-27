@@ -1,0 +1,32 @@
+@use "siimple-lib" as lib;
+
+$blockquote-color: lib.get-color-lighter("dark") !default;
+$blockquote-border-width: 4px !default;
+$blockquote-border-color: lib.get-color-lighter("dark") !default;
+
+//blockquote loader
+@mixin load-typography-blockquote ($options: (), $prefix: lib.$prefix, $name: "blockquote") {
+    .#{$prefix}#{$name} {
+        @include blockquote($options);
+    }
+}
+
+//Blockquote class
+//.#{lib.$prefix}blockquote {
+@mixin blockquote ($options: ()) {
+    display: block;
+    //font-family: $siimple-default-text-font;
+    color: $blockquote-color;
+    //font-size: $siimple-default-font-size;
+    //line-height: $siimple-default-line-height;
+    border-left: $blockquote-border-width solid $blockquote-border-color;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 20px;
+    margin-bottom: lib.$margin-bottom;
+    //Fix default margin values in blockquote element
+    margin-left: 0px;
+    margin-right: 0px;
+}
+

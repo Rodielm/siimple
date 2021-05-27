@@ -1,0 +1,73 @@
+@use "siimple-lib" as lib;
+
+//switch loader
+@mixin load-form-switch ($options: (), $prefix: lib.$prefix, $name: "switch") {
+    .#{$prefix}#{$name} {
+        @include switch($options);
+    }
+}
+
+//Switch class
+//.#{lib.$prefix}switch {
+@mixin switch ($options: ()) {
+    //Disable default appearance of the checkbox
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    width: lib.get($options, "width", 32px);
+    height: lib.get($options, "height", 20px);
+    position: relative;
+    border-radius: 50%;
+    margin: lib.get($options, "margin", 5px);
+    cursor: pointer;
+    vertical-align: top;
+    //Switch circle
+    &:after {
+        display: block;
+        content: "";
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        transition: left 0.3s ease;
+        //cursor: pointer;
+        background: lib.get-color("white");
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        z-index: 2;
+    }
+    //Switch background
+    &::before {
+        display: block;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color: lib.get-color("light");
+        border-radius: 50%;
+        transition: background-color 0.3s;
+        position: absolute;
+        top: 0px;
+        z-index: 1;
+    }
+    //Checkbox active -> background color
+    &:checked:before,
+    &.is-active:before {
+        background-color: lib.get-color("primary");
+    }
+    //Checkbox active -> move circle
+    &:checked:after,
+    &.is-active:after {
+        left: 15px;
+        //opacity: 1.0;
+        //background-color: lib.get-color("white");
+    }
+    //Colored switch 
+    //@each $color in lib.utils-keys(lib.$status-colors) {
+    //    &--#{$color}:checked:before,
+    //    &--#{$color}#{&}--active:before {
+    //        background-color: lib.get-color($color);
+    //    }
+    //}
+}
+

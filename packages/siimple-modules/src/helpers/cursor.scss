@@ -1,0 +1,31 @@
+@use "siimple-lib" as lib;
+
+//Cursor helpers
+//$cursor: (
+//    "hand": "pointer",
+//    "pointer": "pointer",
+//    "move": "move",
+//    "none": "none",
+//    "zoom-in": "zoom-in",
+//    "zoom-out": "zoom-out",
+//    "not-allowed": "not-allowed"
+//) !default;
+
+//Load cursor utils
+@mixin load-helpers-cursor ($options: (), $prefix: lib.$prefix-helper) {
+    @include lib.utility($prefix, (
+        "name": "cursor",
+        "variants": ("base" "hover"),
+        "properties": ("cursor"),
+        "values": (
+            "hand": "pointer",
+            "pointer": "pointer",
+            "move": "move",
+            "none": "none",
+            "zoom-in": "zoom-in",
+            "zoom-out": "zoom-out",
+            "not-allowed": "not-allowed"
+        )
+    ));
+}
+

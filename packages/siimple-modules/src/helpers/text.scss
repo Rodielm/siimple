@@ -1,0 +1,113 @@
+@use "siimple-lib" as lib;
+
+//Register text utils
+@mixin load-helpers-text ($options: (), $prefix: lib.$prefix-helper) {
+    @include lib.utility($prefix, (
+        "name": "text",
+        "variants": ("base"),
+        "properties": ("font-weight"),
+        "values": (
+            "light": lib.$font-weight-light,
+            "normal": lib.$font-weight-normal,
+            "bold": lib.$font-weight-bold
+        )
+    ));
+    @include lib.utility($prefix, (
+        "name": "text",
+        "variants": ("base"),
+        "properties": ("font-size"),
+        "values": (
+            "tiny": lib.$font-size-tiny,
+            "small": lib.$font-size-small,
+            "large": lib.$font-size-large,
+            "huge": lib.$font-size-huge
+        )
+    ));
+    @include lib.utility($prefix, (
+        "name": "text",
+        "variants": ("base" "hover"),
+        "properties": ("color"),
+        "values": lib.$colors
+    ));
+    @include lib.utility($prefix, (
+        "name": "text",
+        "variants": ("base"),
+        "properties": ("white-space"),
+        "values": (
+            "wrap": "normal",
+            "nowrap": "nowrap"
+        )
+    ));
+    @include lib.utility($prefix, (
+        "name": "text",
+        "variants": ("base"),
+        "properties": ("font-style"),
+        "values": ("italic": "italic")
+    ));
+    @include lib.utility($prefix, (
+        "name": "text",
+        "variants": ("base"),
+        "properties": ("text-transform"),
+        "values": (
+            "capitalize": "capitalize",
+            "uppercase": "uppercase",
+            "lowercase": "lowercase"
+        )
+    ));
+    @include lib.utility($prefix, (
+        "name": "text",
+        "variants": ("base" "responsive"),
+        "properties": ("text-align"),
+        "values": (
+            "justify": justify, 
+            "left": left, 
+            "center": center, 
+            "right": right        
+        )
+    ));
+    //Text overflow
+    @include lib.utility($prefix, (
+        "name": "text",
+        "variants": ("base"),
+        "properties": ("overflow" "text-overflow" "white-space"),
+        "values": (
+            "truncated": (hidden ellipsis nowrap)
+        )
+    ));
+    @include lib.utility($prefix, (
+        "name": "text",
+        "variants": ("base"),
+        "properties": ("text-overflow"),
+        "values": (
+            "ellipsis": ellipsis,
+            "clip": clip
+        )
+    ));
+    //Text align
+    @include lib.utility($prefix, (
+        "name": "align",
+        "variants": ("base"),
+        "properties": ("vertical-align"),
+        "values": (
+            "baseline": "baseline",
+            "top": "top",
+            "middle": "middle",
+            "bottom": "bottom",
+            "text-top": "text-top",
+            "text-bottom": "text-bottom"
+        )
+    ));
+    //Line height
+    @include lib.utility($prefix, (
+        "name": "lh",
+        "variants": ("base"),
+        "properties": ("line-height"),
+        "values": (
+            "1": 1,
+            "default": lib.$line-height-base,
+            "small": lib.$line-height-small,
+            "large": lib.$line-height-large
+        )
+    ));
+}
+

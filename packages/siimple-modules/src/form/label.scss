@@ -1,0 +1,25 @@
+@use "siimple-lib" as lib;
+
+//label loader
+@mixin load-form-label ($options: (), $prefix: lib.$prefix, $name: "label") {
+    .#{$prefix}#{$name} {
+        @include label($options);
+    }
+}
+
+//Label class
+//.#{lib.$prefix}label {
+@mixin label ($options: ()) {
+    display: inline-block;
+    //min-height: 34px;
+    //line-height: lib.$body-line-height;
+    //font-size: lib.$body-font-size;
+    color: lib.get($options, "color", lib.$body-color);
+    font-weight: lib.get($options, "font.weight", lib.$font-weight-bold);
+    padding-right: lib.get($options, "padding.right", 12px);
+    padding-left: lib.get($options, "padding.left", 0px);
+    padding-top: lib.get($options, "padding.top", 3px);
+    padding-bottom: lib.get($options, "padding.bottom", 3px);
+    vertical-align: top;
+}
+

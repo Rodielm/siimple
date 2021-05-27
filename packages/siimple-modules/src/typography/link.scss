@@ -1,0 +1,27 @@
+@use "siimple-lib" as lib;
+
+//Link variables
+$link-color: lib.get-color("primary");
+$link-hover-color: lib.get-color-darker("primary");
+
+//link loader
+@mixin load-typography-link ($options: (), $prefix: lib.$prefix, $name: "link") {
+    .#{$prefix}#{$name} {
+        @include link($options);
+    }
+}
+
+//Link class
+//.#{lib.$prefix}link {
+@mixin link ($options: ()) {
+    color: $link-color;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+        color: $link-hover-color;
+        transition: color 0.3s;
+    }
+}
+
+

@@ -1,0 +1,50 @@
+@use "siimple-lib" as lib;
+
+//Position helpers
+$helpers-position: (
+    "relative": "relative",
+    "absolute": "absolute",
+    "sticky": "sticky",
+    "fixed": "fixed",
+    "initial": "initial"
+) !default;
+$helpers-position-arrange: (
+    "0": 0%, 
+    "50": 50%, 
+    "100": 100%
+) !default;
+
+//Register position utils
+@mixin load-helpers-position ($options: (), $prefix: lib.$prefix-helper) {
+    @include lib.utility($prefix, (
+        "name": "position",
+        "variants": ("base" "responsive"),
+        "properties": ("position"),
+        "values": $helpers-position
+    ));
+    @include lib.utility($prefix, (
+        "name": "top",
+        "variants": ("base" "responsive"),
+        "properties": ("top"),
+        "values": $helpers-position-arrange
+    ));
+    @include lib.utility($prefix, (
+        "name": "bottom",
+        "variants": ("base" "responsive"),
+        "properties": ("bottom"),
+        "values": $helpers-position-arrange
+    ));
+    @include lib.utility($prefix, (
+        "name": "left",
+        "variants": ("base" "responsive"),
+        "properties": ("left"),
+        "values": $helpers-position-arrange
+    ));
+    @include lib.utility($prefix, (
+        "name": "right",
+        "variants": ("base" "responsive"),
+        "properties": ("right"),
+        "values": $helpers-position-arrange
+    ));
+}
+

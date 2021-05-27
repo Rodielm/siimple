@@ -1,0 +1,28 @@
+@use "siimple-lib" as lib;
+
+//$content-padding-top: 40px !default;
+//$content-padding-bottom: 40px !default;
+
+//content loader
+@mixin load-layout-content ($options: (), $prefix: lib.$prefix, $name: "content") {
+    .#{$prefix}#{$name} {
+        @include content($options);
+    }
+}
+
+//Content class
+//.#{lib.$prefix}content {
+@mixin content ($options: ()) {
+    display: block;
+    //padding-top: $content-padding-top;
+    //padding-bottom: $content-padding-bottom;
+    //Default content size
+    @include lib.content-fluid();
+    //Content sizes
+    @each $size in lib.keys(lib.$content-sizes) {
+        &.is-#{$size} {
+            @include lib.content-size($size);
+        }
+    }
+}
+

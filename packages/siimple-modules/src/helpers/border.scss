@@ -1,0 +1,25 @@
+@use "siimple-lib" as lib;
+
+//Border variables
+//$border-radius: (
+//    "rounded": lib.$border-radius-base,
+//    "rounded-small": lib.$border-radius-small,
+//    "rounded-large": lib.$border-radius-large,
+//    "rounded-50": 50%
+//) !default;
+
+//Load border utils
+@mixin load-helpers-border ($options: (), $prefix: lib.$prefix-helper) {
+    @include lib.utility($prefix, (
+        "name": "rounded",
+        "variants": ("base"),
+        "properties": ("border-radius"),
+        "values": (
+            "default": lib.$border-radius-base,
+            "small": lib.$border-radius-small,
+            "large": lib.$border-radius-large,
+            "50": 50%
+        )
+    ));
+}
+

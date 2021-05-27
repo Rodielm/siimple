@@ -1,0 +1,39 @@
+@use "siimple-lib" as lib;
+
+//select loader
+@mixin load-form-select ($options: (), $prefix: lib.$prefix, $name: "select") {
+    .#{$prefix}#{$name} {
+        @include select($options);
+    }
+}
+
+//Select class
+//.#{lib.$prefix}select {
+@mixin select ($options: ()) {
+    display: inline-block;
+    height: lib.get($options, "height", 40px);
+    line-height: lib.get($options, "height", 40px);
+    font-size: lib.get($options, "font.size", 15px);
+    //font-weight: lib.get($options, "font.weight", lib.$font-weight-normal);
+    color: lib.get($options, "color", lib.get-color("dark"));
+    padding-left: lib.get($options, "padding.left", 1rem);
+    padding-right: lib.get($options, "padding.right", 1rem);
+    //padding-top: 0px;
+    //padding-bottom: 0px;
+    border: 0px;
+    border-radius: lib.$border-radius-base;
+    outline: 0px;
+    background-color: lib.get($options, "background", lib.get-color("light"));
+    vertical-align: top;
+    box-sizing: border-box;
+    //Full width select
+    &.is-full {
+        width: 100%;
+    }
+    //Dark select style
+    &.is-dark {
+        background-color: lib.get-color("dark");
+        color: lib.get-color("white");
+    }
+}
+

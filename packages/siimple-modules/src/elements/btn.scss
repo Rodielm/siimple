@@ -1,0 +1,116 @@
+@use "siimple-lib" as lib;
+
+//Btn module loader
+@mixin load-elements-btn ($options: (), $prefix: lib.$prefix, $name: "btn") {
+    .#{$prefix}#{$name} {
+        @include btn($options);
+    }
+}
+
+//Button class
+//.#{lib.$prefix}btn {
+@mixin btn ($options: ()) {
+    display: inline-block;
+    //min-height: 24px;
+    //transition: opacity 0.3s;
+    //transition: background-color 0.3s;
+    cursor: pointer;
+    //line-height: $btn-line-height;
+    text-align: center;
+    text-decoration: none;
+    font-size: lib.get($options, "font.size", lib.$font-size-base);
+    font-family: inherit; 
+    //font-weight: bold;
+    padding-left: lib.get($options, "padding.left", 15px);
+    padding-right: lib.get($options, "padding.right", 15px);
+    padding-top: lib.get($options, "padding.top", 8px);
+    padding-bottom: lib.get($options, "padding.bottom", 8px);
+    border-radius: lib.$border-radius-base;
+    //Disable default button element borders
+    //https://github.com/siimple/siimple/pull/17
+    border: 0px;
+    //Disable user selection
+    @include lib.user-select(none);
+    //Default button style
+    color: lib.get-color("dark");
+    background-color: lib.get-color("light");
+    //Button hover style
+    &:hover {
+        text-decoration: none;
+        //opacity: 0.8;
+        background-color: lib.get-color-darker("light");
+        transition: background-color 0.3s;
+    }
+    //Button colors
+    @each $color in lib.$colors-modifiers {
+        &.is-#{$color} {
+            background-color: lib.get-color($color);
+            color: lib.get-color-invert($color);
+            //Button hover
+            &:hover {
+                background-color: lib.get-color-darker($color);
+            }
+        }
+    }
+    //Disabled button
+    &.is-disabled {
+        //background-color: $siimple-btn-disabled-background !important;
+        //color: rgba($siimple-btn-disabled-color, $siimple-btn-disabled-color-alpha) !important;
+        opacity: 0.6 !important;
+        cursor: not-allowed !important;
+    }
+    //Small button
+    &.is-small {
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        font-size: lib.$font-size-small;
+        //line-height: 15px;
+    }
+    //Large button
+    &.is-large {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: lib.$font-size-large;
+        //line-height: 30px;
+    }
+    //Block button
+    &.is-full {
+        display: block;
+        width: 100%;
+        //padding-left: 0px !important;
+        //padding-right: 0px !important;
+    }
+    //Rounded button
+    //&--rounded {
+    //    border-radius: 50px !important;
+    //}
+    //Group buttons
+    &-group {
+        display: inline-block;
+    }
+    &-group > &:not(:first-child) {
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        margin-left: -1px;
+    }
+    &-group > &:not(:last-child) {
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        margin-right: -2px;
+    }
+    //White button
+    &.is-white {
+        //transition: opacity 0.3s !important;
+        background-color: lib.get-color("white");
+        opacity: 1.0;
+        &:hover {
+            background-color: lib.get-color("white") !important;
+            opacity: 0.8;
+        }
+    }
+}
+

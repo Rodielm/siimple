@@ -1,0 +1,98 @@
+@use "siimple-lib" as lib;
+
+//Register flexbox utils
+@mixin load-helpers-flexbox ($options: (), $prefix: lib.$prefix-helper) {
+    @include lib.utility($prefix, (
+        "name": "flex",
+        "variants": ("base" "responsive"),
+        "properties": ("display"),
+        "values": (
+            "default": "flex",
+            "inline": "inline-flex"
+        )
+    ));
+    @include lib.utility($prefix, (
+        "name": "flex",
+        "variants": ("base" "responsive"),
+        "properties": ("flex-direction"),
+        "values": (
+            "row": "row", 
+            "column": "column", 
+            "row-rev": "row-reverse", 
+            "column-rev": "column-reverse"
+        )
+    ));
+    @include lib.utility($prefix, (
+        "name": "flex",
+        "variants": ("base" "responsive"),
+        "properties": ("flex-wrap"),
+        "values": (
+            "wrap": "wrap",
+            "nowrap": "nowrap"
+        )
+    ));
+    @include lib.utility($prefix, (
+        "name": "flex",
+        "variants": ("base" "responsive"),
+        "properties": ("flex-grow"),
+        "values": (
+            "grow": "1",
+            "nogrow": "0"
+        )
+    ));
+    //Align content
+    @include lib.utility($prefix, (
+        "name": "content",
+        "variants": ("base" "responsive"),
+        "properties": ("align-content"),
+        "values": (
+            "start": flex-start,
+            "end": flex-end,
+            "center": center,
+            "between": space-between,
+            "around": space-around,
+            "evenly": space-evenly        
+        )
+    ));
+    //Align items
+    //https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
+    @include lib.utility($prefix, (
+        "name": "items",
+        "variants": ("base" "responsive"),
+        "properties": ("align-items"),
+        "values": (
+            "start": flex-start,
+            "end": flex-end,
+            "center": center,
+            "stretch": stretch,
+            "baseline": baseline
+        )
+    ));
+    //Justify content
+    //https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
+    @include lib.utility($prefix, (
+        "name": "justify",
+        "variants": ("base" "responsive"),
+        "properties": ("justify-content"),
+        "values": (
+            "start": flex-start,
+            "end": flex-end,
+            "center": center,
+            "between": space-between,
+            "around": space-around,
+            "evenly": space-evenly
+        )
+    ));
+    //Flexbox order
+    @include lib.utility($prefix, (
+        "name": "order",
+        "variants": ("base" "responsive"),
+        "properties": ("order"),
+        "values": (
+            "none": 0,
+            "first": -999,
+            "last": 999
+        )
+    ));
+}
+

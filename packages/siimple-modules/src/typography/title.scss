@@ -1,0 +1,33 @@
+@use "siimple-lib" as lib;
+
+$title-margin-top: 30px !default;
+$title-margin-bottom: 0.5em !default;
+$title-line-height: lib.$body-line-height !default;
+$title-font-weight: lib.$font-weight-bold !default;
+
+//title loader
+@mixin load-typography-title ($options: (), $prefix: lib.$prefix, $name: "title") {
+    .#{$prefix}#{$name} {
+        @include title($options);
+    }
+}
+
+//Title class
+//.#{lib.$prefix}title {
+@mixin title ($options: ()) {
+   display: block;
+   font-weight: $title-font-weight;
+   line-height: $title-line-height;
+   padding: 0px;
+   margin-bottom: $title-margin-bottom;
+   &:not(:first-child) {
+       margin-top: $title-margin-top; 
+   }
+   //Title sizes
+   @each $name,$value in lib.$font-sizes {
+       &.is-#{$name} {
+           font-size: $value;
+       }
+   }
+}
+

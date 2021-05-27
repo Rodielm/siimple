@@ -1,0 +1,63 @@
+@use "siimple-lib" as lib;
+@use "siimple-icons" as icons;
+
+//Icons variables
+$icons-default-font-name: "siimple-icons" !default;
+$icons-default-font-folder: "./fonts" !default;
+
+//Icons fontface mixin
+@mixin icons-font ($options: ()) {
+    $font-name: lib.get($options, "font-name", $icons-default-font-name);
+    $font-folder: lib.get($options, "font-folder", $icons-default-font-folder);
+    $font-url-ttf:   $font-folder + "/" + $font-name + ".ttf" !default;
+    $font-url-woff:  $font-folder + "/" + $font-name + ".woff" !default;
+    $font-url-woff2: $font-folder + "/" + $font-name + ".woff2" !default;
+    //Register the fontface for this font
+    @font-face {
+        font-family: $font-name;
+        src: url($font-url-ttf) format("truetype"),
+        url($font-url-woff) format("woff"),
+        url($font-url-woff2) format("woff2");
+        font-weight: normal;
+        font-style: normal;
+    }
+}
+
+//Base icons mixin
+@mixin icons ($options: ()) {
+    display: inline-flex; //inline-block;
+    align-self: center;
+    font-family: lib.get($options, "font-name", $icons-default-font-name);
+    //font-size: siimple.$icons-font-size;
+    line-height: lib.get($options, "lh", 1);
+    font-weight: normal !important;
+    font-style: normal;
+    text-rendering: auto;
+    //height: 1.5em;
+    //width: 1.5em;
+    //align-items: center;
+    //justify-content: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    &::before {
+        box-sizing: border-box; //inherit;
+        display: block;
+    }
+    //For each icon in the list
+    @each $icon-name in lib.keys(icons.$list) {
+        &.is-#{$icon-name}:before {
+            content: icons.use-icon($icon-name);
+        }
+    }
+}
+
+//Icons loader
+@mixin load-icons ($options: (), $prefix: lib.$prefix, $name: "icon") {
+    //Include icons font
+    @include icons-font($options);
+    //Icon class
+    .#{$prefix}#{$name} {
+        @include icons($options);
+    }
+}
+

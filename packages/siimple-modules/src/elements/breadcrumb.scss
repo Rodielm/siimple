@@ -1,0 +1,71 @@
+@use "siimple-lib" as lib;
+
+//Breadcrumb module loader
+@mixin load-elements-breadcrumb ($options: (), $prefix: lib.$prefix, $name: "breadcrumb") {
+    .#{$prefix}#{$name} {
+        @include breadcrumb($options);
+    }
+}
+
+//Breadcrumb class
+//.#{lib.$prefix}breadcrumb {
+@mixin breadcrumb ($options: ()) {
+    display: flex;
+    flex-wrap: nowrap;
+    //width: 100%;
+    //height: $breadcrumb-height;
+    margin-bottom: lib.$margin-bottom;
+    background-color: lib.get($options, "background", lib.get-color("light"));
+    border-radius: lib.$border-radius-base;
+    padding: lib.get($options, "padding", 5px);
+    //border: 0px;
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap !important;
+    //Breadcrumb item
+    &-item {
+        //display: block;
+        //float: left;
+        position: relative;
+        //height: $breadcrumb-item-height;
+        //font-size: lib.get($options, "item.font.size", 15px);
+        //line-height: lib.get($options, "item.lineheight", 24px);
+        padding-left: lib.get($options, "item.padding.left", 15px);
+        padding-right: lib.get($options, "item.padding.right", 25px);
+        padding-top: lib.get($options, "item.padding.top", 8px);
+        padding-bottom: lib.get($options, "item.padding.bottom", 8px);
+        //text-align: center;
+        //font-family: $siimple-default-text-font;
+        font-weight: lib.$font-weight-bold;
+        text-decoration: none;
+        color: lib.get-color("primary");
+        //transition: color 0.3s;
+        cursor: pointer;
+        //Crumb hover
+        &:hover {
+            transition: color 0.3s;
+            color: lib.get-color-darker("primary");
+        }
+        //Crumb after
+        &:not(:last-child)::after {
+            display: block;
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid lib.get-color-lighter("dark");
+            border-right: 2px solid lib.get-color-lighter("dark");
+            position: absolute;
+            top: 16px;
+            right: 3px;
+            transform: rotate(45deg);
+        }
+        //Active crumb
+        &.is-active {
+            color: lib.get-color("dark") !important;
+            cursor: default !important;
+            //font-weight: normal !important;
+            pointer-events: none; //Disable clicks
+        }
+    }
+}
+

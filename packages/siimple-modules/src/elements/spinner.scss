@@ -1,0 +1,66 @@
+@use "siimple-lib" as lib;
+
+//Spinner module loader
+@mixin load-elements-spinner ($options: (), $prefix: lib.$prefix, $name: "spinner") {
+    .#{$prefix}#{$name} {
+        @include spinner($options);
+    }
+}
+
+//Spinner class
+//.#{lib.$prefix}spinner {
+@mixin spinner ($options: ()) {
+    $animation-name: lib.get($options, "animation.name", "siimple-spinner-animation");
+    $animation-duration: lib.get($options, "animation.duration", 1s);
+    $width: lib.get($options, "width", 2rem);
+    $height: lib.get($options, "height", 2rem);
+    $border-width: lib.get($options, "border.width", 4px);
+    $border-color: lib.get($options, "border.color", lib.get-color("white"));
+    $border-opacity: lib.get($options, "border.opacity", 0.2);
+    display: inline-block;
+    position: relative;
+    width: $width;
+    height: $height;
+    //Spinner anlimation elements
+    &:before,
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: $width; // - 2 * $spinner-border-width;
+        height: $height; // - 2 * $spinner-border-width;
+        border: $border-width solid transparent;
+        border-radius: 100%;
+    }
+    //Spinner animation background
+    &:before {
+        opacity: $border-opacity;
+        border-color: $border-color; 
+    }
+    //Spinner animation circle
+    &:after {
+        border-top-color: $border-color;
+        animation: #{lib.unquote($animation-name)} #{$animation-duration} infinite linear;
+    }
+    //Spinner colors
+    @each $color in lib.$colors-modifiers {
+        &.is-#{$color}:before {
+            border-color: lib.get-color($color) !important;
+        }
+        &.is-#{$color}:after {
+            border-top-color: lib.get-color($color) !important;
+        }
+    }
+    //Spinner animation
+    @keyframes #{lib.unquote($animation-name)} {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(359deg);
+        }
+    }    
+}
+

@@ -1,0 +1,134 @@
+@use "siimple-lib" as lib;
+
+//modal loader
+@mixin load-experiments-modal ($options: (), $prefix: lib.$prefix, $name: "modal") {
+    .#{$prefix}#{$name} {
+        @include modal($options);
+    }
+}
+
+//Modal class
+//.#{lib.$prefix}modal {
+@mixin modal ($options: ()) {
+    $modal-sizes: lib.get($options, "sizes", ("small" "medium" "large"));
+    display: flex;
+    width: 100%; //calc(100% - 2 * #{$modal-padding});
+    height: 100%; //calc(100% - 2 * #{$modal-padding});
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 400;
+    padding: lib.get($options, "padding", 1rem);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: lib.get($options, "background", rgba(lib.get-color-darker("dark"), 0.4));
+    ////Modal content
+    //&-content {
+    //    display: block;
+    //    width: 100%;
+    //    //max-width: 960px;
+    //    //background-color: lib.get-color("white");
+    //    border-radius: lib.$border-radius-base;
+    //    padding: 0px;
+    //}
+    //Common styles
+    &-header,
+    &-body,
+    &-footer {
+        //display: block;
+        width: 100%;
+        padding: 32px;
+    }
+    //First item
+    &-header:first-child,
+    &-body:first-child,
+    &-footer:first-child {
+        border-top-left-radius: lib.$border-radius-base;
+        border-top-right-radius: lib.$border-radius-base;
+    }
+    //Last item
+    &-header:last-child,
+    &-body:last-child,
+    &-footer:last-child {
+        border-bottom-left-radius: lib.$border-radius-base;
+        border-bottom-right-radius: lib.$border-radius-base;
+    }
+    //Modal header
+    &-header {
+        //height: 34px;
+        background-color: lib.get-color("white");
+        //border-bottom: 1px solid lib.get-color("light");
+        font-weight: lib.get($options, "header.font.weight", lib.$font-weight-bold);
+        font-size: lib.get($options, "header.font.size", 1.25rem);
+        //height: 34px;
+        //line-height: 34px;
+        &:after {
+            content: "";
+            clear: both;
+        }
+    }
+    //Modal close button
+    &-close {
+        display: block;
+        float: right;
+        position: relative;
+        width: 20px;
+        //height: 34px;
+        cursor: pointer;
+        opacity: 0.6;
+        transition: opacity 0.3s;
+        &:hover {
+            opacity: 1.0;
+        }
+        &::before,
+        &::after {
+            content: "";
+            width: 20px;
+            height: 4px;
+            background-color: lib.get-color("dark");
+            position: absolute;
+            border-radius: 4px;
+            top: 13px;
+        }
+        &::before {
+            transform: rotate(45deg);
+        }
+        &::after {
+            transform: rotate(-45deg);
+        }
+    }
+    //Modal body
+    &-body {
+        overflow-y: auto;
+        max-height: 50vh;
+        background-color: lib.get-color("white");
+    }
+    //Modal footer
+    &-footer {
+        //color: lib.get-color-lighter("dark");
+        background-color: lib.get-color("white");
+    }
+    //Modal sizes
+    @if lib.is-list($modal-sizes) and lib.length($modal-sizes) > 0 {
+        @each $size in $modal-sizes {
+            &.is-#{$size} &-header,
+            &.is-#{$size} &-body, 
+            &.is-#{$size} &-footer {
+                max-width: lib.get-content-size($size);
+            }
+        }
+    }
+    //&.is-small &-content {
+    //    max-width: lib.get-content-size("small");
+    //}
+    //&.is-medium &-content {
+    //    max-width: lib.get-content-size("medium");
+    //}
+    //&.is-large &-content {
+    //    max-width: lib.get-content-size("large");
+    //}
+}
+

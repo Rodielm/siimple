@@ -1,0 +1,79 @@
+@use "siimple-lib" as lib;
+
+$jumbotron-padding-top: 85px !default;
+$jumbotron-padding-bottom: 85px !default;
+$jumbotron-background: lib.get-color("white") !default;
+
+$jumbotron-title-font-size: 50px !default;
+$jumbotron-title-line-height: 1em !default;
+$jumbotron-title-font-weight: lib.$font-weight-bold !default;
+
+$jumbotron-subtitle-font-size: 30px !default;
+$jumbotron-subtitle-line-height: 1em !default;
+$jumbotron-subtitle-font-weight: lib.$font-weight-bold !default;
+
+//jumbotron loader
+@mixin load-layout-jumbotron ($options: (), $prefix: lib.$prefix, $name: "jumbotron") {
+    .#{$prefix}#{$name} {
+        @include jumbotron($options);
+    }
+}
+
+//Jumbotron class
+//.#{lib.$prefix}jumbotron {
+@mixin jumbotron ($options: ()) {
+    display: flex;
+    //display: block;
+    //font-family: $siimple-default-text-font;
+    //justify-content: space-between;
+    align-items: stretch;
+    flex-direction: column;
+    padding-top: $jumbotron-padding-top;
+    padding-bottom: $jumbotron-padding-bottom;
+    //color: lib.$text-color;
+    background-color: $jumbotron-background;
+    @include lib.content-fluid(); //Default jumbotron size
+    //Jumbotron title
+    &-title {
+        display: block;
+        line-height: $jumbotron-title-line-height;
+        font-size: $jumbotron-title-font-size;
+        font-weight: $jumbotron-title-font-weight;
+        text-decoration: none;
+    }
+    //Jumbotron subtitle
+    &-subtitle {
+        display: block;
+        line-height: $jumbotron-subtitle-line-height;
+        font-size: $jumbotron-subtitle-font-size;
+        font-weight: $jumbotron-subtitle-font-weight;
+        opacity: 0.8;
+        text-decoration: none;
+    }
+    &-title + &-subtitle {
+        margin-top: 8px;
+    }
+    //Jumbotron full height
+    &.is-fullheight {
+        min-height: 100vh;
+        //display: flex;
+        //align-items: center;
+        justify-content: center;
+        //flex-direction: column;
+        padding: 0px;
+    }
+    //Colored jumbotron
+    @each $color in lib.$colors-modifiers {
+        &.is-#{$color} {
+            background-color: lib.get-color($color);
+            color: lib.get-color-invert($color);
+        }
+    }
+    //Jumbotron sizes
+    @each $size in lib.keys(lib.$content-sizes) {
+        &.is-#{$size} {
+            @include lib.content-size($size);
+        }
+    }
+}
+

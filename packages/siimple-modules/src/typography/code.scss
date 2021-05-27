@@ -1,0 +1,33 @@
+@use "siimple-lib" as lib;
+
+//Code variables
+$code-font-size: 0.8rem !default;
+$code-font-weight: lib.$font-weight-bold !default;
+$code-font-family: lib.$font-family-mono !default;
+//$code-line-height: 21px !default;
+$code-color: lib.get-color-darker("primary", 5%) !default;
+$code-padding-left: 3px !default;
+$code-padding-right: 3px !default;
+
+//code loader
+@mixin load-typography-code ($options: (), $prefix: lib.$prefix, $name: "code") {
+    .#{$prefix}#{$name} {
+        @include code($options);
+    }
+}
+
+//Code class
+//.#{lib.$prefix}code {
+@mixin code ($options: ()) {
+    color: $code-color;
+    text-decoration: none;
+    //line-height: $code-line-height;
+    font-size: $code-font-size;
+    font-weight: $code-font-weight;
+    font-family: $code-font-family;
+    padding-left: $code-padding-left;
+    padding-right: $code-padding-right;
+    word-wrap: break-word;
+    //text-size-adjust: 100%;
+}
+

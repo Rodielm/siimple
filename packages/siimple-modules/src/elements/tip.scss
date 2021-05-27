@@ -1,0 +1,152 @@
+@use "siimple-lib" as lib;
+
+//Tip module loader
+@mixin load-elements-tip ($options: (), $prefix: lib.$prefix, $name: "tip") {
+    .#{$prefix}#{$name} {
+        @include tip($options);
+    }
+}
+
+//Tip class
+//.#{lib.$prefix}tip {
+@mixin tip ($options: ()) {
+    display: block;
+    position: relative;
+    //width: calc(100% - 25px - 20px - 5px);
+    border-left-style: solid;
+    border-left-width: 5px; //$tip-border-width;
+    border-radius: lib.$border-radius-base;
+    padding: lib.get($options, "padding", 1.25rem);
+    //padding-top: $tip-padding;
+    //padding-right: $tip-padding !important;
+    //padding-bottom: $tip-padding;
+    //padding-left: $tip-padding !important;
+    margin-bottom: lib.$margin-bottom;
+    //font-size: $siimple-default-font-size;
+    color: lib.get($options, "background", lib.get-color-lighter("light", 2%));
+    //line-height: $siimple-default-line-height;
+    //Default tip color style
+    background-color: lib.get($options, "background", lib.get-color("dark"));
+    border-left-color: lib.get-color("light");
+    //Tip colors
+    @each $color in lib.$colors-modifiers {
+        &.is-#{$color} {
+            //background-color: lib.get-color-lighter($color, 8%);
+            border-left-color: lib.get-color($color);
+        }
+    }
+    ////Common tip icons styles
+    //&.is-exclamation,
+    //&.is-question,
+    //&.is-info,
+    //&.is-heart,
+    //&.is-cross,
+    //&.is-check {
+    //    border-left-width: $tip-border-width;
+    //}
+    ////Exclamation tip icon
+    //&.is-exclamation::before {
+    //    content: "!";
+    //}
+    ////Question tip
+    //&.is-question::before {
+    //    content: "?";
+    //}
+    ////Common question and exclamation styles
+    //&.is-exclamation::before,
+    //&.is-question::before {
+    //    position: absolute;
+    //    color: lib.get-color("white");
+    //    width: 20px;
+    //    left: -30px;
+    //    top: 16px;
+    //    text-align: center;
+    //    font-weight: 600;
+    //    //font-family: monospace;
+    //    //font-size: 16px;
+    //}
+    //&.is-exclamation::after,
+    //&.is-question::after {
+    //    content: "";
+    //    position: absolute;
+    //    border: 2px solid lib.get-color("white");
+    //    border-radius: 100px;
+    //    width: 20px;
+    //    height: 20px;
+    //    top: 15px;
+    //    left: -32px;
+    //}
+    ////Heart tip icon
+    //&.is-heart::before,
+    //&.is-heart::after {
+    //    content: "";
+    //    position: absolute;
+    //    top: 17px;
+    //    background-color: lib.get-color("white");
+    //    border-radius: 100px 100px 0 0;
+    //    width: 10px;
+    //    height: 15px;
+    //}
+    //&.is-heart::before {
+    //    transform: rotate(-45deg);
+    //    left: -27px;
+    //}
+    //&.is-heart::after {
+    //    transform: rotate(45deg);
+    //    left: -23px;
+    //}
+    ////Info tip icons
+    //&.is-info::before {
+    //    content: "i";
+    //    color: lib.get-color("white");
+    //    font-family: monospace;
+    //    position: absolute;
+    //    top: 13px;
+    //    left: -30px;
+    //    width: 20px;
+    //    text-align: center;
+    //    font-weight: bold;
+    //    font-size: 24px;
+    //}
+    ////Cross tip icon
+    //&.is-cross::after,
+    //&.is-cross::before {
+    //    content: "";
+    //    position: absolute;
+    //    background-color: lib.get-color("white");
+    //    width: 5px;
+    //    height: 20px;
+    //    border-radius: 2px;
+    //    top: 16px;
+    //}
+    //&.is-cross::after {
+    //    transform: rotate(-45deg);
+    //    left: -22px;
+    //}
+    //&.is-cross::before {
+    //    transform: rotate(45deg);
+    //    left: -22px;
+    //}
+    ////Check tip icon
+    //&.is-check::after,
+    //&.is-check::before {
+    //    content: "";
+    //    position: absolute;
+    //    background-color: lib.get-color("white");
+    //    width: 5px;
+    //    border-radius: 2px;
+    //}
+    //&.is-check::after {
+    //    transform: rotate(45deg);
+    //    left: -20px;
+    //    height: 20px;
+    //    top: 15px;
+    //}
+    //&.is-check::before {
+    //    transform: rotate(-45deg);
+    //    left: -28px;
+    //    height: 12px;
+    //    top: 22px;
+    //}
+}
+

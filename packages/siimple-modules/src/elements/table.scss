@@ -1,0 +1,218 @@
+@use "siimple-lib" as lib;
+
+//Table module loader
+@mixin load-elements-table ($options: (), $prefix: lib.$prefix, $name: "table") {
+    .#{$prefix}#{$name} {
+        @include table($options);
+    }
+}
+
+//Table cell variables
+//$table-colors: (
+//    "primary": lib.get-color-lighter("primary", 35%), 
+//    "secondary": lib.get-color-lighter("secondary", 35%), 
+//    "success": lib.get-color-lighter("success", 35%), 
+//    "warning": lib.get-color-lighter("warning", 30%), 
+//    "error": lib.get-color-lighter("error", 30%)
+//) !default;
+
+//Table class
+//.#{lib.$prefix}table {
+@mixin table ($options: ()) {
+    $border-width: lib.get($options, "border.width", 2px);
+    $border-background: lib.get($options, "border.color", lib.get-color("light")); 
+    $divider-width: lib.get($options, "divider.width", 2px);
+    $divider-background: lib.get($options, "divider.color", lib.get-color("light"));
+    display: table;
+    width: 100%;
+    //font-size: lib.$text-size;
+    //color: lib.$text-color;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-width: 0px;
+    margin-bottom: lib.$margin-bottom;
+    background-color: transparent;
+    box-sizing: border-box;
+    //Table row
+    &-row {
+        display: table-row;
+        //transition: all 0.3s;
+        box-sizing: border-box;
+        //border-bottom: 2px solid $siimple-default-white;
+        &:hover {
+            //background-color: lib.get-color("light");
+        }
+        &:last-child {
+            //border-bottom: 0px;
+        }
+    }
+    //Table cell
+    &-cell {
+        display: table-cell;
+        //position: relative;
+        line-height: lib.$line-height-base;
+        padding: lib.get($options, "padding", 1rem);
+        //white-space: nowrap;
+        //overflow: hidden;
+        //transition: background-color 0.3s;
+        //border-top: 1px solid siimple-default-color("light", "dark");
+        box-sizing: border-box;
+        vertical-align: top;
+        background-color: lib.get-color("white");
+        //Sortable cell
+        &.is-sortable {
+            padding-right: 20px !important;
+            cursor: pointer;
+            position: relative;
+            //Sortable triangles common styles
+            &::before,
+            &::after {
+                display: block;
+                content: "";
+                position: absolute;
+                right: 5px;
+                width: 0px;
+                height: 0px;
+                border-left: 6px solid transparent;
+                border-right: 6px solid transparent;
+                transition: all 0.3s;
+            }
+            //Sortable triangle up
+            &::before {
+                top: 15px;
+                border-bottom: 8px solid lib.get-color("light");
+            }
+            //Sortable triangle down
+            &::after {
+                bottom: 15px;
+                border-top: 8px solid lib.get-color("light");
+            }
+        }
+        //Asc order
+        &.is-asc::before {
+            border-bottom-color: lib.get-color("primary");
+        }
+        //Desc order
+        &.is-desc::after {
+            border-top-color: lib.get-color("primary");
+        }
+    }
+    //Table cell sizes
+    //@each $cell-name, $cell-width in $table-cell-sizes {
+    //    &-cell--#{$cell-name} {
+    //        width: #{$cell-width};
+    //    }
+    //}
+    //Small table --> reduce table cell padding
+    &.is-small &-cell {
+        padding: lib.get($options, "small.padding", 0.5rem);
+        &::before {
+            top: 8px
+        }
+        &::after {
+            bottom: 8px;
+        }
+    }
+    //Large table --> increase table cell padding
+    &.is-large &-cell {
+        padding: lib.get($options, "large.padding", 2.5rem);
+    }
+    //Table with border
+    &.is-bordered &-cell {
+        border: $border-width solid $border-background;
+    }
+    &.is-bordered &-cell:not(:last-child) {
+        border-right: 0px !important;
+    }
+    //Table header
+    &-header {
+        display: table-header-group;
+        box-sizing: border-box;
+        //border-bottom: 3px solid $siimple-default-white !important;
+        //font-weight: bold;
+    }
+    //Bordered table with rouded corners
+    //&--border &-header &-row:first-child &-cell:first-child {
+    &-header &-row:first-child &-cell:first-child {
+        border-top-left-radius: lib.$border-radius-base;
+    }
+    //&--border &-header &-row:first-child &-cell:last-child {
+    &-header &-row:first-child &-cell:last-child {
+        border-top-right-radius: lib.$border-radius-base;
+        //border-right-width: 0px !important;
+    }
+    //&--border &-header &-row:first-child &-cell {
+    //    border-top-width: 2px;
+    //}
+    &-header &-cell {
+        //border-bottom-right-radius: 0px !important;
+        //border-bottom-left-radius: 0px !important;
+        vertical-align: bottom;
+        //border-bottom: 2px solid lib.utils-darken(lib.get-color("light"), 5%);
+        font-weight: 600;
+    }
+    //Table body
+    &-body {
+        display: table-row-group;
+        vertical-align: middle;
+    }
+    //&-body &-cell {
+    //    border-top: 1px solid lib.utils-darken(lib.get-color("light"), 5%);
+    //}
+    //Not last row of the table body
+    //&-body &-row:not(:last-child) &-cell {
+    //    border-bottom: 1px solid lib.utils-darken(lib.get-color("light"), 5%);
+    //}
+    //Rounded table borders
+    //&--border &-body &-row:last-child &-cell:first-child {
+    &-body &-row:last-child &-cell:first-child {
+        border-bottom-left-radius: lib.$border-radius-base;
+    }
+    //&--border &-body &-row:last-child &-cell:last-child {
+    &-body &-row:last-child &-cell:last-child {
+        border-bottom-right-radius: lib.$border-radius-base;
+    }
+    //Bordered table
+    &.is-bordered &-body &-row:not(:last-child) &-cell {
+        border-bottom: 0px !important;
+    }
+    //&--border &-body &-row &-cell:first-child {
+    //    border-left-width: 2px;
+    //}
+    //&--border &-body &-row &-cell:last-child {
+    //    border-right-width: 0px !important;
+    //}
+    //Table with rows divider
+    &.is-divided &-body &-cell {
+        border-top: $divider-width solid $divider-background;
+    }
+    //Striped table
+    &.is-striped &-body &-row:nth-child(odd) &-cell {
+        background-color: lib.get-color-lighter("light", 3%);
+    }
+    //Hovered table
+    &.is-hoverable &-body &-row:hover &-cell {
+        background-color: lib.get-color("light");
+        transition: background-color 0.3s;
+    }
+    //Fixed columns width
+    &.is-fixed {
+        table-layout: fixed;
+    }
+    //Responsive table container
+    &-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+    //Colored table rows
+    //@each $color in lib.$colors-modifiers {
+    //    @if $color != "dark" and $color != "light" {
+    //        &-row.is-#{$color},
+    //        &-row.is-#{$color} &-cell {
+    //            background-color: lib.get($table-colors, $color) !important;
+    //        }
+    //    }
+    //}
+}
+

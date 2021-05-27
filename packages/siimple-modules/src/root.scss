@@ -1,0 +1,31 @@
+@use "siimple-lib" as lib;
+
+//Mixin to define a css variable from a list of variables
+@mixin variables-from-list ($name, $list) {
+    @each $key,$value in $list {
+        @include lib.define-variable("#{$name}#{$key}", $value);
+    }
+}
+
+//Define global css variables
+@mixin load-root ($options: ()) {
+    :root {
+        //Default colors
+        @include variables-from-list("", lib.$colors);
+        //Breakpoints
+        //@include variables-from-list("breakpoint-", lib.$breakpoints);
+        //@include variables-from-list("content-", lib.$content-sizes);
+        //Body values
+        @include lib.define-variable("body-color", lib.$body-color);
+        @include lib.define-variable("body-bg", lib.$body-background);
+        @include lib.define-variable("body-lh", lib.$body-line-height);
+        @include lib.define-variable("body-fs", lib.$body-font-size);
+        @include lib.define-variable("body-fw", lib.$body-font-weight);
+        //Font family
+        @include lib.define-variable("font-sans", lib.$font-family-sans);
+        @include lib.define-variable("font-serif", lib.$font-family-serif);
+        @include lib.define-variable("font-mono", lib.$font-family-mono);
+    }
+}
+
+

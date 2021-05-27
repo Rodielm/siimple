@@ -1,0 +1,113 @@
+@use "siimple-lib" as lib;
+
+//Register spacing utils
+@mixin load-helpers-spacing ($options: (), $prefix: lib.$prefix-helper) {
+    @include lib.utility($prefix, (
+        "name": "p",
+        "variants": ("base" "responsive"),
+        "properties": ("padding"),
+        "important": true,
+        "values": lib.$sizes
+    ));
+    @include lib.utility($prefix, (
+        "name": "px",
+        "variants": ("base" "responsive"),
+        "properties": ("padding-left" "padding-right"),
+        "important": true,
+        "values": lib.$sizes
+    ));
+    @include lib.utility($prefix, (
+        "name": "py",
+        "variants": ("base" "responsive"),
+        "properties": ("padding-top" "padding-bottom"),
+        "important": true,
+        "values": lib.$sizes
+    ));
+    @include lib.utility($prefix, (
+        "name": "pt",
+        "variants": ("base" "responsive"),
+        "properties": ("padding-top"),
+        "important": true,
+        "values": lib.$sizes
+    ));
+    @include lib.utility($prefix, (
+        "name": "pb",
+        "variants": ("base" "responsive"),
+        "properties": ("padding-bottom"),
+        "important": true,
+        "values": lib.$sizes
+    ));
+    @include lib.utility($prefix, (
+        "name": "pl",
+        "variants": ("base" "responsive"),
+        "properties": ("padding-left"),
+        "important": true,
+        "values": lib.$sizes
+    ));
+    @include lib.utility($prefix, (
+        "name": "pr",
+        "variants": ("base" "responsive"),
+        "properties": ("padding-right"),
+        "important": true,
+        "values": lib.$sizes
+    ));
+    @include lib.utility($prefix, (
+        "name": "m",
+        "variants": ("base" "responsive"),
+        "properties": ("margin"),
+        "important": true,
+        "values": lib.$sizes
+    ));
+    @include lib.utility($prefix, (
+        "name": "mx",
+        "variants": ("base" "responsive"),
+        "properties": ("margin-left" "margin-right"),
+        "important": true,
+        "values": lib.$sizes
+    ));
+    @include lib.utility($prefix, (
+        "name": "my",
+        "variants": ("base" "responsive"),
+        "properties": ("margin-top" "margin-bottom"),
+        "important": true,
+        "values": lib.$sizes
+    ));
+    @include lib.utility($prefix, (
+        "name": "mt",
+        "variants": ("base" "responsive"),
+        "properties": ("margin-top"),
+        "important": true,
+        "values": lib.$sizes
+    ));
+    @include lib.utility($prefix, (
+        "name": "mb",
+        "variants": ("base" "responsive"),
+        "properties": ("margin-bottom"),
+        "important": true,
+        "values": lib.$sizes
+    ));
+    @include lib.utility($prefix, (
+        "name": "ml",
+        "variants": ("base" "responsive"),
+        "properties": ("margin-left"),
+        "important": true,
+        "values": lib.$sizes
+    ));
+    @include lib.utility($prefix, (
+        "name": "mr",
+        "variants": ("base" "responsive"),
+        "properties": ("margin-right"),
+        "important": true,
+        "values": lib.$sizes
+    ));
+    @include lib.utility($prefix, (
+        "name": "mx",
+        "variants": ("base" "responsive"),
+        "properties": ("margin-left" "margin-right"),
+        "important": true,
+        "values": (
+            "auto": auto
+        )
+    ));
+}
+
