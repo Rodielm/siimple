@@ -65,6 +65,15 @@
             "right": right        
         )
     ));
+    @include lib.utility($prefix, (
+        "name": "text",
+        "variants": ("base"),
+        "properties": ("text-decoration"),
+        "values": (
+            "underline": "underline",
+            "no-underline": "none"
+        )
+    ));
     //Text overflow
     @include lib.utility($prefix, (
         "name": "text",
