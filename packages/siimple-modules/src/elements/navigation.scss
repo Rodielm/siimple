@@ -1,7 +1,7 @@
 @use "siimple-lib" as lib;
 
 //Navigation module loader
-@mixin load-elements-navigation ($options: (), $prefix: lib.$prefix, $name: "navigation") {
+@mixin load-elements-navigation ($options: (), $prefix: lib.$prefix, $name: "nav") {
     .#{$prefix}#{$name} {
         @include navigation($options);
     }
