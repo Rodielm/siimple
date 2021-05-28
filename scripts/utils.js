@@ -1,5 +1,21 @@
-let fs = require("fs");
-let path = require("path");
+const fs = require("fs");
+const path = require("path");
+const args = require("get-args");
+
+//Check if the provided value is an string
+module.exports.isString = function (value) {
+    return typeof value === "string";
+};
+
+//Check if the provided value is a valid object
+module.exports.isObject = function (value) {
+    return typeof value === "object" && value !== null;
+};
+
+//Get env variables
+module.exports.getEnv = function (callback) {
+    return callback(args().options || {});
+};
 
 //Get a list with all packages available
 module.exports.getPackages = function (parent) {
