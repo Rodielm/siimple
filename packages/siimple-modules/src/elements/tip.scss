@@ -23,10 +23,10 @@
     //padding-left: $tip-padding !important;
     margin-bottom: lib.$margin-bottom;
     //font-size: $siimple-default-font-size;
-    color: lib.get($options, "background", lib.get-color-lighter("light", 2%));
     //line-height: $siimple-default-line-height;
     //Default tip color style
-    background-color: lib.get($options, "background", lib.get-color("dark"));
+    color: lib.get($options, "color", lib.get-color("dark"));
+    background-color: lib.get($options, "background", lib.get-color-lighter("light", 2%));
     border-left-color: lib.get-color("light");
     //Tip colors
     @each $color in lib.$colors-modifiers {
